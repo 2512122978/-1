@@ -9,7 +9,7 @@
 				name="referurl"
 				class="referurl"
 				value=""
-				placeholder="请输入手机号"
+				placeholder="请输入手机号sdsad"
 			/>
 		</view>
 		<view class="loginform">
