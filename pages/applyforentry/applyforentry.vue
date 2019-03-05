@@ -40,7 +40,7 @@
 				<view type="button" class="btn_big1" value="我要闯关" @click="submitverify()">
 					我要闯关
 				</view>
-				<view class="last">
+				<view class="last" @tap="goPage('/pages/applyforentry/list/list')">
 					闯关记录&nbsp;>
 				</view>
 			</view>
@@ -89,10 +89,14 @@
 		 * Vue的自定义方法
 		 */
 		methods: {
-			backhome() {
+			goPage(url){
 				uni.navigateTo({
-					url: '../home/home'
-				});
+					url:url
+				})
+			},
+			backhome() {
+				// https://uniapp.dcloud.io/api/router?id=navigateback
+				uni.navigateBack(getCurrentPages() - 1)
 			}
 		}
 	};

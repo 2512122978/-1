@@ -31,7 +31,7 @@
 			}
 		},
 		{
-			"path": "pages/Complaint/Complaint",
+			"path": "pages/complaint/complaint",
 			"style": {
 				"navigationStyle": "custom",
 				"app-plus": {
@@ -68,6 +68,16 @@
 					"titleView": false
 				},
 				"navigationBarTitleText": "审核闯关"
+			}
+		},
+		{
+			"path": "pages/applyforentry/list/list",
+			"style": {
+				"navigationStyle": "custom",
+				"app-plus": {
+					"titleView": false
+				},
+				"navigationBarTitleText": "闯关记录"
 			}
 		}
 		
