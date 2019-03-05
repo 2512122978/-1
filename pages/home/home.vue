@@ -8,15 +8,17 @@
 		<view class="uni-padding-wrap">
 			<view class="page-section swiper">
 				<view class="page-section-spacing">
-					<swiper class="swiper" :indicator-dots="true" :autoplay="true" :interval="2000" :duration="500">
+					<swiper class="swiper" :indicator-dots="true" :autoplay="false" :interval="2000" :duration="500">
 						<swiper-item>
-							<view class="swiper-item uni-bg-red">
-								<image src="../../static/images/swiper2.png" mode="center"></image>
+							<view class="swiper-item uni-bg-green">
+								<image src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1551805493876&di=1dc8a785fbc14ef16eab8b4a8059a493&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fforum%2Fpic%2Fitem%2Fa82ebad3fd1f4134a1886f93251f95cad0c85e4b.jpg"
+								 class="img" mode="widthFix"></image>
 							</view>
 						</swiper-item>
 						<swiper-item>
 							<view class="swiper-item uni-bg-green">
-								<image src="../../static/images/swiper1.png" mode="center"></image>
+								<image src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1551805493876&di=667301428e95f3f31cd402d114dc7aee&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fforum%2Fpic%2Fitem%2F710e7509c93d70cf7bd1ffe0f8dcd100bba12be7.jpg"
+								 class="img" mode="widthFix"></image>
 							</view>
 						</swiper-item>
 					</swiper>
@@ -78,7 +80,7 @@
 				<view class="title">申请闯关</view>
 			</view>
 			<view class="btn-link">
-				<image class="img" src="../../static/images/审核闯关.png"></image>
+				<image @click="auditEntry()" class="img" src="../../static/images/审核闯关.png"></image>
 				<view class="title">审核闯关</view>
 			</view>
 			<view class="btn-link">
@@ -136,24 +138,29 @@
 		 * Vue的自定义方法
 		 */
 		methods: {
-// 			complaint(){
-// 				uni.navigateTo({
-// 					url:'../Complaint/Complaint'
-// 				});
-// 			},
+			// 			complaint(){
+			// 				uni.navigateTo({
+			// 					url:'../Complaint/Complaint'
+			// 				});
+			// 			},
 			complaint() {
 				uni.navigateTo({
 					url: '../Complaint/Complaint'
 				});
 			},
-			helpRegister(){
+			helpRegister() {
 				uni.navigateTo({
-					url:'../helpRegister/helpRegister'
+					url: '../helpRegister/helpRegister'
 				})
 			},
-			applyforentry(){
+			applyforentry() {
 				uni.navigateTo({
-					url:'../applyforentry/applyforentry'
+					url: '../applyforentry/applyforentry'
+				})
+			},
+			auditEntry() {
+				uni.navigateTo({
+					url: '../auditEntry/auditEntry'
 				})
 			}
 		}
@@ -169,9 +176,21 @@
 
 	.content .uni-padding-wrap {
 		width: 100%;
-		// height: 280upx;
 		background-size: 100% 100%;
 
+	}
+
+	.page-section-spacing {
+
+		.swiper-item {
+			padding: 0 20upx;
+		}
+
+		.img {
+			width: 100%;
+			box-shadow: 5upx 5px 20px 0 #888888;
+
+		}
 	}
 
 	.content .head {
@@ -180,20 +199,15 @@
 		text-align: center;
 		padding: 24upx;
 
-		// flex-direction: column;
 		.title {
 			font-size: 36upx;
 			font-family: YouYuan;
 			padding-left: 120upx;
 			font-weight: bold;
 			width: 40%;
-			// height: 10upx;
 			color: #867afb;
-			// text-align: center;
 			margin: 0 auto;
 			display: inline-block;
-			// vertical-align: middle;
-			// line-height: 00upx;
 		}
 
 		.Complaint {
@@ -209,7 +223,6 @@
 	.content .swiper {
 		text-align: center;
 		width: 100%;
-		// padding: 0 20upx;
 	}
 
 	.content .information {
@@ -227,7 +240,6 @@
 			li {
 				line-height: 1;
 				width: 100%;
-				// display: flex;
 				flex: 1;
 				align-items: center;
 				padding: 12upx;
@@ -238,6 +250,7 @@
 			}
 		}
 	}
+
 	.content .Notice {
 		background: #422e88;
 		margin: 20upx 20upx;
@@ -246,90 +259,73 @@
 		color: rgb(225, 225, 225, 0.8);
 		display: flex;
 		flex-direction: row;
-		.left,.right{
+
+		.left,
+		.right {
 			width: 100upx;
 			font-size: 32upx;
 		}
-		
-		.right{
+
+		.right {
 			text-align: right;
 			border-left: 1upx solid #F4CD4A;
 		}
+
 		.center {
 			flex: 1;
 
 			.swiper {
 				height: 50upx;
-				
+
 				.swiper-item1 {
 					display: flex;
 					flex-direction: row;
 					align-items: center;
-					// padding: 0 30upx;
 				}
-				.tag  {
+
+				.tag {
 					display: inline-flex;
 					width: 70upx;
 					height: 35upx;
 					padding: 5upx 5upx;
 					justify-content: center;
 					align-items: center;
-					// padding: 5upx 12upx;
 					margin-right: 10upx;
 					margin-top: 0;
 					border: 1upx solid #FF1F1F;
 					border-radius: 20upx;
 					font-size: 24upx;
-					// color: #FF1F1F;
 					vertical-align: middle;
 					border-color: #F4CD4A;
 					color: #F4CD4A;
 					position: relative;
 				}
-			
+
 				.text {
 					display: inline-flex;
-					// width: 70upx;
 					height: 35upx;
 					padding: 5upx 5upx;
 					justify-content: center;
 					align-items: center;
-					// padding: 5upx 12upx;
 					margin-right: 10upx;
 					margin-top: 0;
-					// border: 1upx solid #FF1F1F;
 					border-radius: 20upx;
 					font-size: 24upx;
-					// color: #FF1F1F;
 					vertical-align: middle;
 					border-color: #F4CD4A;
 					color: #F4CD4A;
 					position: relative;
-					// display: inline-flex;
-// 					height: 50upx;
-// 					// align-items: center;
-// 					// word-wrap: 
 					white-space: nowrap;
-// 					flex: 1;
-// 					font-size: 24upx;
-// 					overflow: hidden;
-// 					margin-right:20upx;
-// 					margin-top: 10upx;
-// 					color: #F4CD4A; 
 				}
 			}
 		}
-		
-		.right{
+
+		.right {
 			font-size: 12upx;
-			
+
 		}
 	}
 
-	.swiper-item image {
-		// 	width: 100%;
-		// 	height: 100%;
-	}
 
 	.index_middle_nav {
 		display: flex;
@@ -344,7 +340,6 @@
 
 		.btn-link {
 
-			// background: bisque;
 			display: flex;
 			flex-direction: column;
 			height: 196upx;
@@ -371,7 +366,8 @@
 	.content .footer {
 		margin-top: 20upx;
 		width: 100%;
-		height: 104upx;;
+		height: 104upx;
+		;
 		bottom: 0;
 		left: 0;
 		background: rgba(255, 255, 255, 0.1);
@@ -389,7 +385,6 @@
 		line-height: 24upx;
 		color: #ADC5FD;
 		background: url(../../static/images/small_btn.png);
-		// background: url(../images/small_btn.png) no-repeat;
 		background-size: 100% 100%;
 		margin-left: 60upx;
 	}

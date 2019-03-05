@@ -59,7 +59,18 @@
 				},
 				"navigationBarTitleText": "我要闯关"
 			}
+		},
+		{
+			"path": "pages/auditEntry/auditEntry",
+			"style": {
+				"navigationStyle": "custom",
+				"app-plus": {
+					"titleView": false
+				},
+				"navigationBarTitleText": "审核闯关"
+			}
 		}
+		
 
 	],
 	"globalStyle": {
