@@ -29,6 +29,36 @@
 				},
 				"navigationBarTitleText": "托客新零售"
 			}
+		},
+		{
+			"path": "pages/Complaint/Complaint",
+			"style": {
+				"navigationStyle": "custom",
+				"app-plus": {
+					"titleView": false
+				},
+				"navigationBarTitleText": "投诉列表"
+			}
+		},
+		{
+			"path": "pages/helpRegister/helpRegister",
+			"style": {
+				"navigationStyle": "custom",
+				"app-plus": {
+					"titleView": false
+				},
+				"navigationBarTitleText": "帮助注册"
+			}
+		},
+		{
+			"path": "pages/applyforentry/applyforentry",
+			"style": {
+				"navigationStyle": "custom",
+				"app-plus": {
+					"titleView": false
+				},
+				"navigationBarTitleText": "我要闯关"
+			}
 		}
 
 	],

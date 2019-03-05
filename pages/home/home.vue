@@ -1,8 +1,9 @@
 <template>
+	<!-- 轮播图间距与阴影，id模块的间距（已修改） -->
 	<view class="content">
 		<view class="head">
 			<view class="title">拓客新零售</view>
-			<view class="Complaint">我的投诉</view>
+			<view class="Complaint" @click="complaint()">我的投诉</view>
 		</view>
 		<view class="uni-padding-wrap">
 			<view class="page-section swiper">
@@ -69,11 +70,11 @@
 		</view>
 		<view class="index_middle_nav">
 			<view class="btn-link">
-				<image class="img" src="../../static/images/帮助注册.png"></image>
+				<image @click="helpRegister()" class="img" src="../../static/images/帮助注册.png"></image>
 				<view class="title">帮助注册</view>
 			</view>
 			<view class="btn-link">
-				<image class="img" src="../../static/images/申请闯关.png"></image>
+				<image @click="applyforentry()" class="img" src="../../static/images/申请闯关.png"></image>
 				<view class="title">申请闯关</view>
 			</view>
 			<view class="btn-link">
@@ -134,7 +135,28 @@
 		/**
 		 * Vue的自定义方法
 		 */
-		methods: {}
+		methods: {
+// 			complaint(){
+// 				uni.navigateTo({
+// 					url:'../Complaint/Complaint'
+// 				});
+// 			},
+			complaint() {
+				uni.navigateTo({
+					url: '../Complaint/Complaint'
+				});
+			},
+			helpRegister(){
+				uni.navigateTo({
+					url:'../helpRegister/helpRegister'
+				})
+			},
+			applyforentry(){
+				uni.navigateTo({
+					url:'../applyforentry/applyforentry'
+				})
+			}
+		}
 	};
 </script>
 
@@ -192,7 +214,7 @@
 
 	.content .information {
 		background: #422e88;
-		margin: 10upx 20upx;
+		margin: 16upx 20upx;
 		border-radius: 16upx;
 
 		.ul {

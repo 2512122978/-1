@@ -1,263 +1,107 @@
 <template>
 	<view class="content">
-		<view class="body-view">
-		<scroll-view class="top-menu-view" scroll-x="true" :scroll-left="scrollLeft">
-			<block v-for="(menuTab,index) in menuTabs" :key="index">
-				<view class="menu-one-view" v-bind:id="'tabNum'+index" @click="swichMenu(index)">
-					<view :class="[currentTab==index ? 'menu-one-act' : 'menu-one']">
-						<view class="menu-one-txt">{{menuTab.name}}</view>
-						<view class="menu-one-bottom">
-							<view class="menu-one-bottom-color"></view>
-						</view>
-					</view>
-				</view>
-			</block>
-		</scroll-view>
-		<swiper :current="currentTab" class="swiper-box-list" duration="300" @change="swiperChange">
-			<block v-for="(swiperDate,index1) in swiperDateList" :key="index1">
-				<swiper-item>
-					<scroll-view class="swiper-one-list" scroll-y="true" @scrolltolower="loadMore(index1)">
-						<block v-for="(swiperDate2,index2) in swiperDate" :key="index2">
-							<view class="swiper-list-entity">
-								<view>{{swiperDate2}}</view>
-							</view>
-						</block>
-					</scroll-view>
-				</swiper-item>
-			</block>
-		</swiper>
-</view>
+		<view class="backimg">
+			<!-- <view class="icon-fanhui iconfont"></view> -->
+			<image @click="backhome()" class="backimage" src="../../static/images/back.png" mode=""></image>
+			<view class="title">投诉列表</view>
+		</view>
+		<view class="list">
+			<view class="left">
+				我发起的投诉
+			</view>
+			<view class="right">
+				投诉我的
+			</view>
+		</view>
 	</view>
 </template>
 
 <script>
-		export default {
-		data() {
-			return {
-					scrollLeft: 0,
-				isClickChange: false,
-				currentTab: 0,
-				menuTabs: [{
-					name: '政策咨询'
-				}, {
-					name: '就业分配'
-				}, {
-					name: '战友互助'
-				}, {
-					name: '趣味杂谈'
-				}, {
-					name: '怀旧时光'
-				}, {
-					name: '军旅生活'
-				}],
-				swiperDateList: [[],[],[],[],[],[]]
-			};
-		},
-		/**
-		 * Vue的组件存放
-		 */
-		components: {},
-		/**
-		 * uni-app生命周期
-		 * options是上个页面的传参
-		 * 指的是页面加载完毕执行的函数
-		 */
-		onLoad(options) {
-			
-		},
-		/**
-		 * uni-app
-		 * 指的是页面获取焦点的时候执行的函数
-		 */
-		onShow() {},
-		/**
-		 * uni-app
-		 * 指的是页面失去焦点的时候执行的函数
-		 */
-		onHide() {},
-		/**
-		 * Vue计算属性
-		 * 存放的函数，里面的函数名是自己定义的。函数必须有个返回值
-		 */
-		computed: {
-	
-		},
-		/**
-		 * Vue监听器
-		 * 存放的函数，里面的函数名通常是data的数据
-		 * 监听data的数据，一旦发生改变就执行里面对应的函数
-		 */
-		watch: {},
-		/**
-		 * Vue的自定义方法
-		 */
-		methods: {
-			swichMenu: async function(current) { //点击其中一个 menu
-					if (this.currentTab == current) {
-						return false;
-					} else {
-						this.currentTab = current;
-						this.setScrollLeft(current);
-					}
-				},
-				swiperChange: async function(e) {
-						let index = e.target.current;
-						this.setScrollLeft(index);
-						this.currentTab = index; 
-					},
-					setScrollLeft: async function(tabIndex) {
-							let leftWidthSum = 0;
-							for (var i = 0; i <= tabIndex; i++) {
-								let nowElement = await this.getWidth('tabNum' + i);
-								leftWidthSum = leftWidthSum + nowElement.width;
-							}
-							let winWidth = uni.getSystemInfoSync().windowWidth;
-							this.scrollLeft = leftWidthSum > winWidth ? (leftWidthSum - winWidth) : 0
-						},
-						getWidth: function(id) { //得到元素的宽高
-							return new Promise((res, rej) => {
-								uni.createSelectorQuery().select("#" + id).fields({
-									size: true,
-									scrollOffset: true
-								}, (data) => {
-									res(data);
-								}).exec();
-							})
-						},
-						loadMore: function(tabIndex) {
-							console.log('正在加载更多数据。。。')
-							this.getDateList(tabIndex);
-						},
-						getDateList: function(tabIndex) {
-							for (var i = 0; i < 20; i++) {
-								var entity = this.menuTabs[tabIndex].name + (this.swiperDateList[tabIndex].length);
-								this.swiperDateList[tabIndex].push(entity);
-							}
-						}
+export default {
+	data() {
+		return {};
+	},
+	/**
+	 * Vue的组件存放
+	 */
+	components: {},
+	/**
+	 * uni-app生命周期
+	 * options是上个页面的传参
+	 * 指的是页面加载完毕执行的函数
+	 */
+	onLoad(options) {},
+	/**
+	 * uni-app
+	 * 指的是页面获取焦点的时候执行的函数
+	 */
+	onShow() {},
+	/**
+	 * uni-app
+	 * 指的是页面失去焦点的时候执行的函数
+	 */
+	onHide() {},
+	/**
+	 * Vue计算属性
+	 * 存放的函数，里面的函数名是自己定义的。函数必须有个返回值
+	 */
+	computed: {},
+	/**
+	 * Vue监听器
+	 * 存放的函数，里面的函数名通常是data的数据
+	 * 监听data的数据，一旦发生改变就执行里面对应的函数
+	 */
+	watch: {},
+	/**
+	 * Vue的自定义方法
+	 */
+	methods: {
+		backhome(){
+			uni.navigateTo({
+				url:'../home/home'
+			})
 		}
-	};
+	}
+};
 </script>
 
-<style>
-	
+<style lang="less">
+@import '//at.alicdn.com/t/font_1069694_b0katkm1hdo.css';
 page {
-		width: 100%;
-		height: 100%;
+	background: #2b1581;
+}
+.content {
+	.backimg {
+		background-color: #381FB0;
+		color: white;
 		display: flex;
-		flex-wrap: wrap;
-		align-items: flex-start;
-		justify-content: center;
-		background: rgba(249, 249, 249, 1);
-	}
- 
-	.body-view {
-		display: flex;
-		flex: 1;
-		flex-direction: column;
-		overflow: hidden;
-		height: 100%;
-		width: 100%;
-		align-items: flex-start;
-		justify-content: center;
-	}
- 
-	.top-menu-view {
-		display: flex;
-		white-space: nowrap;
-		width: 100%;
-		background-color: #FFFFFF;
-		height: 112upx;
-		/* 在这里设置导航条高度 */
-	}
- 
-	.top-menu-view .menu-one-view {
-		display: inline-block;
-		white-space: nowrap;
-		height: 100%;
-	}
- 
-	.top-menu-view .menu-one-view .menu-one {
-		/* 在这里写 单个按钮样式 */
-		margin-left: 25upx;
-		margin-right: 25upx;
-		position: relative;
-		height: 100%;
-		display: flex;
+		flex-direction: row;
+		// justify-content: center;
 		align-items: center;
-		justify-content: center;
+		padding: 20upx 22upx;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+		.backimage {
+			width: 40upx;
+			height: 40upx;
+			color: #867afb;
+		}
+		.title {
+			margin-left: 240upx;
+			color: #867afb;
+			font-weight: bold;
+			font-size: 34upx;
+		}
 	}
- 
-	.top-menu-view .menu-one-view .menu-one .menu-one-txt {
-		height: 40upx;
-		font-size: 28upx;
-		font-weight: 400;
-		color: rgba(154, 154, 154, 1);
-		line-height: 40upx;
-	}
- 
-	.top-menu-view .menu-one-view .menu-one .menu-one-bottom {
-		position: absolute;
-		bottom: 0;
-		width: 100%;
-	}
- 
-	.top-menu-view .menu-one-view .menu-one .menu-one-bottom .menu-one-bottom-color {
-		width: 60%;
-		height: 4upx;
-	}
- 
-	.top-menu-view .menu-one-view .menu-one-act {
-		/* 在这里写 单个按钮样式 */
-		margin-left: 25upx;
-		margin-right: 25upx;
-		position: relative;
-		height: 100%;
+	.list{
 		display: flex;
-		align-items: center;
-		justify-content: center;
+		flex-direction: row;
+		background: #381FB0;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+		.left,.right{
+			color: #867afb;
+			font-size: 26upx;
+			padding: 24upx 120upx;
+		}
 	}
- 
-	.top-menu-view .menu-one-view .menu-one-act .menu-one-txt {
-		height: 40upx;
-		font-size: 28upx;
-		font-weight: 400;
-		color: rgba(0, 170, 255, 1);
-		line-height: 40upx;
-	}
- 
-	.top-menu-view .menu-one-view .menu-one-act .menu-one-bottom {
-		position: absolute;
-		bottom: 0;
-		width: 100%;
-		display: flex;
-		justify-content: center;
-	}
- 
-	.top-menu-view .menu-one-view .menu-one-act .menu-one-bottom .menu-one-bottom-color {
-		width: 60%;
-		height: 4upx;
-		background: rgba(0, 170, 255, 1);
-	}
- 
-	.swiper-box-list {
-		flex: 1;
-		width: 100%;
-		height: auto;
-		background-color: #FFFFFF;
-	}
- 
-	.swiper-one-list {
-		height: 100%;
-		width: 100%;
-	}
- 
-	.swiper-one-list .swiper-list-entity {
-		width: 100%;
-		height: 112upx;
-		text-align: center;
-		display: flex;
-		flex-wrap: wrap;
-		align-items: center;
-		justify-content: center;
-	}
+}
 </style>
