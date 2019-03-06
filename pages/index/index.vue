@@ -18,9 +18,11 @@
 				<input
 					type="hidden"
 					name="referurl"
-					class="referurl"
+					:class="'referurl '+ (accAcitve?'on':'')"
 					value=""
 					placeholder="请输入账号"
+					@focus="input('acc')"
+					@blur="input_plur('acc')"
 				/>
 				<!-- </view> -->
 			</view>
@@ -28,11 +30,13 @@
 				<!-- <view class="icon-suo iconfont" style="font-size: 40upx;color: white;"></view> -->
 				<image class="pswimg" src="../../static/login_pwd.png" mode=""></image>
 				<input
-					type="hidden"
+					type="password"
 					name="referurl"
-					class="referurl"
+					:class="'referurl '+ (pwdAcitve?'on':'')"
 					value=""
 					placeholder="请输入密码"
+					@focus="input('pwd')"
+					@blur="input_plur('pwd')"
 				/>
 			</view>
 			<view class="register" @click="onClick">注册账号</view>
@@ -51,7 +55,12 @@
 // 此处引入你要的组件
 export default {
 	data() {
-		return {};
+		return {
+			//输入框样式的激活状态
+			accAcitve: false,
+			//输入框样式的激活状态
+			pwdAcitve: false,
+		};
 	},
 	/**
 	 * Vue的组件存放
@@ -104,7 +113,25 @@ export default {
 			uni.navigateTo({
 				url: '../register/register'
 			});
-		}
+		},
+		input(res){
+			let that = this
+			if(res === "acc") {
+				that.accAcitve = true
+			}
+			if(res === "pwd"){
+				that.pwdAcitve =true
+			}
+		},
+		input_plur(res) {
+			let that = this
+			if(res === "acc") {
+				that.accAcitve = false
+			}
+			if(res == "pwd"){
+				that.pwdAcitve =false
+			}
+		},
 	}
 };
 </script>
@@ -188,10 +215,14 @@ page {
 		margin-right: 20upx;
 	}
 	.referurl {
-		background: white;
+		color: #002060;	
 		height: 24upx;
 		font-size: 24upx;
 		width: 68%;
+		
+	}
+	.referurl.on{
+		background: white;
 	}
 }
 .loginform,

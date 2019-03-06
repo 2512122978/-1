@@ -45,7 +45,7 @@
 				</view>
 				<view class="li">
 						等&nbsp;&nbsp;&nbsp;级：&nbsp;&nbsp;&nbsp;第一关声不嫌
-						<span class="Grade">等级介绍</span>
+						<span class="Grade" @click="showgrade()">等级介绍</span>
 				</view>
 				<view class="li">
 					姓&nbsp;&nbsp;&nbsp;名：&nbsp;&nbsp;&nbsp;晴儿</li>
@@ -94,7 +94,7 @@
 					</swiper-item>
 				</swiper>
 			</view>
-			<view class="right">
+			<view class="right" @click="notice()">
 				更多
 			</view>
 		</view>
@@ -111,7 +111,7 @@
 				<image @click="auditEntry()" class="img" src="../../static/images/审核闯关.png"></image>
 				<view class="title">审核闯关</view>
 			</view>
-			<view class="btn-link">
+			<view class="btn-link" @click="guild()">
 				<image class="img" src="../../static/images/行会大厅.png"></image>
 				<view class="title">行会大厅</view>
 			</view>
@@ -194,6 +194,23 @@
 			credit(){
 				uni.navigateTo({
 					url:'../credit/credit'
+				})
+			},
+			notice(){
+				uni.navigateTo({
+					url:'../notice/notice'
+				})
+			},
+			showgrade(){
+				uni.showModal({
+					// title:'提示',
+					content:'background:../static/images/imodelbackgeound.png',
+					background:'../static/images/imodelbackgeound.png'
+				})
+			},
+			guild(){
+				uni.navigateTo({
+					url:'../guild/guild'
 				})
 			}
 		}
