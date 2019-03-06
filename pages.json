@@ -79,7 +79,18 @@
 				},
 				"navigationBarTitleText": "闯关记录"
 			}
+		},
+		{
+			"path": "pages/credit/credit",
+			"style": {
+				"navigationStyle": "custom",
+				"app-plus": {
+					"titleView": false
+				},
+				"navigationBarTitleText": "信用分"
+			}
 		}
+		
 		
 
 	],

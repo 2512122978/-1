@@ -25,19 +25,47 @@
 				</view>
 			</view>
 		</view>
-		<view class="information">
+	<!-- 	<view class="information">
 			<view class="ul">
 				<ul>
-					<li class="li1">I&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;D:153510558</li>
+					<li class="li1">I&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;D:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;153510558</li>
 					<li>
-						等&nbsp;&nbsp;&nbsp;&nbsp;级：第一关声不嫌
-						<span class="Grade">等级介绍</span>
+						等&nbsp;&nbsp;&nbsp;&nbsp;级：&nbsp;&nbsp;&nbsp;&nbsp;第一关声不嫌
+						<span class="Grade">等级介绍</span><a>123</a>
 					</li>
-					<li>姓&nbsp;&nbsp;&nbsp;&nbsp;名：晴儿</li>
-					<li>推荐人：阿兴</li>
+					<li>姓&nbsp;&nbsp;&nbsp;&nbsp;名：&nbsp;&nbsp;&nbsp;&nbsp;晴儿</li>
+					<li>推荐人：&nbsp;&nbsp;&nbsp;&nbsp;阿兴</li>
 				</ul>
 			</view>
+		</view> -->
+		<view class="information">
+			<view class="ul">
+				<view class="li">
+					I&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;D:&nbsp;&nbsp;&nbsp;&nbsp;153510558</li>
+				</view>
+				<view class="li">
+						等&nbsp;&nbsp;&nbsp;级：&nbsp;&nbsp;&nbsp;第一关声不嫌
+						<span class="Grade">等级介绍</span>
+				</view>
+				<view class="li">
+					姓&nbsp;&nbsp;&nbsp;名：&nbsp;&nbsp;&nbsp;晴儿</li>
+				</view>
+				<view class="li">
+					推荐人：&nbsp;&nbsp;阿兴
+				</view>
+			</view>
+				<view class="right">
+					<view class="credit" @click="credit()">
+						信用分：100分
+					</view>
+					<view class="account">
+						账号安全设置
+					</view>
+				</view>
+			
 		</view>
+		
+		
 		<view class="Notice">
 			<view class="left">
 				公告
@@ -145,7 +173,7 @@
 			// 			},
 			complaint() {
 				uni.navigateTo({
-					url: '../Complaint/Complaint'
+					url: '../complaint/complaint'
 				});
 			},
 			helpRegister() {
@@ -161,6 +189,11 @@
 			auditEntry() {
 				uni.navigateTo({
 					url: '../auditEntry/auditEntry'
+				})
+			},
+			credit(){
+				uni.navigateTo({
+					url:'../credit/credit'
 				})
 			}
 		}
@@ -226,18 +259,23 @@
 	}
 
 	.content .information {
+		display: flex;
+		
 		background: #422e88;
 		margin: 16upx 20upx;
 		border-radius: 16upx;
+		// padding: 12upx;
+		line-height: 44upx;
+		font-size: 22upx;
 
 		.ul {
 			color: rgba(255, 255, 255, .8);
 			list-style: none;
 			font-size: 28upx;
-			margin: 0 0 0 -60upx;
+			margin: 0 0 0 28upx;
 			padding: 0;
 
-			li {
+			.li {
 				line-height: 1;
 				width: 100%;
 				flex: 1;
@@ -248,6 +286,21 @@
 				text-align: left;
 				list-style: none;
 			}
+		}
+		.right{
+			// color: #FF1F1F;
+			.credit,.account{
+				    color: #877BF9;
+					border: 1px solid #877BF9;
+					font-size: 24upx;
+					text-align: center;
+					margin: 20upx;
+					border-radius: 12upx;
+					padding: 4upx 8upx;
+			}
+// 			.account{
+// 				
+// 			}
 		}
 	}
 
@@ -386,6 +439,6 @@
 		color: #ADC5FD;
 		background: url(../../static/images/small_btn.png);
 		background-size: 100% 100%;
-		margin-left: 60upx;
+		margin-left: 20upx;
 	}
 </style>
