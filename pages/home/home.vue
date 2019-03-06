@@ -25,7 +25,7 @@
 				</view>
 			</view>
 		</view>
-	<!-- 	<view class="information">
+		<!-- 	<view class="information">
 			<view class="ul">
 				<ul>
 					<li class="li1">I&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;D:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;153510558</li>
@@ -44,8 +44,8 @@
 					I&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;D:&nbsp;&nbsp;&nbsp;&nbsp;153510558</li>
 				</view>
 				<view class="li">
-						等&nbsp;&nbsp;&nbsp;级：&nbsp;&nbsp;&nbsp;第一关声不嫌
-						<span class="Grade">等级介绍</span>
+					等&nbsp;&nbsp;&nbsp;级：&nbsp;&nbsp;&nbsp;第一关声不嫌
+					<span class="Grade">等级介绍</span>
 				</view>
 				<view class="li">
 					姓&nbsp;&nbsp;&nbsp;名：&nbsp;&nbsp;&nbsp;晴儿</li>
@@ -54,18 +54,18 @@
 					推荐人：&nbsp;&nbsp;阿兴
 				</view>
 			</view>
-				<view class="right">
-					<view class="credit" @click="credit()">
-						信用分：100分
-					</view>
-					<view class="account">
-						账号安全设置
-					</view>
+			<view class="right">
+				<view class="credit" @click="credit()">
+					信用分：100分
 				</view>
-			
+				<view class="account">
+					账号安全设置
+				</view>
+			</view>
+
 		</view>
-		
-		
+
+
 		<view class="Notice">
 			<view class="left">
 				公告
@@ -191,9 +191,9 @@
 					url: '../auditEntry/auditEntry'
 				})
 			},
-			credit(){
+			credit() {
 				uni.navigateTo({
-					url:'../credit/credit'
+					url: '../credit/credit'
 				})
 			}
 		}
@@ -260,7 +260,7 @@
 
 	.content .information {
 		display: flex;
-		
+
 		background: #422e88;
 		margin: 16upx 20upx;
 		border-radius: 16upx;
@@ -287,20 +287,24 @@
 				list-style: none;
 			}
 		}
-		.right{
+
+		.right {
+
 			// color: #FF1F1F;
-			.credit,.account{
-				    color: #877BF9;
-					border: 1px solid #877BF9;
-					font-size: 24upx;
-					text-align: center;
-					margin: 20upx;
-					border-radius: 12upx;
-					padding: 4upx 8upx;
+			.credit,
+			.account {
+				color: #877BF9;
+				border: 1px solid #877BF9;
+				font-size: 24upx;
+				text-align: center;
+				margin: 20upx;
+				border-radius: 12upx;
+				padding: 4upx 8upx;
 			}
-// 			.account{
-// 				
-// 			}
+
+			// 			.account{
+			// 				
+			// 			}
 		}
 	}
 
@@ -337,7 +341,6 @@
 				}
 
 				.tag {
-					display: inline-flex;
 					width: 70upx;
 					height: 35upx;
 					padding: 5upx 5upx;
@@ -355,11 +358,10 @@
 				}
 
 				.text {
-					display: inline-flex;
-					height: 35upx;
+					flex: 1;
 					padding: 5upx 5upx;
-					justify-content: center;
 					align-items: center;
+					text-align: left;
 					margin-right: 10upx;
 					margin-top: 0;
 					border-radius: 20upx;
@@ -367,15 +369,20 @@
 					vertical-align: middle;
 					border-color: #F4CD4A;
 					color: #F4CD4A;
-					position: relative;
+					overflow: hidden;
+					text-overflow: ellipsis;
 					white-space: nowrap;
 				}
 			}
 		}
 
 		.right {
-			font-size: 12upx;
-
+			display: flex;
+			height: 100%;
+			justify-content: center;
+			align-items: center;
+			font-size: 26upx;
+			
 		}
 	}
 
