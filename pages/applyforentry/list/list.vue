@@ -30,7 +30,7 @@
 					<view class="card">
 						<view class="order-info">
 							<view class="left">
-								闯关时间：{{item.date}}
+								闯关时间： {{item.date}}
 							</view>
 							<view class="right">
 								{{item.state}}
@@ -81,7 +81,7 @@
 							<view class="btn-link comment">
 								评论
 							</view>
-							<view class="btn-link details">
+							<view @click="details()" class="btn-link details">
 								详情
 							</view>
 						</view>
@@ -251,6 +251,11 @@
 			},
 			backhome(){
 				uni.navigateBack(getCurrentPages() - 1)
+			},
+			details(){
+				uni.navigateTo({
+					url:'../../clearancedetails/clearancedetails'
+				})
 			}
 		},
 	}
@@ -291,10 +296,11 @@
 		margin: 20upx;
 
 		.head {
+			height: 44upx;
 			display: flex;
 			flex: 1;
 			background: rgba(255, 255, 255, 0.1);
-			padding: 10upx 0 10upx 180upx;
+			padding: 10upx 20upx 10upx 140upx;
 			align-items: center;
 			border-radius: 8000upx;
 
@@ -302,9 +308,12 @@
 				background: transparent;
 				font-size: 32upx;
 				color: rgba(255, 255, 255, .8);
+				font-size: 28upx;
+				
 			}
 
 			.image {
+				padding-right: 20upx;
 				width: 30upx;
 				height: 30upx;
 			}
@@ -312,16 +321,16 @@
 		}
 
 		.search {
+			font-size: 32upx;
 			display: flex;
 			justify-content: center;
 			align-items: center;
-			width: 120upx;
+			width: 100upx;
 			color: rgba(255, 255, 255, .8);
 		}
 	}
 
 	.card-list {
-		margin-top: 30upx;
 		padding-bottom: 60upx;
 
 		.tab-bar {
@@ -338,7 +347,7 @@
 				justify-content: center;
 				align-items: center;
 				color: rgba(255, 255, 255, .4);
-				font-size: 32upx;
+				font-size: 28upx;
 			}
 
 			.line {
@@ -377,7 +386,7 @@
 
 			.order-info {
 				display: flex;
-				height: 80upx;
+				height: 70upx;
 				align-items: center;
 				justify-content: space-between;
 			}

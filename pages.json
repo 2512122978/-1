@@ -119,6 +119,36 @@
 				},
 				"navigationBarTitleText": "uni-app"
 			}
+		},
+		{
+			"path": "pages/accountsecurity/accountsecurity",
+			"style": {
+				"navigationStyle": "custom",
+				"app-plus": {
+					"titleView": false
+				},
+				"navigationBarTitleText": "设置"
+			}
+		},
+		{
+			"path": "pages/account/account",
+			"style": {
+				"navigationStyle": "custom",
+				"app-plus": {
+					"titleView": false
+				},
+				"navigationBarTitleText": "账号安全设置"
+			}
+		},
+		{
+			"path": "pages/clearancedetails/clearancedetails",
+			"style": {
+				"navigationStyle": "custom",
+				"app-plus": {
+					"titleView": false
+				},
+				"navigationBarTitleText": "闯关详情"
+			}
 		}
 		
 		

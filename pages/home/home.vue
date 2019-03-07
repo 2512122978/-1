@@ -45,7 +45,7 @@
 				<view class="credit" @click="credit()">
 					信用分：100分
 				</view>
-				<view class="account">
+				<view class="account" @click="account()">
 					账号安全设置
 				</view>
 			</view>
@@ -103,13 +103,52 @@
 				<view class="title">行会大厅</view>
 			</view>
 		</view>
+		<!-- 模态框 -->
 		<view class="modal" v-show="modal">
 			<view class="mask" @tap="hideModal()">
 			</view>
 			<view class="box">
-
+<view class="title1">
+	<image class="image" src="../../static/images/index_dialog_title.png" mode=""></image>
+</view>
+<view class="titleLine">
+	<image class="image" src="../../static/images/dialog_title_line.png" mode=""></image>
+</view>
+<view class="body">
+	<view class="line1">
+	<image class="imageleft" src="../../static/images/13.png" mode=""></image>
+	<image class="imageright" src="../../static/images/12.png" mode=""></image>
+	</view>
+	<view class="line1">
+	<image class="imageleft" src="../../static/images/11.png" mode=""></image>
+	<image class="imageright" src="../../static/images/10.png" mode=""></image>
+	</view>
+	<view class="line1">
+	<image class="imageleft" src="../../static/images/9.png" mode=""></image>
+	<image class="imageright" src="../../static/images/8.png" mode=""></image>
+	</view>
+	<view class="line1">
+	<image class="imageleft" src="../../static/images/7.png" mode=""></image>
+	<image class="imageright" src="../../static/images/6.png" mode=""></image>
+	</view>
+	<view class="line1">
+	<image class="imageleft" src="../../static/images/5.png" mode=""></image>
+	<image class="imageright" src="../../static/images/4.png" mode=""></image>
+	</view>
+	<view class="line1">
+	<image class="imageleft" src="../../static/images/3.png" mode=""></image>
+	<image class="imageright" src="../../static/images/2.png" mode=""></image>
+	</view>
+	<view class="line1">
+	<image class="imageleft" src="../../static/images/1.png" mode=""></image>
+	<image class="imageright" src="../../static/images/0.png" mode=""></image>
+	</view>
+</view>
+<view class="body">
+</view>
 			</view>
 		</view>
+		
 		<view class="footer">在线客服： QQ 2708232258</view>
 	</view>
 </template>
@@ -206,6 +245,11 @@
 			hideModal() {
 				let that = this
 				that.modal = false
+			},
+			account(){
+				uni.navigateTo({
+					url:'../account/account'
+				})
 			}
 		}
 	};
@@ -230,13 +274,45 @@
 		.box {
 			position: fixed;
 			width: 600upx;
-			height: 920upx;
+			height: 900upx;
 			background-image: url(../../static/images/imodelbackground.png);
 			background-size: 100% 100%;
-			top: calc(50% - 920upx / 2);
+			top: calc(50% - 900upx / 2);
 			;
 			left: calc(50% - 600upx / 2);
 			z-index: 2 + 1;
+			.title1{
+				padding-top: 66upx;
+				padding-left: 90upx;
+				.image{
+				height: 42upx;
+				width: 426upx;
+				}
+			}
+			.titleLine{
+				.image{
+					height: 1upx;
+					width: 100%;
+				}
+			}
+			.body{
+				.line1{
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					padding: 21upx 40upx;
+					border-bottom: 1px solid rgba(225, 225, 225, .1);
+					.imageleft{
+					height: 52upx;
+					width: 240upx;
+					}
+					.imageright{
+						height: 52upx;
+						width: 240upx;
+					}
+				}
+				
+			}
 		}
 	}
 
