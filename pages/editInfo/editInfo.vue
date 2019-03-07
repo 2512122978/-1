@@ -1,0 +1,219 @@
+<template>
+	<view class="content">
+		<view class="save">
+			确认修改
+		</view>
+		<view class="item-list">
+			<view class="row" style="height: 130upx;">
+				<view class="left">
+					头像
+				</view>
+				<view class="right">
+					<image src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3377302992,3361149372&fm=27&gp=0.jpg" mode="widthFix"
+					 class="img-header"></image>
+				</view>
+			</view>
+			<view class="row">
+				<view class="left">
+					昵称
+				</view>
+				<view class="right">
+					<input type="text" v-model="nickName" maxlength="5" placeholder="请输入昵称" class="nickneme">
+				</view>
+			</view>
+			<view class="row" @tap="goPage('/pages/editInfo/phone/phone')">
+				<view class="left">
+					手机号
+				</view>
+				<view class="right">
+					18650365505
+					<image src="../../static/images/qianjin.png" mode="widthFix" class="icon"></image>
+				</view>
+			</view>
+			<view class="row" @tap="goPage('/pages/editInfo/realName/realName')">
+				<view class="left">
+					实名验证
+				</view>
+				<view class="right">
+					未验证
+					<image src="../../static/images/qianjin.png" mode="widthFix" class="icon"></image>
+				</view>
+			</view>
+			<view class="row" @tap="goPage('/pages/editInfo/phone2/phone2')">
+				<view class="left">
+					备用手机号
+				</view>
+				<view class="right">
+					<image src="../../static/images/qianjin.png" mode="widthFix" class="icon"></image>
+				</view>
+			</view>
+			<view class="row" @tap="goPage('/pages/editInfo/alPay/alPay')">
+				<view class="left">
+					绑定支付宝
+				</view>
+				<view class="right">
+					<image src="../../static/images/qianjin.png" mode="widthFix" class="icon"></image>
+				</view>
+			</view>
+			<view class="row" @tap="goPage('/pages/editInfo/weChat/weChat')">
+				<view class="left">
+					绑定微信
+				</view>
+				<view class="right">
+					<image src="../../static/images/qianjin.png" mode="widthFix" class="icon"></image>
+				</view>
+			</view>
+			<view class="row" @tap="goPage('/pages/editInfo/addressCenter/address')">
+				<view class="left">
+					地址管理
+				</view>
+				<view class="right">
+					<image src="../../static/images/qianjin.png" mode="widthFix" class="icon"></image>
+				</view>
+			</view>
+		</view>
+		<view class="btn-box">
+			<view class="title">
+				退出
+			</view>
+			<view class="btn">
+				<image src="../../static/btn.png" mode="widthFix" class="checkLogin" ></image>
+			</view>
+		</view>
+	</view>
+</template>
+
+<script>
+	const util = require('@/utils/util.js')
+	const api = require('@/config/api.js')
+	//全局变量
+	let stack_1 = 1
+	export default {
+		data() {
+			return {
+				nickName:"晴儿",
+				
+			}
+		},
+		components: {
+
+		},
+		/**
+		 * uni-app生命周期
+		 * options是上个页面的传参
+		 * 指的是页面加载完毕执行的函数
+		 */
+		onLoad(options) {
+
+		},
+		/**
+		 * uni-app
+		 * 指的是页面获取焦点的时候执行的函数
+		 */
+		onShow() {
+
+		},
+		/**
+		 * uni-app
+		 * 指的是页面失去焦点的时候执行的函数
+		 */
+		onHide() {
+
+		},
+		/**
+		 * Vue计算属性
+		 * 存放的函数，里面的函数名是自己定义的。函数必须有个返回值
+		 */
+		computed: {
+
+		},
+		/**
+		 * Vue监听器
+		 * 存放的函数，里面的函数名通常是data的数据
+		 * 监听data的数据，一旦发生改变就执行里面对应的函数
+		 */
+		watch: {
+
+		},
+		/**
+		 * Vue的自定义方法
+		 */
+		methods: {
+			goPage(url) {
+				uni.navigateTo({
+					url: url,
+				})
+			}
+		},
+	}
+</script>
+
+<style lang="less">
+	// 此处引入css、less等样式
+	page {
+		background: #2107A5;
+	}
+	
+	.save {
+		position: absolute;
+		color: #fff;
+		top: -65upx;
+		right: 20upx;
+		z-index: 999;
+		font-size: 30upx;
+		color: rgba(255, 255, 255, 0.8);
+	}
+
+	.item-list {
+		padding: 0 30upx;
+
+		.row {
+			display: flex;
+			height: 100upx;
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: center;
+			font-size: 30upx;
+			color: rgba(255, 255, 255, .8);
+
+			.img-header {
+				width: 90upx;
+				border-radius: 50%;
+			}
+
+			.left {
+				display: flex;
+				align-items: center;
+			}
+
+			.right {
+				display: flex;
+				align-items: center;
+			}
+
+			.nickneme {
+				text-align: right;
+			}
+			
+			.icon {
+				width: 50upx;
+			}
+		}
+	}
+	
+	.btn-box {
+		position: relative;
+		display: flex;
+		// height: 150upx;
+		margin-top: 120upx;
+		justify-content: center;
+		align-items: center;
+		
+		.title {
+			position: absolute;
+			top: 18%;
+			color: white;
+			z-index: 2;
+		}
+	}
+</style>

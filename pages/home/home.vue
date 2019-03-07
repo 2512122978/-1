@@ -45,7 +45,7 @@
 				<view class="credit" @click="credit()">
 					信用分：100分
 				</view>
-				<view class="account">
+				<view class="account" @tap="goEditInfo()">
 					账号安全设置
 				</view>
 			</view>
@@ -172,6 +172,11 @@
 			helpRegister() {
 				uni.navigateTo({
 					url: '../helpRegister/helpRegister'
+				})
+			},
+			goEditInfo(){
+				uni.navigateTo({
+					url: '/pages/editInfo/editInfo',
 				})
 			},
 			applyforentry() {

@@ -2,127 +2,179 @@
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
 			"path": "pages/index/index",
-			"style": {
+			"style" : {
 				"navigationStyle": "custom",
-				"app-plus": {
-					"titleView": false
-				},
-				"navigationBarTitleText": "uni-app"
+			    "navigationBarTitleText" : "登录"
 			}
 		},
 		{
 			"path": "pages/register/register",
 			"style": {
-				"navigationStyle": "custom",
-				"app-plus": {
-					"titleView": false
-				},
-				"navigationBarTitleText": "注册"
+				"navigationBarTitleText": "注册",
+				"navigationBarBackgroundColor": "#260E93",
+				"navigationBarTextStyle":"white"
 			}
 		},
 		{
 			"path": "pages/home/home",
 			"style": {
 				"navigationStyle": "custom",
-				"app-plus": {
-					"titleView": false
-				},
 				"navigationBarTitleText": "托客新零售"
 			}
 		},
 		{
 			"path": "pages/complaint/complaint",
 			"style": {
-				"navigationStyle": "custom",
-				"app-plus": {
-					"titleView": false
-				},
-				"navigationBarTitleText": "投诉列表"
+				"navigationBarTitleText": "投诉列表",
+				"navigationBarBackgroundColor": "#260E93",
+				"navigationBarTextStyle":"white"
 			}
 		},
 		{
 			"path": "pages/helpRegister/helpRegister",
 			"style": {
-				"navigationStyle": "custom",
-				"app-plus": {
-					"titleView": false
-				},
-				"navigationBarTitleText": "帮助注册"
+				"navigationBarTitleText": "为他人注册",
+				"navigationBarBackgroundColor": "#260E93",
+				"navigationBarTextStyle":"white"
 			}
 		},
 		{
 			"path": "pages/applyforentry/applyforentry",
 			"style": {
-				"navigationStyle": "custom",
-				"app-plus": {
-					"titleView": false
-				},
-				"navigationBarTitleText": "我要闯关"
+				"navigationBarTitleText": "我要闯关",
+				"navigationBarBackgroundColor": "#260E93",
+				"navigationBarTextStyle":"white"
 			}
 		},
 		{
 			"path": "pages/auditEntry/auditEntry",
 			"style": {
-				"navigationStyle": "custom",
-				"app-plus": {
-					"titleView": false
-				},
-				"navigationBarTitleText": "审核闯关"
+				"navigationBarTitleText": "审核闯关记录",
+				"navigationBarBackgroundColor": "#260E93",
+				"navigationBarTextStyle":"white"
 			}
 		},
 		{
 			"path": "pages/applyforentry/list/list",
 			"style": {
-				"navigationStyle": "custom",
-				"app-plus": {
-					"titleView": false
-				},
-				"navigationBarTitleText": "闯关记录"
+				"navigationBarTitleText": "闯关记录",
+				"navigationBarBackgroundColor": "#260E93",
+				"navigationBarTextStyle":"white"
 			}
 		},
 		{
 			"path": "pages/credit/credit",
 			"style": {
-				"navigationStyle": "custom",
-				"app-plus": {
-					"titleView": false
-				},
-				"navigationBarTitleText": "信用分"
+				"navigationBarTitleText": "综合信用评分",
+				"navigationBarBackgroundColor": "#260E93",
+				"navigationBarTextStyle":"white"
 			}
 		},
 		{
 			"path": "pages/notice/notice",
 			"style": {
-				"navigationStyle": "custom",
-				"app-plus": {
-					"titleView": false
-				},
-				"navigationBarTitleText": "公告"
+				"navigationBarTitleText": "公告",
+				"navigationBarBackgroundColor": "#260E93",
+				"navigationBarTextStyle":"white"
 			} 
 		},
 		{
 			"path": "pages/noticedetails/noticedetails",
 			"style": {
-				"navigationStyle": "custom",
-				"app-plus": {
-					"titleView": false
-				},
-				"navigationBarTitleText": "公告详情"
+				"navigationBarTitleText": "公告详情",
+				"navigationBarBackgroundColor": "#260E93",
+				"navigationBarTextStyle":"white"
 			}
 		},
 		{
 			"path": "pages/guild/guild",
 			"style": {
-				"navigationStyle": "custom",
-				"app-plus": {
-					"titleView": false
-				},
-				"navigationBarTitleText": "uni-app"
+				"navigationBarTitleText": "行会大厅",
+				"navigationBarBackgroundColor": "#260E93",
+				"navigationBarTextStyle":"white"
+			}
+		},
+		{
+			"path": "pages/editInfo/editInfo",
+			"style": {
+				"navigationBarTitleText": "设置",
+				"navigationBarBackgroundColor": "#260E93",
+				"navigationBarTextStyle":"white"
+			}
+		},
+		// ..........................................
+		{
+			"path": "pages/editInfo/addressCenter/address",
+			"style": {
+				"navigationBarTitleText": "收货地址管理",
+				"navigationBarBackgroundColor": "#260E93",
+				"navigationBarTextStyle":"white"
+			}
+		},
+		{
+			"path": "pages/editInfo/addressCenter/addressAdd",
+			"style": {
+				"navigationBarTitleText": "新增收货地址",
+				"navigationBarBackgroundColor": "#260E93",
+				"navigationBarTextStyle":"white"
+			}
+		},
+		{
+			"path": "pages/editInfo/addressCenter/addressEdit",
+			"style": {
+				"navigationBarTitleText": "编辑收货地址",
+				"navigationBarBackgroundColor": "#260E93",
+				"navigationBarTextStyle":"white"
+			}
+		},
+		{
+			"path": "pages/editInfo/alPay/alPay",
+			"style": {
+				"navigationBarTitleText": "绑定支付宝",
+				"navigationBarBackgroundColor": "#260E93",
+				"navigationBarTextStyle":"white"
+			}
+		},
+		{
+			"path": "pages/editInfo/password/password",
+			"style": {
+				"navigationBarTitleText": "修改登录密码",
+				"navigationBarBackgroundColor": "#260E93",
+				"navigationBarTextStyle":"white"
+			}
+		},
+		{
+			"path": "pages/editInfo/phone/phone",
+			"style": {
+				"navigationBarTitleText": "设置绑定手机号",
+				"navigationBarBackgroundColor": "#260E93",
+				"navigationBarTextStyle":"white"
+			}
+		},
+		{
+			"path": "pages/editInfo/phone2/phone2",
+			"style": {
+				"navigationBarTitleText": "设置备用手机号",
+				"navigationBarBackgroundColor": "#260E93",
+				"navigationBarTextStyle":"white"
+			}
+		},
+		{
+			"path": "pages/editInfo/realName/realName",
+			"style": {
+				"navigationBarTitleText": "实名认证",
+				"navigationBarBackgroundColor": "#260E93",
+				"navigationBarTextStyle":"white"
+			}
+		},
+		{
+			"path": "pages/editInfo/weChat/weChat",
+			"style": {
+				"navigationBarTitleText": "绑定微信",
+				"navigationBarBackgroundColor": "#260E93",
+				"navigationBarTextStyle":"white"
 			}
 		}
-		
-		
-
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
