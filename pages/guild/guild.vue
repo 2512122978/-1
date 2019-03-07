@@ -3,7 +3,7 @@
 		<view class="head">
 			<view class="left">
 				<view class="image">
-					<image class="img" src="" mode=""></image>
+					<image class="img" :src="user[0].img" mode=""></image>
 				</view>
 				<view class="text">
 					<view class="up">
@@ -146,7 +146,7 @@ export default {
 <style lang="less">
 // 此处引入css、less等样式
 page {
-	background-color: #2107a5;
+	background-image: url(../../static/images/background.png);
 	// font-weight: 560;
 	color: rgba(255, 255, 255, .8);
 	// font-size: 20upx;
@@ -178,9 +178,10 @@ page {
 	.head{
 		display: flex;
 		flex-direction: row;
-		margin: 20upx 0 10upx 20upx;
+		justify-content: space-between;
+		margin: 20upx 20upx 10upx 20upx;
 		padding-top: 24upx;
-		padding-left: 24upx;
+		padding-left: 22upx;
 		padding-bottom: 56upx;
 		background: rgba(255, 255, 255, .1);
 		border-radius: 24upx;
@@ -189,20 +190,21 @@ page {
 			flex-direction: row;
 			.image{
 				.img{
-					width: 100upx;
-					height: 100upx;
+					width: 90upx;
+					height: 90upx;
 					border-radius: 800upx;
 				}
 			}
 			.text{
-				padding: 0 16upx;
+				padding-left:16upx;
 				.up{
-					font-size: 28upx;
+					font-size: 12upx;
+					font-weight: bold;
 					padding: 12upx;
 				}
 				.down{
 					background: rgba(255, 255, 255, .1);
-					font-size: 12upx;
+					font-size: 8upx;
 					text-align: center;
 					border-radius: 32upx;
 				}
@@ -211,7 +213,7 @@ page {
 		.right{
 			.head1,.middle,.footer{
 				font-size: 12upx;
-				padding: 4upx 0;
+				padding: 4upx 12upx 4upx 4upx;
 			}
 		}
 	}

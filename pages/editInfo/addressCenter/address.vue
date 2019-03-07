@@ -148,7 +148,7 @@
 <style lang="less">
 	// 此处引入css、less等样式
 	page {
-		background: #2107A5;
+		background-image: url(../../../static/images/background.png);
 		color: rgba(255, 255, 255, 0.8);
 		font-size: 28upx;
 		padding: 0 30upx;

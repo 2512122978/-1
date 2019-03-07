@@ -108,7 +108,7 @@
 	@import '//at.alicdn.com/t/font_1069694_b0katkm1hdo.css';
 
 	page {
-		background: #2b1581;
+		background-image: url(../../static/images/background.png);
 	}
 
 	.content {

@@ -7,12 +7,12 @@
 		<view class="body">
 			<view class="up">
 				<view class="left">
-					<view v-bind:class="'leftup ' + (number[0]>=3?'lab':'')">{{grade[0].grade1}}</view>
+					<view v-bind:class="'leftup ' + (number[0]<3?'lab':'')">{{grade[0].grade1}}</view>
 					<view class="leftunder">当前等级</view>
 				</view>
 				<view class="middle"></view>
 				<view class="right">
-					<view class="rightup" >{{grade[0].grade2}}</view>
+					<view v-bind:class="'rightup ' + (number[0]>=3?'lab':'')" >{{grade[0].grade2}}</view>
 					<view class="rightunder">下一关</view>
 				</view>
 			</view>
@@ -21,7 +21,7 @@
 				<view class="strip">
 					{{ number[0]}}
 				</view>
-				<view class="stripdown"><view class="span">.</view></view>
+				<view class="stripdown"><view class="span" v-bind:style="'width:'+((number[0]/3)*100)+'%;'">.</view></view>
 				<view class="stripnumber">
 					<view class="left">0</view>
 					<view class="right">3</view>
@@ -104,6 +104,7 @@ export default {
 
 page {
 	background: #2b1581;
+	background-image: url(../../static/images/background.png);
 }
 
 .content {

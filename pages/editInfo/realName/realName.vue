@@ -99,7 +99,7 @@
 <style lang="less">
 	// 此处引入css、less等样式
 	page {
-		background: #2208A1;
+		background-image: url(../../../static/images/background.png);
 		padding: 0 30upx;
 	}
 

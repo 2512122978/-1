@@ -293,7 +293,9 @@ export default {
 
 <style lang="less">
 @import '//at.alicdn.com/t/font_1070232_urk1rzsge9.css';
-
+page{
+	background-image: url(../../static/images/background.png);
+}
 .modal {
 	.mask {
 		position: fixed;

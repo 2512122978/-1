@@ -2,7 +2,7 @@
 	<view class="content">
 		<view class="page_title">
 
-  请绑定用户本人的绑定微信账号
+			请绑定用户本人的绑定微信账号
 		</view>
 		<view class="item-list">
 			<view class="row">
@@ -91,7 +91,7 @@
 <style lang="less">
 	// 此处引入css、less等样式
 	page {
-		background: #2A1385;
+		background-image: url(../../../static/images/background.png);
 	}
 
 	.content {

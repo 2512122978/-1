@@ -15,7 +15,7 @@
 				<view class="title">{{noticed[0].title}}</view>
 				<view class="img">
 					<image class="image"
-						src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1551805493876&di=1dc8a785fbc14ef16eab8b4a8059a493&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fforum%2Fpic%2Fitem%2Fa82ebad3fd1f4134a1886f93251f95cad0c85e4b.jpg"
+						:src="noticed[0].image"
 						mode=""
 					></image>
 				</view>
@@ -36,12 +36,15 @@ export default {
 			noticed:[{
 				title:'关于拓客新零售系统商家注意事项的公告',
 				text:'商家注意事项： 使用拓客系统必须以实物商品交易为基础。严禁货币类，高风险虚拟产品交易。 严禁退还利润不发货的行为。实名认证一人一号严禁多号。发现虚拟交易玩资金不卖货者封号，举报属实，该号归举报者所有，大家一起监督避免害群之马影响大家使用。',
-				time:'2019.03.05 20:00:38'
+				time:'2019.03.05 20:00:38',
+				image:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1551805493876&di=1dc8a785fbc14ef16eab8b4a8059a493&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fforum%2Fpic%2Fitem%2Fa82ebad3fd1f4134a1886f93251f95cad0c85e4b.jpg'
 			},
 			{
 				title:'关于拓客新零售系统商家注意事项的公告',
 				text:'商家注意事项： 使用拓客系统必须以实物商品交易为基础。严禁货币类，高风险虚拟产品交易。 严禁退还利润不发货的行为。实名认证一人一号严禁多号。发现虚拟交易玩资金不卖货者封号，举报属实，该号归举报者所有，大家一起监督避免害群之马影响大家使用。',
-				time:'2019.03.05 20:00:38'
+				time:'2019.03.05 20:00:38',
+				image:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1551805493876&di=1dc8a785fbc14ef16eab8b4a8059a493&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fforum%2Fpic%2Fitem%2Fa82ebad3fd1f4134a1886f93251f95cad0c85e4b.jpg'
+				
 			}
 			]
 		};
@@ -97,7 +100,7 @@ export default {
 
 <style lang="less">
 page {
-	background-color: #2107a5;
+	background-image: url(../../static/images/background.png);
 	font-weight: 560;
 	color: rgba(255, 255, 255, 0.8);
 	// font-size: 20upx;

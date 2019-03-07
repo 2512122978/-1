@@ -101,7 +101,7 @@ export default {
 
 <style lang="less">
 page {
-	background-color: #2107a5;
+	background-image: url(../../static/images/background.png);
 	font-weight: 560;
 	font-size: 20upx;
 }

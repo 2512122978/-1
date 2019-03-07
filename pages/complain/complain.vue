@@ -67,5 +67,9 @@
 </script>
 
 <style lang="less">
+	page {
+		background-image: url(../../static/images/background.png);
+	}
+
 	// 此处引入css、less等样式
 </style>

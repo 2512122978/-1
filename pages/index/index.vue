@@ -13,27 +13,23 @@
 		<view class="loginsingup-input loginsingup-input_login">
 			<!-- 登陸表单 -->
 			<view class="h1">
-							{{login[0].text1}}
-					</view>
-
+				{{login[0].text1}}
+			</view>
 			<view class="loginform">
-				<!-- <view class="login_id" style="font-size: 40upx;color: white;"> -->
 				<image class="loginimg" src="../../static/login_id.png" mode=""></image>
-				<input type="hidden" name="referurl" :class="'referurl '+ (accAcitve?'on':'')" value="" placeholder="请输入账号" @focus="input('acc')"
-				 @blur="input_plur('acc')" />
-				<!-- </view> -->
+				<input maxlength="11" type="number" :class="'referurl '+ (accAcitve?'on':'')" v-model="acc" placeholder="请输入账号"
+				 @focus="input('acc')" @blur="input_plur('acc')" />
 			</view>
 			<view class="loginpsdform">
-				<!-- <view class="icon-suo iconfont" style="font-size: 40upx;color: white;"></view> -->
 				<image class="pswimg" src="../../static/login_pwd.png" mode=""></image>
-				<input type="password" name="referurl" :class="'referurl '+ (pwdAcitve?'on':'')" value="" placeholder="请输入密码"
+				<input type="text" password="true" :class="'referurl '+ (pwdAcitve?'on':'')" v-model="pwd" placeholder="请输入密码"
 				 @focus="input('pwd')" @blur="input_plur('pwd')" />
 			</view>
 			<view class="register" @click="onClick">{{login[1].text2}}</view>
 		</view>
 		<view class="submit_login">
 			<view class="lsu-submit">
-				<view  type="button" class="btn_big1" value="登 录" @click="submitverify()">
+				<view type="button" class="btn_big1" value="登 录" @click="submitverify()">
 					{{login[0].text1}}
 				</view>
 			</view>
@@ -51,18 +47,17 @@
 				//输入框样式的激活状态
 				pwdAcitve: false,
 				login: [{
-						text1: "登录"
+						text1: '登录'
 					},
 					{
-						text2: "注册账号"
-					},{
-						text3:'拓客新零售'
+						text2: '注册账号'
+					}, {
+						text3: '拓客新零售'
 					}
 				],
-				user:[{
-					lgn:123456789,
-					psw:123456789,
-				}]
+
+				acc: '',
+				pwd: '',
 			};
 		},
 		/**
@@ -100,17 +95,66 @@
 		 * Vue的自定义方法
 		 */
 		methods: {
-			// 		onClick:function(){
-			//
-			// 	console.log("123456")
-			// uni.navigateTo({
-			//     url: '../register/register',
-			// })
-			// 		}
 			submitverify() {
-				uni.navigateTo({
-					url: '../home/home'
-				});
+				let that = this
+				let acc = that.acc
+				let pwd = that.pwd
+
+				if (!acc) {
+					uni.showToast({
+						title: "输入账号！",
+						icon: "none"
+					})
+					return
+				}
+
+				if (!/^1[34578]\d{9}$/.test(acc)) {
+					uni.showToast({
+						title: "输入正确账号！",
+						icon: "none"
+					})
+					return
+				}
+
+				if (!pwd) {
+					uni.showToast({
+						title: "输入密码！",
+						icon: "none"
+					})
+					return
+				}
+
+				if (pwd.length < 6) {
+					uni.showToast({
+						title: "密码少于6位！",
+						icon: "none"
+					})
+					return
+				}
+
+				let apiJs
+				//这是登录接口
+				//必填：acc。pwd
+				apijs.login = "www.xxx/m=getLogin"
+				
+				uni.request({
+					url: apiJs.login,
+					data: {
+						account: acc,
+						password: pwd,
+					},
+					method: "post",
+					success: (res) => {
+						if(res.token) {
+							uni.setStorageSync('token',res.token)
+							return
+						}
+						uni.showToast({
+							title:"登录失败",
+							icon:"none"
+						})
+					}
+				})
 			},
 			onClick() {
 				uni.navigateTo({
@@ -143,7 +187,7 @@
 	@import '//at.alicdn.com/t/font_1070232_urk1rzsge9.css';
 
 	page {
-		background-color: #2107a5;
+		background-image: url(../../static/images/background.png);
 		padding: 0 50upx;
 	}
 
@@ -229,7 +273,7 @@
 		}
 
 		.referurl {
-			color: #002060;
+			color: #fff;
 			height: 24upx;
 			font-size: 24upx;
 			width: 68%;
@@ -238,6 +282,7 @@
 
 		.referurl.on {
 			background: white;
+			color: #002060;
 		}
 	}
 

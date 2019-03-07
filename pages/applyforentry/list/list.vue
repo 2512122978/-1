@@ -1,9 +1,5 @@
 <template>
 	<view class="content">
-		<!-- <view class="backimg">
-			<image @click="backhome()" class="backimage" src="../../../static/images/back.png" mode=""></image>
-			<view class="title">闯关记录</view>
-		</view> -->
 		<view class="headup">
 			<view class="head">
 				<image class="image" src="../../../static/images/search.png" mode=""></image>
@@ -120,7 +116,7 @@
 
 				cardList: [{
 						date: "2019.02.24 23:25:17",
-						state: "已确认",
+						state: "待审核",
 						headding: "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2060761043,284284863&fm=27&gp=0.jpg",
 						realname: "拓客小助手",
 						takeWay: "上门自提",
@@ -129,6 +125,20 @@
 						level: "第1关声名不显",
 						weChat: "13855009676",
 						alpay: "13399501107",
+						statenumber:1
+					},
+					{
+						date: "2019.02.24 23:25:17",
+						state: "待审核",
+						headding: "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2060761043,284284863&fm=27&gp=0.jpg",
+						realname: "拓客小助手",
+						takeWay: "上门自提",
+						tel: "13855009676",
+						pinlun: "未评论",
+						level: "第1关声名不显",
+						weChat: "13855009676",
+						alpay: "13399501107",
+						statenumber:1
 					},
 					{
 						date: "2019.02.24 23:25:17",
@@ -141,6 +151,7 @@
 						level: "第1关声名不显",
 						weChat: "13855009676",
 						alpay: "13399501107",
+						statenumber:2
 					},
 					{
 						date: "2019.02.24 23:25:17",
@@ -153,10 +164,11 @@
 						level: "第1关声名不显",
 						weChat: "13855009676",
 						alpay: "13399501107",
+						statenumber:2
 					},
 					{
 						date: "2019.02.24 23:25:17",
-						state: "已确认",
+						state: "审核失败",
 						headding: "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2060761043,284284863&fm=27&gp=0.jpg",
 						realname: "拓客小助手",
 						takeWay: "上门自提",
@@ -165,18 +177,7 @@
 						level: "第1关声名不显",
 						weChat: "13855009676",
 						alpay: "13399501107",
-					},
-					{
-						date: "2019.02.24 23:25:17",
-						state: "已确认",
-						headding: "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2060761043,284284863&fm=27&gp=0.jpg",
-						realname: "拓客小助手",
-						takeWay: "上门自提",
-						tel: "13855009676",
-						pinlun: "未评论",
-						level: "第1关声名不显",
-						weChat: "13855009676",
-						alpay: "13399501107",
+						statenumber:3
 					},
 				],
 			}
@@ -231,18 +232,25 @@
 			switchTab(index) {
 				let that = this
 				that.tabActive = index
-
-				//模拟切换效果
+				that.index = index
 				let data = new Array()
-				console.log(data)
-				// return
-				let rand = parseInt(Math.random() * that.cardList.length)
-				// that.cardList
-				that.cardList.forEach((e, index) => {
-					if(rand != index){
-						data.push(e)
-					}
-				})
+// 				that.cardList.forEach((e, ind) => {
+// 									if(that.cardList[ind].statenumber === index || index == 0){
+// 										data.push(e)
+// 										console.log(e)
+// 									console.log('bianshu'+that.cardList[ind].statenumber)
+// 									}
+// 								})
+				
+				//模拟切换效果
+// 				let data = new Array()
+// 				let rand = parseInt(Math.random() * that.cardList.length)
+// 				// that.cardList
+// 				that.cardList.forEach((e, index) => {
+// 					if(rand != index){
+// 						data.push(e)
+// 					}
+// 				})
 				that.cardList = data
 			},
 			init() {
@@ -264,7 +272,7 @@
 <style lang="less">
 	// 此处引入css、less等样式
 	page {
-		background: #2b1581;
+		background-image: url(../../../static/images/background.png);
 		color: rgba(255, 255, 255, .8);
 	}
 
@@ -293,7 +301,7 @@
 
 	.headup {
 		display: flex;
-		margin: 20upx;
+		margin: 18upx;
 
 		.head {
 			height: 44upx;
@@ -343,11 +351,12 @@
 			.btn-link {
 				display: flex;
 				width: 130upx;
-				height: 80upx;
+				// height: 70upx;
+				padding: 30upx 0;
 				justify-content: center;
 				align-items: center;
 				color: rgba(255, 255, 255, .4);
-				font-size: 28upx;
+				font-size: 26upx;
 			}
 
 			.line {
@@ -386,23 +395,28 @@
 
 			.order-info {
 				display: flex;
-				height: 70upx;
+				// height: 70upx;
+				padding: 10upx 0;
 				align-items: center;
 				justify-content: space-between;
+				font-size: 25upx;
+				font-weight: 600;
 			}
 
 			.goods-info {
 				display: flex;
 				flex-direction: row;
 				align-items: center;
+				margin: 10upx 10upx 0 10upx;
 				.img-box {
 					width: 120upx;
-					margin-left: 20upx;
+					margin-left: 14upx;
 					padding-top: 20upx;
 
 					.img {
-						width: 100upx;
-						height: 100upx;
+						width: 90upx;
+						height: 90upx;
+						margin-right: 8upx;
 						border-radius: 50%;
 					}
 				}
@@ -410,8 +424,9 @@
 				.goods-detail {
 					flex: 1;
 					display: flex;
-					padding-right: 20upx;
-					padding-top: 10upx;
+// 					padding-right: 20upx;
+// 					padding-top: 10upx;
+					padding: 10upx 20upx 0 0;
 					flex-direction: column;
 					justify-content: space-between;
 
@@ -454,6 +469,7 @@
 
 				.details {
 					background: #6356E2;
+					border: 0upx solid rgba(255, 255, 255, .8);
 				}
 			}
 		}

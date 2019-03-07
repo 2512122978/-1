@@ -18,11 +18,11 @@
 				<image class="img" src="../../static/images/notice.png" mode=""></image>
 			</view>
 			<view class="title">
-				公告
+				{{noticedetails[0].title}}
 			</view>
 		</view>
 		<view class="right">
-			2019-03-05   20:00:38
+			{{noticedetails[0].time}}
 		</view>
 	</view>
 	<view class="footer">
@@ -40,7 +40,9 @@
 			return {
 				noticedetails:[{
 					title:'关于拓客新零售系统商家注意事项的公告 ',
-					text:'商家注意事项：<br>使用拓客系统必须以实物商品交易为基础。<br>	严禁货币类，高风险虚拟产品交易。<br>严禁退还利润不发货的行为。<br>	实名认证一人一号严禁多号。<br>发现虚拟交易玩资金不卖货者封号，举报属实，该号归举报者所有，大家一起监督避免害群之马影响大家使用。<br>'
+					text:'商家注意事项：<br>使用拓客系统必须以实物商品交易为基础。<br>	严禁货币类，高风险虚拟产品交易。<br>严禁退还利润不发货的行为。<br>	实名认证一人一号严禁多号。<br>发现虚拟交易玩资金不卖货者封号，举报属实，该号归举报者所有，大家一起监督避免害群之马影响大家使用。<br>',
+					time:'2019-03-05   20:00:38',
+					title:'公告'
 				}]
 			}
 		},
@@ -99,7 +101,7 @@
 <style lang="less">
 	// 此处引入css、less等样式
 	page {
-		background-color: #2107a5;
+		background-image: url(../../static/images/background.png);
 		font-weight: 560;
 		color: rgba(255, 255, 255, 0.8);
 	}

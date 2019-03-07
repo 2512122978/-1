@@ -155,7 +155,7 @@ export default {
 <style>
 @import //at.alicdn.com/t/font_1069694_b0katkm1hdo.css;
 	page {
-	background: #260e93;
+	background-image: url(../../static/images/background.png);
 	color: rgba(255, 255, 255, .8);
 	font-size: 32upx;
 	padding: 10upx 20upx;

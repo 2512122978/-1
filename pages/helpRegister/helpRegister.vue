@@ -150,7 +150,7 @@
 <style lang="less">
 	// 此处引入css、less等样式
 	page{
-		background-color: #2107a5;
+		background-image: url(../../static/images/background.png);
 		color: white;
 	}
 	.content{
