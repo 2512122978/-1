@@ -1,74 +1,117 @@
 <template>
-	<view class="content">
-
+	<view class="item-list">
+		<view class="row">
+			<view class="title">
+				微信账号
+			</view>
+			<input class="input" type="text" v-model="weChat" placeholder="请输入微信号" />
+		</view>
+		<view class="row">
+			<view class="title">
+				手机号码：
+			</view>
+			<input class="input" type="text" v-model="phone" placeholder="请输入手机号码" />
+		</view>
+		<view class="row" @tap="showMulLinkageThreePicker">
+			<view class="title">
+				省、市、区:
+			</view>
+			<input class="input" type="text" v-model="address" placeholder="请选择省、市、区" />
+		</view>
+		<view class="row">
+			<view class="title">
+				详细地址: 
+			</view>
+			<input class="input" type="text" v-model="addressInfo" placeholder="请输入详细地址" />
+		</view>
+		<view class="btn-box">
+			<view class="title">
+				保存该地址
+			</view>
+			<view class="btn">
+				<image src="../../../static/btn.png" mode="widthFix" class="checkLogin"></image>
+			</view>
+		</view>
+		<mpvue-city-picker style="color: #000000;" :themeColor="themeColor" ref="mpvueCityPicker" :pickerValueDefault="cityPickerValueDefault"
+		 @onConfirm="onConfirm"></mpvue-city-picker>
 	</view>
 </template>
 
 <script>
-	const util = require('@/utils/util.js')
-	const api = require('@/config/api.js')
-	
-	//全局变量
-	let stack_1 = 1
-	// 此处引入你要的组件
+	import mpvueCityPicker from '../../../components/mpvue-citypicker/mpvueCityPicker.vue'
 	export default {
 		data() {
 			return {
-
+				weChat: "",
+				phone: "",
+				address: "",
+				addressInfo: "",
+				cityPickerValueDefault: [0, 0, 1],
+				themeColor: '#007AFF',
 			}
 		},
-		/**
-		 * Vue的组件存放
-		 */
-		components: {
-
+		components:{
+			mpvueCityPicker,
+			
 		},
-		/**
-		 * uni-app生命周期
-		 * options是上个页面的传参
-		 * 指的是页面加载完毕执行的函数
-		 */
-		onLoad(options) {
-
-		},
-		/**
-		 * uni-app
-		 * 指的是页面获取焦点的时候执行的函数
-		 */
-		onShow() {
-
-		},
-		/**
-		 * uni-app
-		 * 指的是页面失去焦点的时候执行的函数
-		 */
-		onHide() {
-
-		},
-		/**
-		 * Vue计算属性
-		 * 存放的函数，里面的函数名是自己定义的。函数必须有个返回值
-		 */
-		computed: {
-
-		},
-		/**
-		 * Vue监听器
-		 * 存放的函数，里面的函数名通常是data的数据
-		 * 监听data的数据，一旦发生改变就执行里面对应的函数
-		 */
-		watch: {
-
-		},
-		/**
-		 * Vue的自定义方法
-		 */
-		methods: {
-
-		},
+		methods:{
+			// 三级联动选择
+			showMulLinkageThreePicker() {
+				this.$refs.mpvueCityPicker.show()
+			},
+			onConfirm(e) {
+				this.address = JSON.stringify(e.label)
+			}
+		}
 	}
 </script>
 
 <style lang="less">
-	// 此处引入css、less等样式
+	page {
+		background: #2107A5;
+		color: rgba(255, 255, 255, 0.8);
+		font-size: 28upx;
+		padding: 0 30upx;
+	}
+
+	.item-list {
+		padding: 0;
+
+		.row {
+			display: flex;
+			height: 90upx;
+			align-items: center;
+			// justify-content: space-between;
+			font-size: 28upx;
+			color: rgba(255, 255, 255, .8);
+			// background: #3B25A2;
+
+			.title {
+				width: 150upx;
+				margin-right: 30upx;
+			}
+
+			.yzm {
+				width: 250upx;
+				border-radius: 60upx;
+			}
+		}
+	}
+
+	.btn-box {
+		position: relative;
+		display: flex;
+		// height: 150upx;
+		margin-top: 40upx;
+		justify-content: center;
+		align-items: center;
+
+		.title {
+			position: absolute;
+			font-size: 30upx;
+			top: 20%;
+			color: white;
+			z-index: 2;
+		}
+	}
 </style>
