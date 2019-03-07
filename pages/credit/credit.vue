@@ -1,7 +1,6 @@
 <template>
 	<view class="content">
-		<view class="backimg">
-			<!-- <view class="icon-fanhui iconfont"></view> -->
+		<!-- <view class="backimg">
 			<image
 				@click="backhome()"
 				class="backimage"
@@ -9,7 +8,7 @@
 				mode=""
 			></image>
 			<view class="title">综合信用评分</view>
-		</view>
+		</view> -->
 		<view class="head">
 			<view class="good">
 				<view class="left">
@@ -67,7 +66,6 @@ export default {
 	 * 指的是页面加载完毕执行的函数
 	 */
 	onLoad(options) {
-		this.init();
 	},
 	/**
 	 * uni-app

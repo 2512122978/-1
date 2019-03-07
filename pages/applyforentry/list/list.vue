@@ -1,9 +1,9 @@
 <template>
 	<view class="content">
-		<view class="backimg">
+		<!-- <view class="backimg">
 			<image @click="backhome()" class="backimage" src="../../../static/images/back.png" mode=""></image>
 			<view class="title">闯关记录</view>
-		</view>
+		</view> -->
 		<view class="headup">
 			<view class="head">
 				<image class="image" src="../../../static/images/search.png" mode=""></image>
@@ -38,11 +38,11 @@
 						</view>
 						<view class="goods-info">
 							<view class="img-box">
-								<image :src="item.headding" mode="widthFix" class="img"></image>
+								<image :src="item.headding"  class="img"></image>
 							</view>
 							<view class="goods-detail">
 								<view class="words">
-									<view class="word">
+									<view class="word1">
 										{{item.realname}}
 									</view>
 									<view class="word">
@@ -82,7 +82,7 @@
 								评论
 							</view>
 							<view @click="details()" class="btn-link details">
-								详情
+								查看详情
 							</view>
 						</view>
 					</view>
@@ -122,7 +122,7 @@
 						date: "2019.02.24 23:25:17",
 						state: "已确认",
 						headding: "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2060761043,284284863&fm=27&gp=0.jpg",
-						realname: "王玲",
+						realname: "拓客小助手",
 						takeWay: "上门自提",
 						tel: "13855009676",
 						pinlun: "未评论",
@@ -134,7 +134,7 @@
 						date: "2019.02.24 23:25:17",
 						state: "已确认",
 						headding: "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2060761043,284284863&fm=27&gp=0.jpg",
-						realname: "王玲",
+						realname: "拓客小助手",
 						takeWay: "上门自提",
 						tel: "13855009676",
 						pinlun: "未评论",
@@ -146,7 +146,7 @@
 						date: "2019.02.24 23:25:17",
 						state: "已确认",
 						headding: "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2060761043,284284863&fm=27&gp=0.jpg",
-						realname: "王玲",
+						realname: "拓客小助手",
 						takeWay: "上门自提",
 						tel: "13855009676",
 						pinlun: "未评论",
@@ -158,7 +158,7 @@
 						date: "2019.02.24 23:25:17",
 						state: "已确认",
 						headding: "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2060761043,284284863&fm=27&gp=0.jpg",
-						realname: "王玲",
+						realname: "拓客小助手",
 						takeWay: "上门自提",
 						tel: "13855009676",
 						pinlun: "未评论",
@@ -170,7 +170,7 @@
 						date: "2019.02.24 23:25:17",
 						state: "已确认",
 						headding: "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2060761043,284284863&fm=27&gp=0.jpg",
-						realname: "王玲",
+						realname: "拓客小助手",
 						takeWay: "上门自提",
 						tel: "13855009676",
 						pinlun: "未评论",
@@ -395,13 +395,14 @@
 				display: flex;
 				flex-direction: row;
 				align-items: center;
-
 				.img-box {
-					width: 130upx;
-					margin: 0 20upx;
+					width: 120upx;
+					margin-left: 20upx;
+					padding-top: 20upx;
 
 					.img {
-						width: 100%;
+						width: 100upx;
+						height: 100upx;
 						border-radius: 50%;
 					}
 				}
@@ -410,17 +411,25 @@
 					flex: 1;
 					display: flex;
 					padding-right: 20upx;
+					padding-top: 10upx;
 					flex-direction: column;
 					justify-content: space-between;
 
 					.words {
 						display: flex;
-						height: 45upx;
+						height: 30upx;
 						align-items: center;
 						justify-content: space-between;
-
+						padding: 2upx -5upx;
+						margin: 4upx 0;
 						.pinlun {
 							color: rgba(255, 255, 255, .3);
+						}
+						.word{
+							font-size: 12upx;
+						}
+						.word1{
+							    font-weight: bold;
 						}
 					}
 				}

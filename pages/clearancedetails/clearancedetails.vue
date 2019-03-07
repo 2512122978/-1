@@ -3,7 +3,7 @@
 		<view class="backimg">
 			<!-- <view class="icon-fanhui iconfont"></view> -->
 			<image @click="backhome()" class="backimage" src="../../static/images/back.png" mode=""></image>
-			<view class="title">我要闯关</view>
+			<view class="title">闯关记录详情</view>
 		</view>
 		<view class="head">
 			<view class="text">
@@ -23,7 +23,7 @@
 					姓名：
 				</view>
 				<view class="right">
-					13855009676
+					{{record[0].name}}
 				</view>
 			</view>
 			<view class="line2">
@@ -31,7 +31,7 @@
 					手机号：
 				</view>
 				<view class="right">
-					13855009676
+					{{record[0].shopphone}}
 				</view>
 			</view>
 			<view class="line2">
@@ -39,7 +39,7 @@
 					备用手机号：
 				</view>
 				<view class="right">
-					13855009676
+					{{record[0].shopsparephone}}
 				</view>
 			</view>
 			<view class="line2">
@@ -47,7 +47,7 @@
 					微信号：
 				</view>
 				<view class="right">
-					13855009676
+					{{record[0].weixin}}
 				</view>
 			</view>
 			<view class="line2">
@@ -55,7 +55,7 @@
 					支付宝号：
 				</view>
 				<view class="right">
-					13855009676
+					{{record[0].alipay}}
 				</view>
 			</view>
 		</view>
@@ -64,7 +64,7 @@
 				闯关等级
 			</view>
 			<view class="right">
-				第1关声明不显
+				{{record[0].entrylevel}}
 			</view>
 		</view>
 		<view class="footer">
@@ -77,42 +77,58 @@
 			</view>
 			<view class="line2">
 				<view class="left">
-					姓名：
+					发货方式：
 				</view>
 				<view class="right">
-					13855009676
+					{{record[0].delivery}}
 				</view>
 			</view>
 			<view class="line2">
 				<view class="left">
-					姓名：
+					发货状态：
 				</view>
 				<view class="right">
-					13855009676
+					{{record[0].deliverystatus}}
 				</view>
 			</view>
 			<view class="line2">
 				<view class="left">
-					姓名：
+					收货地址：
 				</view>
 				<view class="right">
-					13855009676
+					{{record[0].receivingaddress}}
 				</view>
 			</view>
 			<view class="line2">
 				<view class="left">
-					姓名：
+					收件人
 				</view>
 				<view class="right">
-					13855009676
+					{{record[0].username}}
 				</view>
 			</view>
 			<view class="line2">
 				<view class="left">
-					姓名：
+					手机号：
 				</view>
 				<view class="right">
-					13855009676
+					{{record[0].userphone}}
+				</view>
+			</view>
+			<view class="line2">
+				<view class="left">
+					快递公司：
+				</view>
+				<view class="right">
+					{{record[0].courierservices}}
+				</view>
+			</view>
+			<view class="line2">
+				<view class="left">
+					快递单号：
+				</view>
+				<view class="right">
+					{{record[0].couriernumber}}
 				</view>
 			</view>
 		</view>
@@ -124,7 +140,21 @@
 	export default {
 		data() {
 			return {
-
+				record:[{
+					name:'13855009676',
+					shopphone:'13855009676',
+					shopsparephone:'13855009676',
+					weixin:'13855009676',
+					alipay:'13855009676',
+					entrylevel:'第1关声明不显',
+					delivery:'自提',
+					deliverystatus:'上门自提',
+					receivingaddress:'成都市',
+					username:'尊悟空',
+					userphone:'12244889663',
+					courierservices:'韵达快递',
+					couriernumber:'12244889663'
+				}]
 			}
 		},
 		/**

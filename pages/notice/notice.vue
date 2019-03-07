@@ -1,7 +1,6 @@
 <template>
 	<view class="content">
-		<view class="backimg">
-			<!-- <view class="icon-fanhui iconfont"></view> -->
+		<!-- <view class="backimg">
 			<image
 				@click="backhome()"
 				class="backimage"
@@ -9,11 +8,11 @@
 				mode=""
 			></image>
 			<view class="title">公告</view>
-		</view>
-		<view class="head" @click="noticedetails()">
+		</view> -->
+		<view class="head" v-for="(item, index) in noticed" :key="index" @click="noticedetails()">
 			<view class="left"><image class="imagenotic" src="../../static/images/notice.png" mode=""></image></view>
 			<view class="right">
-				<view class="title">关于拓客新零售系统商家注意事项的公告</view>
+				<view class="title">{{noticed[0].title}}</view>
 				<view class="img">
 					<image class="image"
 						src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1551805493876&di=1dc8a785fbc14ef16eab8b4a8059a493&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fforum%2Fpic%2Fitem%2Fa82ebad3fd1f4134a1886f93251f95cad0c85e4b.jpg"
@@ -21,31 +20,9 @@
 					></image>
 				</view>
 				<view class="text">
-					商家注意事项： 使用拓客系统必须以实物商品交易为基础。
-					严禁货币类，高风险虚拟产品交易。 严禁退还利润不发货的行为。
-					实名认证一人一号严禁多号。
-					发现虚拟交易玩资金不卖货者封号，举报属实，该号归举报者所有，大家一起监督避免害群之马影响大家使用。
+					{{noticed[0].text}}
 				</view>
-				<view class="time">2019.03.05 20:00:38</view>
-			</view>
-		</view>
-		<view class="body">
-			<view class="left"><image class="imagenotic" src="../../static/images/notice.png" mode=""></image></view>
-			<view class="right">
-				<view class="title">关于拓客新零售系统商家注意事项的公告</view>
-				<view class="img">
-					<image class="image"
-						src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1551805493876&di=1dc8a785fbc14ef16eab8b4a8059a493&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fforum%2Fpic%2Fitem%2Fa82ebad3fd1f4134a1886f93251f95cad0c85e4b.jpg"
-						mode=""
-					></image>
-				</view>
-				<view class="text">
-					商家注意事项： 使用拓客系统必须以实物商品交易为基础。
-					严禁货币类，高风险虚拟产品交易。 严禁退还利润不发货的行为。
-					实名认证一人一号严禁多号。
-					发现虚拟交易玩资金不卖货者封号，举报属实，该号归举报者所有，大家一起监督避免害群之马影响大家使用。
-				</view>
-				<view class="time">2019.03.05 20:00:38</view>
+				<view class="time">{{noticed[0].time}}</view>
 			</view>
 		</view>
 		<view class="footer"></view>
@@ -55,7 +32,19 @@
 <script>
 export default {
 	data() {
-		return {};
+		return {
+			noticed:[{
+				title:'关于拓客新零售系统商家注意事项的公告',
+				text:'商家注意事项： 使用拓客系统必须以实物商品交易为基础。严禁货币类，高风险虚拟产品交易。 严禁退还利润不发货的行为。实名认证一人一号严禁多号。发现虚拟交易玩资金不卖货者封号，举报属实，该号归举报者所有，大家一起监督避免害群之马影响大家使用。',
+				time:'2019.03.05 20:00:38'
+			},
+			{
+				title:'关于拓客新零售系统商家注意事项的公告',
+				text:'商家注意事项： 使用拓客系统必须以实物商品交易为基础。严禁货币类，高风险虚拟产品交易。 严禁退还利润不发货的行为。实名认证一人一号严禁多号。发现虚拟交易玩资金不卖货者封号，举报属实，该号归举报者所有，大家一起监督避免害群之马影响大家使用。',
+				time:'2019.03.05 20:00:38'
+			}
+			]
+		};
 	},
 	/**
 	 * Vue的组件存放
@@ -67,7 +56,7 @@ export default {
 	 * 指的是页面加载完毕执行的函数
 	 */
 	onLoad(options) {
-		this.init();
+		// this.init();
 	},
 	/**
 	 * uni-app

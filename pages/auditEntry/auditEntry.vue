@@ -1,7 +1,6 @@
 <template>
 	<view class="content">
-		<view class="backimg">
-			<!-- <view class="icon-fanhui iconfont"></view> -->
+		<!-- <view class="backimg">
 			<image
 				@click="backhome()"
 				class="backimage"
@@ -9,7 +8,7 @@
 				mode=""
 			></image>
 			<view class="title">审核闯关记录</view>
-		</view>
+		</view> -->
 		<view class="headup">
 			<view class="head">
 				<image class="image" src="../../static/images/search.png" mode=""></image>
@@ -242,20 +241,22 @@ page {
 		margin: 20upx;
 
 		.head {
+			height: 36upx;
 			display: flex;
 			flex: 1;
 			background: rgba(255, 255, 255, 0.1);
-			padding: 10upx 0 10upx 180upx;
+			padding: 10upx 0 10upx 120upx;
 			align-items: center;
-			border-radius: 8000upx;
+			border-radius: 800upx;
 
 			.input {
 				background: transparent;
-				font-size: 32upx;
+				font-size: 30upx;
 				color: rgba(255, 255, 255, 0.8);
 			}
 
 			.image {
+				padding-right: 30upx;
 				width: 30upx;
 				height: 30upx;
 			}
@@ -267,6 +268,7 @@ page {
 			align-items: center;
 			width: 120upx;
 			color: rgba(255, 255, 255, 0.8);
+			font-size: 32upx;
 		}
 	}
 	.body {
@@ -284,7 +286,7 @@ page {
 				justify-content: center;
 				align-items: center;
 				color: rgba(255, 255, 255, 0.4);
-				font-size: 32upx;
+				font-size: 28upx;
 			}
 
 			.line {

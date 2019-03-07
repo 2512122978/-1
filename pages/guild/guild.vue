@@ -1,38 +1,28 @@
 <template>
 	<view class="content">
-		<view class="backimg">
-			<!-- <view class="icon-fanhui iconfont"></view> -->
-			<image
-				@click="backhome()"
-				class="backimage"
-				src="../../static/images/back.png"
-				mode=""
-			></image>
-			<view class="title">行会大厅</view>
-		</view>
 		<view class="head">
 			<view class="left">
 				<view class="image">
-					<image class="img" src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2060761043,284284863&fm=27&gp=0.jpg" mode=""></image>
+					<image class="img" src="" mode=""></image>
 				</view>
 				<view class="text">
 					<view class="up">
-						18650365505
+						{{user[0].tel}}
 					</view>
 					<view class="down">
-						第1关声名不显
+						{{user[0].grade}}
 					</view>
 				</view>
 			</view>
 			<view class="right">
 				<view class="head1">
-					我的贡献：0人
+					我的贡献：{{user[0].contribution}}人
 				</view>
 				<view class="middle">
-					行会信息：0人
+					行会信息：{{user[0].guild}}人
 				</view>
 				<view class="footer">
-					第1关声名不显及以上人数：0人
+					第1关声名不显及以上人数：{{user[0].overclassone}}人
 				</view>
 			</view>
 		</view>
@@ -66,7 +56,11 @@
 </template>
 
 <script>
+	const util = require('@/utils/util.js')
+	const api = require('@/config/api.js')
+	//全局变量
 	let stack_1 = 1
+	
 // 此处引入你要的组件
 export default {
 		data() {
@@ -78,15 +72,18 @@ export default {
 				{
 					text: "待审核"
 				},
-				{
-					text: "审核成功"
-				},
-				{
-					text: "审核失败"
-				},
 			],
 			// 选项卡切换状态
 			tabActive: 1,
+			user:[{
+				img:'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2060761043,284284863&fm=27&gp=0.jpg',
+				tel:'18650365505',
+				grade:'第1关声名不显',
+				contribution:'0',
+				guild:'0',
+				overclassone:'0'
+				
+			}]
 		}
 	},
 	/**
@@ -98,7 +95,7 @@ export default {
 	 * options是上个页面的传参
 	 * 指的是页面加载完毕执行的函数
 	 */
-	onLoad(options) {init();},
+	onLoad(options) {this.init()},
 	/**
 	 * uni-app
 	 * 指的是页面获取焦点的时候执行的函数
@@ -132,14 +129,8 @@ export default {
 			let data = new Array()
 			console.log(data)
 			// return
-			let rand = parseInt(Math.random() * that.cardList.length)
+			let rand = parseInt(Math.random() * 10)
 			// that.cardList
-			that.cardList.forEach((e, index) => {
-				if(rand != index){
-					data.push(e)
-				}
-			})
-			that.cardList = data
 		},
 		init() {
 			let that = this
@@ -187,8 +178,8 @@ page {
 	.head{
 		display: flex;
 		flex-direction: row;
-		margin: 16upx;
-		padding: 24upx 0;
+		margin: 20upx 0 10upx 20upx;
+		padding-top: 24upx;
 		padding-left: 24upx;
 		padding-bottom: 56upx;
 		background: rgba(255, 255, 255, .1);
@@ -227,13 +218,12 @@ page {
 	.middle{
 		.headup {
 			display: flex;
-			margin: 20upx;
-		
 			.head {
 				display: flex;
 				flex: 1;
+				height: 40upx;
 				background: rgba(255, 255, 255, 0.1);
-				padding: 10upx 0 10upx 180upx;
+				padding: 0upx 0 10upx 140upx;
 				align-items: center;
 				border-radius: 8000upx;
 		
@@ -254,6 +244,7 @@ page {
 				display: flex;
 				justify-content: center;
 				align-items: center;
+				font-size: 32upx;
 				width: 120upx;
 				color: rgba(255, 255, 255, .8);
 			}
@@ -261,7 +252,7 @@ page {
 	}
 	.footer{
 		.card-list{
-			margin-top: 30upx;
+			margin-top: 16upx;
 			padding-bottom: 60upx;
 			.tab-bar {
 				position: relative;
@@ -269,15 +260,18 @@ page {
 				justify-content: space-between;
 				padding: 0 20upx;
 				display: flex;
+				background: rgba(255, 255, 255, .1);
 			
 				.btn-link {
+					padding: 0 100upx;
 					display: flex;
 					width: 130upx;
 					height: 80upx;
 					justify-content: center;
 					align-items: center;
 					color: rgba(255, 255, 255, .4);
-					font-size: 32upx;
+					font-size: 28upx;
+					
 				}
 			
 				.line {
@@ -290,19 +284,11 @@ page {
 				}
 			
 				.line1 {
-					left: 55upx;
+					left: 150upx;
 				}
 			
 				.line2 {
-					left: 250upx;
-				}
-			
-				.line3 {
-					left: 445upx;
-				}
-			
-				.line4 {
-					left: 645upx;
+					left: 525upx;
 				}
 			}
 		}

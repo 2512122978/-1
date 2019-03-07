@@ -29,16 +29,20 @@
 			<view class="ul">
 				<view class="li">
 					I&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;D:&nbsp;&nbsp;&nbsp;&nbsp;153510558</li>
+					I&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;D:&nbsp;&nbsp;&nbsp;&nbsp;{{user[0].id}}</li>
 				</view>
 				<view class="li">
 					等&nbsp;&nbsp;&nbsp;级：&nbsp;&nbsp;&nbsp;第一关声不嫌
+					等&nbsp;&nbsp;&nbsp;级：&nbsp;&nbsp;&nbsp;{{user[0].grade}}
 					<span class="Grade" @click="showgrade()">等级介绍</span>
 				</view>
 				<view class="li">
 					姓&nbsp;&nbsp;&nbsp;名：&nbsp;&nbsp;&nbsp;晴儿</li>
+					姓&nbsp;&nbsp;&nbsp;名：&nbsp;&nbsp;&nbsp;{{user[0].name}}</li>
 				</view>
 				<view class="li">
 					推荐人：&nbsp;&nbsp;阿兴
+					推荐人：&nbsp;&nbsp;{{user[0].recommender}}
 				</view>
 			</view>
 			<view class="right">
@@ -46,6 +50,7 @@
 					信用分：100分
 				</view>
 				<view class="account" @click="account()">
+				<view class="account" @tap="goEditInfo()">
 					账号安全设置
 				</view>
 			</view>
@@ -66,6 +71,7 @@
 							</view>
 							<view class="text">
 								关于2月14日晚系统升级维护的公告
+								{{notice1[0].text}}
 							</view>
 						</view>
 					</swiper-item>
@@ -76,6 +82,7 @@
 							</view>
 							<view class="text">
 								关于销售任务游戏上线的公告
+								{{notice1[1].text}}
 							</view>
 						</view>
 					</swiper-item>
@@ -159,6 +166,17 @@
 		data() {
 			return {
 				modal: false
+				modal: false,
+				user:[{
+					id:153510558,
+					grade:'第一关声不嫌',
+					name:'晴儿',
+					recommender:'阿兴'
+				}],
+				notice1:[{
+					text:'关于2月14日晚系统升级维护的公告'},
+					{text:'关于销售任务游戏上线的公告'}
+					]
 			};
 		},
 		/**
@@ -211,6 +229,11 @@
 			helpRegister() {
 				uni.navigateTo({
 					url: '../helpRegister/helpRegister'
+				})
+			},
+			goEditInfo(){
+				uni.navigateTo({
+					url: '/pages/editInfo/editInfo',
 				})
 			},
 			applyforentry() {

@@ -1,13 +1,13 @@
 <template>
 	<view class="content">
-		<view class="head">
+		<!-- <view class="head">
 			<view class="back">
 				<image @click="backhome()" src="../../static/images/back.png"></image>
 			<view class="title">
 				为他人注册
 			</view>
 			</view>
-		</view>
+		</view> -->
 		<view class="body">
 			<view class="text">
 				<input
@@ -151,6 +151,7 @@
 	// 此处引入css、less等样式
 	page{
 		background-color: #2107a5;
+		color: white;
 	}
 	.content{
 		.head{

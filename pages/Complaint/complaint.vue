@@ -5,103 +5,187 @@
 			<image @click="backhome()" class="backimage" src="../../static/images/back.png" mode=""></image>
 			<view class="title">投诉列表</view>
 		</view>
-		<view class="list">
-			<view class="left">
-				我发起的投诉
-			</view>
-			<view class="right">
-				投诉我的
+		
+		<view class="tab-bar">
+			<block v-for="(item,index) in tabList" :key="index">
+				<!-- tap相对于点击事件 -->
+				<view class="btn-link" :style="index === tabActive?('font-weight:blod;color:#fff;'):''" @tap="switchTab(index)">
+					{{item.text}}
+				</view>
+			</block>
+			<view :class="'line line' + (tabActive + 1 )">
+		
 			</view>
 		</view>
 	</view>
 </template>
 
 <script>
-export default {  
-	data() {
-		return {};
-	},
-	/**
-	 * Vue的组件存放
-	 */
-	components: {},
-	/**
-	 * uni-app生命周期
-	 * options是上个页面的传参
-	 * 指的是页面加载完毕执行的函数
-	 */
-	onLoad(options) {},
-	/**
-	 * uni-app
-	 * 指的是页面获取焦点的时候执行的函数
-	 */
-	onShow() {},
-	/**
-	 * uni-app
-	 * 指的是页面失去焦点的时候执行的函数
-	 */
-	onHide() {},
-	/**
-	 * Vue计算属性
-	 * 存放的函数，里面的函数名是自己定义的。函数必须有个返回值
-	 */
-	computed: {},
-	/**
-	 * Vue监听器
-	 * 存放的函数，里面的函数名通常是data的数据
-	 * 监听data的数据，一旦发生改变就执行里面对应的函数
-	 */
-	watch: {},
-	/**
-	 * Vue的自定义方法
-	 */
-	methods: {
-		backhome(){
-			uni.navigateTo({
-				url:'../home/home'
-			})
+	const util = require('@/utils/util.js')
+	const api = require('@/config/api.js')
+	//全局变量
+	let stack_1 = 1
+	export default {
+		data() {
+			return {
+				tabList: [{
+						text: "我发起的投诉"
+					},
+					{
+						text: "投诉我的"
+					},
+				],
+				// 选项卡切换状态
+				tabActive: 1,
+			};
+		},
+		/**
+		 * Vue的组件存放
+		 */
+		components: {},
+		/**
+		 * uni-app生命周期
+		 * options是上个页面的传参
+		 * 指的是页面加载完毕执行的函数
+		 */
+		onLoad(options) {this.init()},
+		/**
+		 * uni-app
+		 * 指的是页面获取焦点的时候执行的函数
+		 */
+		onShow() {},
+		/**
+		 * uni-app
+		 * 指的是页面失去焦点的时候执行的函数
+		 */
+		onHide() {},
+		/**
+		 * Vue计算属性
+		 * 存放的函数，里面的函数名是自己定义的。函数必须有个返回值
+		 */
+		computed: {},
+		/**
+		 * Vue监听器
+		 * 存放的函数，里面的函数名通常是data的数据
+		 * 监听data的数据，一旦发生改变就执行里面对应的函数
+		 */
+		watch: {},
+		/**
+		 * Vue的自定义方法
+		 */
+		methods: {
+			init() {
+				let that = this
+				that.tabActive = 0
+			},
+			switchTab(index) {
+				let that = this
+				that.tabActive = index
+			
+				//模拟切换效果
+				let data = new Array()
+				console.log(data)
+				// return
+				let rand = parseInt(Math.random() * 10)
+				// that.cardList
+// 				that.cardList.forEach((e, index) => {
+// 					if(rand != index){
+// 						data.push(e)
+// 					}
+// 				})
+				that.cardList = data
+			},
+			backhome() {
+				uni.navigateTo({
+					url: '../home/home'
+				})
+			}
 		}
-	}
-};
+	};
 </script>
 
 <style lang="less">
-@import '//at.alicdn.com/t/font_1069694_b0katkm1hdo.css';
-page {
-	background: #2b1581;
-}
-.content {
-	.backimg {
-		background-color: #381FB0;
-		color: white;
-		display: flex;
-		flex-direction: row;
-		// justify-content: center;
-		align-items: center;
-		padding: 20upx 22upx;
-		border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-		.backimage {
-			width: 40upx;
-			height: 40upx;
-			color: #867afb;
+	@import '//at.alicdn.com/t/font_1069694_b0katkm1hdo.css';
+
+	page {
+		background: #2b1581;
+	}
+
+	.content {
+		.backimg {
+			background-color: #381FB0;
+			color: white;
+			display: flex;
+			flex-direction: row;
+			// justify-content: center;
+			align-items: center;
+			padding: 20upx 22upx;
+			border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+			display: none;
+
+			.backimage {
+				width: 40upx;
+				height: 40upx;
+				color: #867afb;
+			}
+
+			.title {
+				margin-left: 240upx;
+				color: #867afb;
+				font-weight: bold;
+				font-size: 34upx;
+			}
 		}
-		.title {
-			margin-left: 240upx;
-			color: #867afb;
-			font-weight: bold;
-			font-size: 34upx;
+
+		.list {
+			display: flex;
+			flex-direction: row;
+			background: #381FB0;
+			border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+			.left,
+			.right {
+				color: #867afb;
+				font-size: 26upx;
+				padding: 24upx 120upx;
+			}
+		}
+		.tab-bar {
+			position: relative;
+			flex-direction: row;
+			justify-content: center;
+			justify-items: center;
+			padding: 0 20upx;
+			display: flex;
+		
+			.btn-link {
+				padding: 0 50upx;
+				display: flex;
+				width: 200upx;
+				height: 80upx;
+				justify-content: center;
+				align-items: center;
+				color: rgba(255, 255, 255, .4);
+				font-size: 28upx;
+			}
+		
+			.line {
+				position: absolute;
+				width: 60upx;
+				height: 6upx;
+				background: #fff;
+				bottom: 0;
+				transition: .5s;
+			}
+		
+			.line1 {
+				left: 205upx;
+			}
+		
+			.line2 {
+				left: 500upx;
+			}
+		
 		}
 	}
-	.list{
-		display: flex;
-		flex-direction: row;
-		background: #381FB0;
-		border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-		.left,.right{
-			color: #867afb;
-			font-size: 26upx;
-			padding: 24upx 120upx;
-		}
-	}
-}
 </style>

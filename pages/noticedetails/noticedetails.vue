@@ -1,7 +1,6 @@
 <template>
 	<view class="content">
-	<view class="backimg">
-		<!-- <view class="icon-fanhui iconfont"></view> -->
+	<!-- <view class="backimg">
 		<image
 			@click="backhome()"
 			class="backimage"
@@ -9,9 +8,9 @@
 			mode=""
 		></image>
 		<view class="title">公告详情</view>
-	</view>
+	</view> -->
 	<view class="head">
-		关于拓客新零售系统商家注意事项的公告 
+		{{noticedetails[0].title}}
 	</view>
 	<view class="middle">
 		<view class="left">
@@ -28,12 +27,7 @@
 	</view>
 	<view class="footer">
 		<view class="text">
-			商家注意事项：<br>
-			使用拓客系统必须以实物商品交易为基础。<br>
-			严禁货币类，高风险虚拟产品交易。<br>
-			严禁退还利润不发货的行为。<br>
-			实名认证一人一号严禁多号。<br>
-			发现虚拟交易玩资金不卖货者封号，举报属实，该号归举报者所有，大家一起监督避免害群之马影响大家使用。<br>
+			{{noticedetails[0].text}}
 		</view>
 	</view>
 	</view>
@@ -44,7 +38,10 @@
 	export default {
 		data() {
 			return {
-				
+				noticedetails:[{
+					title:'关于拓客新零售系统商家注意事项的公告 ',
+					text:'商家注意事项：<br>使用拓客系统必须以实物商品交易为基础。<br>	严禁货币类，高风险虚拟产品交易。<br>严禁退还利润不发货的行为。<br>	实名认证一人一号严禁多号。<br>发现虚拟交易玩资金不卖货者封号，举报属实，该号归举报者所有，大家一起监督避免害群之马影响大家使用。<br>'
+				}]
 			}
 		},
 		/**
@@ -94,9 +91,7 @@
 		 * Vue的自定义方法
 		 */
 		methods: {
-			backhome() {
-				uni.navigateBack(getCurrentPages() - 1);
-			}
+			
 		},
 	}
 </script>
