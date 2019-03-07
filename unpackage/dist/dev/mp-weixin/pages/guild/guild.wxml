@@ -1,0 +1,2 @@
+<import src="./guild.vue.wxml" />
+    <template is="223a5dc0" data="{{ ...$root['0'], $root }}"/>

@@ -1,0 +1,92 @@
+page {
+  background-color: #2107a5;
+  font-weight: 560;
+  color: rgba(255, 255, 255, 0.8);
+}
+.content .backimg {
+  background-color: #381fb0;
+  color: white;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 20rpx 22rpx;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.content .backimg .backimage {
+  width: 40rpx;
+  height: 40rpx;
+  color: #867afb;
+}
+.content .backimg .title {
+  margin-left: 240rpx;
+  color: #867afb;
+  font-weight: bold;
+  font-size: 34rpx;
+}
+.content .head {
+  font-size: 36rpx;
+  text-align: center;
+  padding: 28rpx;
+}
+.content .middle {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0 24rpx;
+}
+.content .middle .left {
+  font-size: 32rpx;
+  font-weight: 100;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.content .middle .left .image {
+  padding-right: 8rpx;
+  width: 48rpx;
+  height: 48rpx;
+}
+.content .middle .left .image .img {
+  width: 48rpx;
+  height: 48rpx;
+}
+.content .middle .right {
+  font-size: 10rpx;
+}
+.content .footer {
+  font-weight: 400;
+  font-size: 36rpx;
+  padding: 16rpx 24rpx;
+  line-height: 1.2;
+}
+

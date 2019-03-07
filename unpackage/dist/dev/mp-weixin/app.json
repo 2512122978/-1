@@ -1,0 +1,24 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/register/register",
+    "pages/home/home",
+    "pages/complaint/complaint",
+    "pages/helpRegister/helpRegister",
+    "pages/applyforentry/applyforentry",
+    "pages/auditEntry/auditEntry",
+    "pages/applyforentry/list/list",
+    "pages/credit/credit",
+    "pages/notice/notice",
+    "pages/noticedetails/noticedetails",
+    "pages/guild/guild"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "usingComponents": {}
+}

@@ -1,0 +1,54 @@
+@import url(//at.alicdn.com/t/font_1069694_b0katkm1hdo.css);
+page {
+  background: #2b1581;
+}
+.content .backimg {
+  background-color: #381FB0;
+  color: white;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 20rpx 22rpx;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.content .backimg .backimage {
+  width: 40rpx;
+  height: 40rpx;
+  color: #867afb;
+}
+.content .backimg .title {
+  margin-left: 240rpx;
+  color: #867afb;
+  font-weight: bold;
+  font-size: 34rpx;
+}
+.content .list {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  background: #381FB0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.content .list .left,
+.content .list .right {
+  color: #867afb;
+  font-size: 26rpx;
+  padding: 24rpx 120rpx;
+}
+

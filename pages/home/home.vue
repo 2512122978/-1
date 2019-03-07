@@ -25,19 +25,6 @@
 				</view>
 			</view>
 		</view>
-		<!-- 	<view class="information">
-			<view class="ul">
-				<ul>
-					<li class="li1">I&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;D:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;153510558</li>
-					<li>
-						等&nbsp;&nbsp;&nbsp;&nbsp;级：&nbsp;&nbsp;&nbsp;&nbsp;第一关声不嫌
-						<span class="Grade">等级介绍</span><a>123</a>
-					</li>
-					<li>姓&nbsp;&nbsp;&nbsp;&nbsp;名：&nbsp;&nbsp;&nbsp;&nbsp;晴儿</li>
-					<li>推荐人：&nbsp;&nbsp;&nbsp;&nbsp;阿兴</li>
-				</ul>
-			</view>
-		</view> -->
 		<view class="information">
 			<view class="ul">
 				<view class="li">
@@ -45,7 +32,7 @@
 				</view>
 				<view class="li">
 					等&nbsp;&nbsp;&nbsp;级：&nbsp;&nbsp;&nbsp;第一关声不嫌
-					<span class="Grade">等级介绍</span>
+					<span class="Grade" @click="showgrade()">等级介绍</span>
 				</view>
 				<view class="li">
 					姓&nbsp;&nbsp;&nbsp;名：&nbsp;&nbsp;&nbsp;晴儿</li>
@@ -94,7 +81,7 @@
 					</swiper-item>
 				</swiper>
 			</view>
-			<view class="right">
+			<view class="right" @click="notice()">
 				更多
 			</view>
 		</view>
@@ -111,12 +98,18 @@
 				<image @click="auditEntry()" class="img" src="../../static/images/审核闯关.png"></image>
 				<view class="title">审核闯关</view>
 			</view>
-			<view class="btn-link">
+			<view class="btn-link" @click="guild()">
 				<image class="img" src="../../static/images/行会大厅.png"></image>
 				<view class="title">行会大厅</view>
 			</view>
 		</view>
+		<view class="modal" v-show="modal">
+			<view class="mask" @tap="hideModal()">
+			</view>
+			<view class="box">
 
+			</view>
+		</view>
 		<view class="footer">在线客服： QQ 2708232258</view>
 	</view>
 </template>
@@ -126,7 +119,7 @@
 	export default {
 		data() {
 			return {
-
+				modal: false
 			};
 		},
 		/**
@@ -195,6 +188,24 @@
 				uni.navigateTo({
 					url: '../credit/credit'
 				})
+			},
+			notice() {
+				uni.navigateTo({
+					url: '../notice/notice'
+				})
+			},
+			showgrade() {
+				let that = this
+				that.modal = true
+			},
+			guild() {
+				uni.navigateTo({
+					url: '../guild/guild'
+				})
+			},
+			hideModal() {
+				let that = this
+				that.modal = false
 			}
 		}
 	};
@@ -202,6 +213,32 @@
 
 <style lang="less">
 	@import '//at.alicdn.com/t/font_1070232_urk1rzsge9.css';
+
+
+	.modal {
+		.mask {
+			position: fixed;
+			z-index: 998;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			background-color: rgba(0, 0, 0, .7);
+			z-index: 2;
+		}
+
+		.box {
+			position: fixed;
+			width: 600upx;
+			height: 920upx;
+			background-image: url(../../static/images/imodelbackground.png);
+			background-size: 100% 100%;
+			top: calc(50% - 920upx / 2);
+			;
+			left: calc(50% - 600upx / 2);
+			z-index: 2 + 1;
+		}
+	}
 
 	page {
 		background-color: #2107a5;
@@ -382,7 +419,7 @@
 			justify-content: center;
 			align-items: center;
 			font-size: 26upx;
-			
+
 		}
 	}
 
@@ -419,9 +456,6 @@
 			}
 		}
 	}
-
-
-
 
 	.content .footer {
 		margin-top: 20upx;

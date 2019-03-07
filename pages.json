@@ -89,6 +89,36 @@
 				},
 				"navigationBarTitleText": "信用分"
 			}
+		},
+		{
+			"path": "pages/notice/notice",
+			"style": {
+				"navigationStyle": "custom",
+				"app-plus": {
+					"titleView": false
+				},
+				"navigationBarTitleText": "公告"
+			} 
+		},
+		{
+			"path": "pages/noticedetails/noticedetails",
+			"style": {
+				"navigationStyle": "custom",
+				"app-plus": {
+					"titleView": false
+				},
+				"navigationBarTitleText": "公告详情"
+			}
+		},
+		{
+			"path": "pages/guild/guild",
+			"style": {
+				"navigationStyle": "custom",
+				"app-plus": {
+					"titleView": false
+				},
+				"navigationBarTitleText": "uni-app"
+			}
 		}
 		
 		

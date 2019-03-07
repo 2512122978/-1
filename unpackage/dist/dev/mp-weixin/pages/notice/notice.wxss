@@ -1,0 +1,81 @@
+page {
+  background-color: #2107a5;
+  font-weight: 560;
+  color: rgba(255, 255, 255, 0.8);
+}
+.content .backimg {
+  background-color: #381fb0;
+  color: white;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 20rpx 22rpx;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.content .backimg .backimage {
+  width: 40rpx;
+  height: 40rpx;
+  color: #867afb;
+}
+.content .backimg .title {
+  margin-left: 240rpx;
+  color: #867afb;
+  font-weight: bold;
+  font-size: 34rpx;
+}
+.content .head,
+.content .body {
+  padding: 20rpx 20rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-bottom: 1px solid #e5e5e5;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+.content .head .left .imagenotic,
+.content .body .left .imagenotic {
+  width: 48rpx;
+  height: 48rpx;
+}
+.content .head .right,
+.content .body .right {
+  padding: 0 12rpx;
+  font-size: 28rpx;
+}
+.content .head .right .img .image,
+.content .body .right .img .image {
+  padding: 20rpx 0;
+  height: 240rpx;
+}
+.content .head .right .text,
+.content .body .right .text {
+  display: block;
+  font-size: 24rpx;
+  font-weight: 200;
+  width: 640rpx;
+  height: 100rpx;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+     text-overflow: ellipsis;
+}
+.content .head .right .time,
+.content .body .right .time {
+  padding: 12rpx 0;
+  font-size: 16rpx;
+}
+
