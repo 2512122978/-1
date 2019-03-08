@@ -1,4 +1,5 @@
 <template>
+		<!-- 帮助他人注册 -->
 	<view class="content">
 		<!-- <view class="head">
 			<view class="back">
@@ -8,10 +9,11 @@
 			</view>
 			</view>
 		</view> -->
-		<view class="body">
-			<view class="text">
+		<view class="body" >
+			<view class="text1">
 				<input
-					type="hidden"
+				maxlength="11" type="number"  @blur="input_plur('phone')"
+				v-model="phone"
 					name="referurl"
 					class="referurl"
 					value=""
@@ -77,7 +79,7 @@
 			</view>
 		</view>
 		<view class="footer">
-			<input class="btn" type="button" value="确认注册" />
+			<view class="btn" type="button" value="" @click="submit()">确认注册</view>
 		</view>
 	</view>
 </template>
@@ -87,7 +89,8 @@
 	export default {
 		data() {
 			return {
-
+				phone: '',
+				verificationcode: '',
 			}
 		},
 		/**
@@ -137,12 +140,52 @@
 		 * Vue的自定义方法
 		 */
 		methods: {
-			backhome(){
-				uni.navigateTo({
-					url:'../home/home'
-				})
+			submit(){
+				let that = this
+				let phone = that.phone
+				console.log(that.phone)
+				
+// 				uni.request({
+// 					url: apiJs.login,
+// 					data: {
+// 						phone: phone,
+// 						verificationcode: 7690,
+// 					},
+// 					method: "post",
+// 					success: (res) => {
+// 						if(res.token) {
+// 							uni.setStorageSync('token',res.token)
+// 							return
+// 						}
+// 						uni.navigateTo({
+// 							url:'../home/home',
+// 						})
+// // 						uni.showToast({
+// // 							title:"登录失败",
+// // 							icon:"none"
+// // 						})
+// 					}
+// 				})
+				
+			},
+// 			input(res) {
+// 				let that = this
+// 				if (res === "phone") {
+// 					that.accAcitve = true
+// 				}
+// 				if (res === "verificationcode") {
+// 					that.pwdAcitve = true
+// 				}
+// 			},
+		input_plur(res) {
+				let that = this
+				if (res === "phone") {
+					that.accAcitve = false
+				}
+				if (res == "verificationcode") {
+					that.pwdAcitve = false
+				}
 			}
-		
 		},
 	}
 </script>
@@ -174,15 +217,15 @@
 		}
 		.body{
 			padding: 20upx 36upx;
-			.text{
+			.text,.text1{
 				display: flex;
+				justify-content: space-between;
 				font-size: 28upx;
 				padding: 20upx;
 				border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 				.verificationCode{
 					justify-content: flex-end;
 					display: flex;
-					
 					.code{
 						border-radius: 50upx;
 						width: 140upx;

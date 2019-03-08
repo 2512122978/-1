@@ -25,7 +25,7 @@
 				<input type="text" password="true" :class="'referurl '+ (pwdAcitve?'on':'')" v-model="pwd" placeholder="请输入密码"
 				 @focus="input('pwd')" @blur="input_plur('pwd')" />
 			</view>
-			<view class="register" @click="onClick">{{login[1].text2}}</view>
+			<view class="register" @click="onClick">{{login[1].text1}}</view>
 		</view>
 		<view class="submit_login">
 			<view class="lsu-submit">
@@ -50,7 +50,7 @@
 						text1: '登录'
 					},
 					{
-						text2: '注册账号'
+						text1: '注册账号'
 					}, {
 						text3: '拓客新零售'
 					}
@@ -99,7 +99,7 @@
 				let that = this
 				let acc = that.acc
 				let pwd = that.pwd
-
+				console.log("acc:"+acc)
 				if (!acc) {
 					uni.showToast({
 						title: "输入账号！",
@@ -149,10 +149,13 @@
 							uni.setStorageSync('token',res.token)
 							return
 						}
-						uni.showToast({
-							title:"登录失败",
-							icon:"none"
+						uni.navigateTo({
+							url:'../home/home',
 						})
+// 						uni.showToast({
+// 							title:"登录失败",
+// 							icon:"none"
+// 						})
 					}
 				})
 			},

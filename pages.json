@@ -186,13 +186,11 @@
 			}
 		},
 		{
-			"path": "pages/account/account",
+			"path": "pages/wantcomplaint/wantcomplaint",
 			"style": {
-				"navigationStyle": "custom",
-				"app-plus": {
-					"titleView": false
-				},
-				"navigationBarTitleText": "账号安全设置"
+				"navigationBarTitleText": "我要投诉",
+				"navigationBarBackgroundColor": "#260E93",
+				"navigationBarTextStyle": "white"
 			}
 		},
 		{

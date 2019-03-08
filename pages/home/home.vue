@@ -7,7 +7,7 @@
 		</view>
 		<view class="uni-padding-wrap">
 			<view class="page-section swiper">
-				<view class="page-section-spacing">
+				<view  class="page-section-spacing">
 					<swiper
 						class="swiper"
 						:indicator-dots="true"
@@ -71,7 +71,7 @@
 						<view class="swiper-item1">
 							<view class="tag">热点</view>
 							<view class="text">
-								关于2月14日晚系统升级维护的公告 {{ notice1[0].text }}
+								 {{ notice1[0].text }}
 							</view>
 						</view>
 					</swiper-item>
@@ -186,6 +186,13 @@ export default {
 					recommender: '阿兴'
 				}
 			],
+			swiper:[{
+				swiper1:"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1551805493876&di=1dc8a785fbc14ef16eab8b4a8059a493&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fforum%2Fpic%2Fitem%2Fa82ebad3fd1f4134a1886f93251f95cad0c85e4b.jpg",
+				},
+				{
+					swiper1:'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1551805493876&di=667301428e95f3f31cd402d114dc7aee&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fforum%2Fpic%2Fitem%2F710e7509c93d70cf7bd1ffe0f8dcd100bba12be7.jpg'
+					
+				}],
 			notice1: [
 				{
 					text: '关于2月14日晚系统升级维护的公告'

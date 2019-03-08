@@ -18,7 +18,7 @@
 				<image class="img" src="../../static/images/notice.png" mode=""></image>
 			</view>
 			<view class="title">
-				{{noticedetails[0].title}}
+				{{noticedetails[0].title1}}
 			</view>
 		</view>
 		<view class="right">
@@ -27,7 +27,22 @@
 	</view>
 	<view class="footer">
 		<view class="text">
-			{{noticedetails[0].text}}
+			{{noticedetails[0].text1}}
+		</view>
+		<view class="text">
+			{{noticedetails[0].text2}}
+		</view>
+		<view class="text">
+			{{noticedetails[0].text3}}
+		</view>
+		<view class="text">
+			{{noticedetails[0].text4}}
+		</view>
+		<view class="text">
+			{{noticedetails[0].text5}}
+		</view>
+		<view class="text">
+			{{noticedetails[0].text6}}
 		</view>
 	</view>
 	</view>
@@ -40,9 +55,14 @@
 			return {
 				noticedetails:[{
 					title:'关于拓客新零售系统商家注意事项的公告 ',
-					text:'商家注意事项：<br>使用拓客系统必须以实物商品交易为基础。<br>	严禁货币类，高风险虚拟产品交易。<br>严禁退还利润不发货的行为。<br>	实名认证一人一号严禁多号。<br>发现虚拟交易玩资金不卖货者封号，举报属实，该号归举报者所有，大家一起监督避免害群之马影响大家使用。<br>',
+					text1:'商家注意事项：',
+					text2:'使用拓客系统必须以实物商品交易为基础。',
+					text3:'严禁货币类，高风险虚拟产品交易。',
+					text4:'严禁退还利润不发货的行为。',
+					text5:'实名认证一人一号严禁多号。',
+					text6:'发现虚拟交易玩资金不卖货者封号，举报属实，该号归举报者所有，大家一起监督避免害群之马影响大家使用。',
 					time:'2019-03-05   20:00:38',
-					title:'公告'
+					title1:'公告'
 				}]
 			}
 		},
