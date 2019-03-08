@@ -135,7 +135,7 @@
 		 * 指的是页面加载完毕执行的函数
 		 */
 		onLoad(options) {
-			// this.regLogin()
+			this.regLogin()
 			this.init()
 		},
 		/**

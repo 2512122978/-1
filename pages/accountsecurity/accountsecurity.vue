@@ -1,15 +1,10 @@
 <template>
 	<view class="content">
-	<view class="backimg">
-		<!-- <view class="icon-fanhui iconfont"></view> -->
-		<image
-			@click="backhome()"
-			class="backimage"
-			src="../../static/images/back.png"
-			mode=""
-		></image>
-		<view class="title">审核闯关记录</view>
-	</view>
+		<view class="backimg">
+			<!-- <view class="icon-fanhui iconfont"></view> -->
+			<image @click="backhome()" class="backimage" src="../../static/images/back.png" mode=""></image>
+			<view class="title">审核闯关记录</view>
+		</view>
 	</view>
 </template>
 
@@ -33,7 +28,7 @@
 		 * 指的是页面加载完毕执行的函数
 		 */
 		onLoad(options) {
-
+			this.regLogin()
 		},
 		/**
 		 * uni-app
@@ -68,7 +63,23 @@
 		 * Vue的自定义方法
 		 */
 		methods: {
+			regLogin() {
+				let that = this
+				let token = uni.getStorageSync('token')
 
+				if (!token) {
+					uni.showToast({
+						title: "登录过期",
+						icon: "none"
+					})
+					// new Promise()
+					setTimeout(() => {
+						uni.navigateTo({
+							url: "/pages/index/index"
+						})
+					}, 700)
+				}
+			}
 		},
 	}
 </script>

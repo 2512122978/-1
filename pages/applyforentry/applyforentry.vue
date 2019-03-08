@@ -60,7 +60,9 @@ export default {
 	 * options是上个页面的传参
 	 * 指的是页面加载完毕执行的函数
 	 */
-	onLoad(options) {},
+	onLoad(options) {
+		this.regLogin()
+	},
 	/**
 	 * uni-app
 	 * 指的是页面获取焦点的时候执行的函数
@@ -94,6 +96,23 @@ export default {
 		backhome() {
 			// https://uniapp.dcloud.io/api/router?id=navigateback
 			uni.navigateBack(getCurrentPages() - 1);
+		},
+		regLogin() {
+			let that = this
+			let token = uni.getStorageSync('token')
+		
+			if (!token) {
+				uni.showToast({
+					title: "登录过期",
+					icon: "none"
+				})
+				// new Promise()
+				setTimeout(() => {
+					uni.navigateTo({
+						url: "/pages/index/index"
+					})
+				}, 700)
+			}
 		}
 	}
 };

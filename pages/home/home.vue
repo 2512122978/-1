@@ -210,7 +210,9 @@ export default {
 	 * options是上个页面的传参
 	 * 指的是页面加载完毕执行的函数
 	 */
-	onLoad(options) {},
+	onLoad(options) {
+		this.regLogin()
+	},
 	/**
 	 * uni-app
 	 * 指的是页面获取焦点的时候执行的函数
@@ -236,11 +238,6 @@ export default {
 	 * Vue的自定义方法
 	 */
 	methods: {
-		// 			complaint(){
-		// 				uni.navigateTo({
-		// 					url:'../Complaint/Complaint'
-		// 				});
-		// 			},
 		complaint() {
 			uni.navigateTo({
 				url: '../complaint/complaint'
@@ -293,6 +290,23 @@ export default {
 			uni.navigateTo({
 				url: '../account/account'
 			});
+		},
+		regLogin() {
+			let that = this
+			let token = uni.getStorageSync('token')
+		
+			if (!token) {
+				uni.showToast({
+					title: "登录过期",
+					icon: "none"
+				})
+				// new Promise()
+				setTimeout(() => {
+					uni.navigateTo({
+						url: "/pages/index/index"
+					})
+				}, 700)
+			}
 		}
 	}
 };

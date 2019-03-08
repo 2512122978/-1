@@ -128,7 +128,9 @@ export default {
 	 * options是上个页面的传参
 	 * 指的是页面加载完毕执行的函数
 	 */
-	onLoad(options) {},
+	onLoad(options) {
+		this.regLogin()
+	},
 	/**
 	 * uni-app
 	 * 指的是页面获取焦点的时候执行的函数
@@ -181,6 +183,23 @@ export default {
 			let weixin = that.weixin
 			let alipay = that.alipay
 			console.log(phone+code+psw+pswagain+nickname+inviterphone+weixin+alipay)
+		},
+		regLogin() {
+			let that = this
+			let token = uni.getStorageSync('token')
+		
+			if (!token) {
+				uni.showToast({
+					title: "登录过期",
+					icon: "none"
+				})
+				// new Promise()
+				setTimeout(() => {
+					uni.navigateTo({
+						url: "/pages/index/index"
+					})
+				}, 700)
+			}
 		}
 	}
 };

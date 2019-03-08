@@ -60,6 +60,7 @@ export default {
 	 */
 	onLoad(options) {
 		// this.init();
+		this.regLogin()
 	},
 	/**
 	 * uni-app
@@ -93,6 +94,23 @@ export default {
 			uni.navigateTo({
 				url:'../noticedetails/noticedetails'
 			})
+		},
+		regLogin() {
+			let that = this
+			let token = uni.getStorageSync('token')
+		
+			if (!token) {
+				uni.showToast({
+					title: "登录过期",
+					icon: "none"
+				})
+				// new Promise()
+				setTimeout(() => {
+					uni.navigateTo({
+						url: "/pages/index/index"
+					})
+				}, 700)
+			}
 		}
 	}
 };

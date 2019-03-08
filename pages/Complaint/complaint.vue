@@ -121,7 +121,10 @@
 		 * options是上个页面的传参
 		 * 指的是页面加载完毕执行的函数
 		 */
-		onLoad(options) {this.init()},
+		onLoad(options) {
+			this.init()
+			this.regLogin()
+		},
 		/**
 		 * uni-app
 		 * 指的是页面获取焦点的时候执行的函数
@@ -170,6 +173,23 @@
 				uni.navigateTo({
 					url: '../home/home'
 				})
+			},
+			regLogin() {
+				let that = this
+				let token = uni.getStorageSync('token')
+			
+				if (!token) {
+					uni.showToast({
+						title: "登录过期",
+						icon: "none"
+					})
+					// new Promise()
+					setTimeout(() => {
+						uni.navigateTo({
+							url: "/pages/index/index"
+						})
+					}, 700)
+				}
 			}
 		}
 	};

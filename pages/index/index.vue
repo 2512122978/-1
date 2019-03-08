@@ -69,7 +69,9 @@
 		 * options是上个页面的传参
 		 * 指的是页面加载完毕执行的函数
 		 */
-		onLoad(options) {},
+		onLoad(options) {
+			uni.setStorageSync('token',"123456")
+		},
 		/**
 		 * uni-app
 		 * 指的是页面获取焦点的时候执行的函数
@@ -152,10 +154,6 @@
 						uni.navigateTo({
 							url:'../home/home',
 						})
-// 						uni.showToast({
-// 							title:"登录失败",
-// 							icon:"none"
-// 						})
 					}
 				})
 			},
@@ -182,6 +180,7 @@
 					that.pwdAcitve = false
 				}
 			},
+			
 		}
 	};
 </script>

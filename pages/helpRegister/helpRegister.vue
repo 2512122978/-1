@@ -120,7 +120,7 @@
 		 * 指的是页面加载完毕执行的函数
 		 */
 		onLoad(options) {
-
+			this.regLogin()
 		},
 		/**
 		 * uni-app
@@ -166,7 +166,23 @@
 				let alipay = that.alipay
 				console.log(phone + code + psw + pswagain + Nickname + weixin + alipay)
 			},
+			regLogin() {
+				let that = this
+				let token = uni.getStorageSync('token')
 			
+				if (!token) {
+					uni.showToast({
+						title: "登录过期",
+						icon: "none"
+					})
+					// new Promise()
+					setTimeout(() => {
+						uni.navigateTo({
+							url: "/pages/index/index"
+						})
+					}, 700)
+				}
+			}
 		},
 	}
 </script>

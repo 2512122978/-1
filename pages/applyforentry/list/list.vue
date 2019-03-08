@@ -237,6 +237,7 @@
 			this.init()
 			this.init1()
 			this.switchTab(0)
+			this.regLogin()
 		},
 		/**
 		 * uni-app
@@ -317,6 +318,23 @@
 // 				return
 				this.cardList2[itemIndex].pinlun = activeIndex + 1
 				that.modal = false
+			},
+			regLogin() {
+				let that = this
+				let token = uni.getStorageSync('token')
+			
+				if (!token) {
+					uni.showToast({
+						title: "登录过期",
+						icon: "none"
+					})
+					// new Promise()
+					setTimeout(() => {
+						uni.navigateTo({
+							url: "/pages/index/index"
+						})
+					}, 700)
+				}
 			}
 		}
 	};

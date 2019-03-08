@@ -74,7 +74,8 @@
 		onLoad(options) {
 			this.imageSrc = '';
 			this.imageSrc1 = '';
-			},
+			this.regLogin()
+		},
 		/**
 		 * uni-app
 		 * 指的是页面获取焦点的时候执行的函数
@@ -186,7 +187,24 @@
 					}
 				});
 			},
-		},
+			regLogin() {
+				let that = this
+				let token = uni.getStorageSync('token')
+			
+				if (!token) {
+					uni.showToast({
+						title: "登录过期",
+						icon: "none"
+					})
+					// new Promise()
+					setTimeout(() => {
+						uni.navigateTo({
+							url: "/pages/index/index"
+						})
+					}, 700)
+				}
+			}
+		}
 	}
 </script>
 
