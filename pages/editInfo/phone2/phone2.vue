@@ -6,10 +6,10 @@
 		</view>
 		<view class="item-list">
 			<view class="row">
-				<input type="text" v-model="phone" placeholder="请输入手机号码" />
+				<input maxlength="11" type="number" v-model="phone" placeholder="请输入手机号码" />
 			</view>
 			<view class="row">
-				<input type="text" v-model="yzm" placeholder="请输入图文验证码" />
+				<input maxlength="4" type="text" v-model="yzm" placeholder="请输入图文验证码" />
 				<image src="http://sale.10mf.org/index.php?m=Mobile&c=User&a=verify&type=forget" mode="widthFix" class="yzm"></image>
 			</view>
 			<view class="row">

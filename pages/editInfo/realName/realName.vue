@@ -12,12 +12,24 @@
 			<view class="title">
 				请上传清晰的身份证正面和背面图片
 			</view>
-			<view class="box">
-				<image src="../../../static/images/zhengm.png" mode="widthFix" class="img"></image>
-			</view>
-			<view class="box">
-				<image src="../../../static/images/beim.png" mode="widthFix" class="img"></image>
-			</view>
+			
+			<block v-if="imageSrc">
+				<image class="img" :src="imageSrc" mode="widthFix"></image>
+			</block>
+			<block v-else>
+				<view class="box" @click="chooseImage()">
+					<image class="img" src="../../../static/images/zhengm.png" mode=""></image>
+				</view>
+			</block>
+			<block v-if="imageSrc1">
+				<image class="img1" :src="imageSrc1" mode="widthFix"></image>
+			</block>
+			<block v-else>
+				<view class="box1" @click="chooseImage1()">
+					<image class="img1" src="../../../static/images/zhengm.png" mode=""></image>
+				</view>
+			</block>
+			
 		</view>
 		<view class="btn-box">
 			<view class="title">
@@ -42,6 +54,10 @@
 			return {
 				realName: "",
 				idCard: "",
+				title: 'uploadFile',
+				imageSrc: '',
+				title1: 'uploadFile',
+				imageSrc1: '',
 			}
 		},
 		/**
@@ -56,8 +72,9 @@
 		 * 指的是页面加载完毕执行的函数
 		 */
 		onLoad(options) {
-
-		},
+			this.imageSrc = '';
+			this.imageSrc1 = '';
+			},
 		/**
 		 * uni-app
 		 * 指的是页面获取焦点的时候执行的函数
@@ -91,7 +108,84 @@
 		 * Vue的自定义方法
 		 */
 		methods: {
-
+			chooseImage1: function() {
+				let that = this;
+				uni.chooseImage({
+					count: 1,
+					sizeType: ['compressed'],
+					sourceType: ['album'],
+					success: res => {
+						console.log('chooseImage success, temp path is', res.tempFilePaths[0]);
+						var imageSrc1 = res.tempFilePaths[0];
+						uni.uploadFile({
+							url: 'https://unidemo.dcloud.net.cn/upload',
+							filePath: imageSrc1,
+							fileType: 'image',
+							name: 'data',
+							success: res => {
+								console.log('uploadImage success, res is:', res);
+								uni.showToast({
+									title: '上传成功',
+									icon: 'success',
+									duration: 1000
+								});
+								this.imageSrc1 = imageSrc1;
+								console.log(this.imageSrc1);
+							},
+							fail: err => {
+								console.log('uploadImage fail', err);
+								uni.showModal({
+									content: err.errMsg,
+									showCancel: false
+								});
+							}
+						});
+					},
+					
+					fail: err => {
+						console.log('chooseImage fail', err);
+					}
+				});
+			},
+			chooseImage: function() {
+				let that = this;
+				uni.chooseImage({
+					count: 1,
+					sizeType: ['compressed'],
+					sourceType: ['album'],
+					success: res => {
+						console.log('chooseImage success, temp path is', res.tempFilePaths[0]);
+						var imageSrc = res.tempFilePaths[0];
+						uni.uploadFile({
+							url: 'https://unidemo.dcloud.net.cn/upload',
+							filePath: imageSrc,
+							fileType: 'image',
+							name: 'data',
+							success: res => {
+								console.log('uploadImage success, res is:', res);
+								uni.showToast({
+									title: '上传成功',
+									icon: 'success',
+									duration: 1000
+								});
+								this.imageSrc = imageSrc;
+								console.log(this.imageSrc);
+							},
+							fail: err => {
+								console.log('uploadImage fail', err);
+								uni.showModal({
+									content: err.errMsg,
+									showCancel: false
+								});
+							}
+						});
+					},
+					
+					fail: err => {
+						console.log('chooseImage fail', err);
+					}
+				});
+			},
 		},
 	}
 </script>

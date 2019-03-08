@@ -10,7 +10,7 @@
 			<view class="title">
 				手机号码：
 			</view>
-			<input class="input" type="text" v-model="phone" placeholder="请输入手机号码" />
+			<input maxlength="11" class="input" type="number" v-model="phone" placeholder="请输入手机号码" />
 		</view>
 		<view class="row">
 			<view class="title">

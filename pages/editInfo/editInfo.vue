@@ -8,9 +8,15 @@
 				<view class="left">
 					头像
 				</view>
+				
+				
 				<view class="right">
-					<image src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3377302992,3361149372&fm=27&gp=0.jpg" mode="widthFix"
-					 class="img-header"></image>
+					<block v-if="imageSrc">
+						<image class="img-header" :src="imageSrc" mode="widthFix"></image>
+					</block>
+					<block v-else>
+							<image @click="chooseImage1()" class="img-header" src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3377302992,3361149372&fm=27&gp=0.jpg" mode="widthFix"></image>
+					</block>
 				</view>
 			</view>
 			<view class="row">
@@ -92,6 +98,8 @@
 		data() {
 			return {
 				nickName:"晴儿",
+				title: 'uploadFile',
+				imageSrc: '',
 				
 			}
 		},
@@ -104,7 +112,7 @@
 		 * 指的是页面加载完毕执行的函数
 		 */
 		onLoad(options) {
-
+			this.imageSrc = '';
 		},
 		/**
 		 * uni-app
@@ -143,7 +151,45 @@
 				uni.navigateTo({
 					url: url,
 				})
-			}
+			},
+			chooseImage1: function() {
+				let that = this;
+				uni.chooseImage({
+					count: 1,
+					sizeType: ['compressed'],
+					sourceType: ['album'],
+					success: res => {
+						console.log('chooseImage success, temp path is', res.tempFilePaths[0]);
+						var imageSrc = res.tempFilePaths[0];
+						uni.uploadFile({
+							url: 'https://unidemo.dcloud.net.cn/upload',
+							filePath: imageSrc,
+							fileType: 'image',
+							name: 'data',
+							success: res => {
+								console.log('uploadImage success, res is:', res);
+								uni.showToast({
+									title: '上传成功',
+									icon: 'success',
+									duration: 1000
+								});
+								this.imageSrc = imageSrc;
+								console.log(this.imageSrc);
+							},
+							fail: err => {
+								console.log('uploadImage fail', err);
+								uni.showModal({
+									content: err.errMsg,
+									showCancel: false
+								});
+							}
+						});
+					},
+					fail: err => {
+						console.log('chooseImage fail', err);
+					}
+				});
+			},
 		},
 	}
 </script>

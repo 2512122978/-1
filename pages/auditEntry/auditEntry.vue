@@ -32,46 +32,6 @@
 		<view class="footer">
 			<view class="head"></view>
 			<view class="middle">
-				<view class="card-list">
-						<block v-for="(item, index) in cardList2" :key="index">
-							<view class="card">
-								<view class="order-info">
-									<view class="left">闯关时间： {{ item.date }}</view>
-									<view class="right">{{ item.state }}</view>
-								</view>
-								<view class="goods-info">
-									<view class="img-box">
-										<image :src="item.headding" class="img"></image>
-									</view>
-									<view class="goods-detail">
-										<view class="words">
-											<view class="word1">{{ item.realname }}</view>
-											<view class="word">{{ item.takeWay }}</view>
-										</view>
-										<view class="words">
-											<view class="word">{{ item.tel }}</view>
-											<view class="word pinlun">{{ item.pinlun }}</view>
-										</view>
-										<view class="words">
-											<view class="word">闯关等级：{{ item.level }}</view>
-										</view>
-										<view class="words">
-											<view class="word">微信号：{{ item.weChat }}</view>
-										</view>
-										<view class="words">
-											<view class="word">支付宝号：{{ item.alpay }}</view>
-										</view>
-									</view>
-								</view>
-								<view class="order-handle">
-									<view class="btn-link complaint" @click="wantcomplaint()">投诉</view>
-									<view class="btn-link comment" @click="comment()">评论</view>
-									<view @click="details()" class="btn-link details">查看详情</view>
-								</view>
-							</view>
-						</block>
-					</view>
-				</view>
 				<!-- <image class="img" src="../../static/images/empty.png" mode=""></image> -->
 			</view>
 			<view class="footer">
