@@ -5,7 +5,9 @@
 		<view class="loginform">
 			<view class="icon-zhanghao iconfont" style="font-size: 40upx;color: white;"></view>
 			<input
-				type="hidden"
+			maxlength="11"
+				 v-model="phone"
+				type="number"
 				name="referurl"
 				class="referurl"
 				value=""
@@ -13,8 +15,10 @@
 			/>
 		</view>
 		<view class="loginform">
-			<view class="icon-zhanghao iconfont" style="font-size: 40upx;color: white;"></view>
+			<view  class="icon-zhanghao iconfont" style="font-size: 40upx;color: white;"></view>
 			<input
+				maxlength="4"
+				v-model="code"
 				type="hidden"
 				name="referurl"
 				class="referurl"
@@ -25,6 +29,7 @@
 		<view class="loginform">
 			<view class="icon-zhanghao iconfont" style="font-size: 40upx;color: white;"></view>
 			<input
+				v-model="psw"
 				type="hidden"
 				name="referurl"
 				class="referurl"
@@ -35,6 +40,8 @@
 		<view class="loginform">
 			<view class="icon-zhanghao iconfont" style="font-size: 40upx;color: white;"></view>
 			<input
+			password=""
+				v-model="pswagain"
 				type="hidden"
 				name="referurl"
 				class="referurl"
@@ -45,6 +52,7 @@
 		<view class="loginform">
 			<view class="icon-zhanghao iconfont" style="font-size: 40upx;color: white;"></view>
 			<input
+				v-model="nickname"
 				type="hidden"
 				name="referurl"
 				class="referurl"
@@ -55,7 +63,9 @@
 		<view class="loginform">
 			<view class="icon-zhanghao iconfont" style="font-size: 40upx;color: white;"></view>
 			<input
-				type="hidden"
+			maxlength="11"
+				v-model="inviterphone"
+				type="number"
 				name="referurl"
 				class="referurl"
 				value=""
@@ -65,6 +75,7 @@
 		<view class="loginform">
 			<view class="icon-zhanghao iconfont" style="font-size: 40upx;color: white;"></view>
 			<input
+				v-model="weixin"
 				type="hidden"
 				name="referurl"
 				class="referurl"
@@ -75,6 +86,7 @@
 		<view class="loginform">
 			<view class="icon-zhanghao iconfont" style="font-size: 40upx;color: white;"></view>
 			<input
+				v-model="alipay"
 				type="hidden"
 				name="referurl"
 				class="referurl"
@@ -82,8 +94,8 @@
 				placeholder="请填写支付宝账号"
 			/>
 		</view>
-		<view class="lsu-submit">
-			<input type="button" class="btn" value="注 册" />
+		<view class="lsu-submit" @click="register()">
+			<view type="button" class="btn" value="注 册">注册</view>
 		</view>
 		<view class="login">
 			<view class="goback" @click="backlogin()">
@@ -96,7 +108,16 @@
 <script>
 export default {
 	data() {
-		return {};
+		return {
+			phone:'',
+			code:'',
+			psw:'',
+			pswagain:'',
+			nickname:'',
+			inviterphone:'',
+			weixin:'',
+			alipay:'',
+		};
 	},
 	/**
 	 * Vue的组件存放
@@ -147,6 +168,19 @@ export default {
 			uni.navigateTo({
 				url: '../register/register'
 			});
+		},
+		
+		register(){
+			let that = this
+			let phone = that.phone
+			let code = that.code
+			let psw = that.psw
+			let pswagain = that.pswagain
+			let nickname = that.nickname
+			let inviterphone = that.inviterphone
+			let weixin = that.weixin
+			let alipay = that.alipay
+			console.log(phone+code+psw+pswagain+nickname+inviterphone+weixin+alipay)
 		}
 	}
 };
@@ -180,7 +214,7 @@ export default {
 	padding: 24upx 0upx;
 	
 }
-.lsu-submit{
+.lsu-submit .btn{
 	background: url(../../static/btn.png);
 	background-size: 100% 100%;
 	display: flex;

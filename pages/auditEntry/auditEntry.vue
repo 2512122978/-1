@@ -32,7 +32,47 @@
 		<view class="footer">
 			<view class="head"></view>
 			<view class="middle">
-				<image class="img" src="../../static/images/empty.png" mode=""></image>
+				<view class="card-list">
+						<block v-for="(item, index) in cardList2" :key="index">
+							<view class="card">
+								<view class="order-info">
+									<view class="left">闯关时间： {{ item.date }}</view>
+									<view class="right">{{ item.state }}</view>
+								</view>
+								<view class="goods-info">
+									<view class="img-box">
+										<image :src="item.headding" class="img"></image>
+									</view>
+									<view class="goods-detail">
+										<view class="words">
+											<view class="word1">{{ item.realname }}</view>
+											<view class="word">{{ item.takeWay }}</view>
+										</view>
+										<view class="words">
+											<view class="word">{{ item.tel }}</view>
+											<view class="word pinlun">{{ item.pinlun }}</view>
+										</view>
+										<view class="words">
+											<view class="word">闯关等级：{{ item.level }}</view>
+										</view>
+										<view class="words">
+											<view class="word">微信号：{{ item.weChat }}</view>
+										</view>
+										<view class="words">
+											<view class="word">支付宝号：{{ item.alpay }}</view>
+										</view>
+									</view>
+								</view>
+								<view class="order-handle">
+									<view class="btn-link complaint" @click="wantcomplaint()">投诉</view>
+									<view class="btn-link comment" @click="comment()">评论</view>
+									<view @click="details()" class="btn-link details">查看详情</view>
+								</view>
+							</view>
+						</block>
+					</view>
+				</view>
+				<!-- <image class="img" src="../../static/images/empty.png" mode=""></image> -->
 			</view>
 			<view class="footer">
 				<view class="button" type="button">去逛逛</view>
@@ -61,8 +101,7 @@
 				],
 				// 选项卡切换状态
 				tabActive: 1,
-
-				cardList: [{
+				cardList2:[{
 						date: '2019.02.24 23:25:17',
 						state: '已确认',
 						headding: 'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2060761043,284284863&fm=27&gp=0.jpg',
@@ -122,7 +161,8 @@
 						weChat: '13855009676',
 						alpay: '13399501107'
 					}
-				]
+				],
+				cardList: []
 			};
 		},
 		/**
@@ -135,7 +175,7 @@
 		 * 指的是页面加载完毕执行的函数
 		 */
 		onLoad(options) {
-			this.regLogin()
+			// this.regLogin()
 			this.init()
 		},
 		/**
@@ -166,18 +206,16 @@
 			switchTab(index) {
 				let that = this;
 				that.tabActive = index;
-
-				//模拟切换效果
+				that.index = index;
 				let data = new Array();
-				console.log(data);
-				// return
-				let rand = parseInt(Math.random() * that.cardList.length);
-				// that.cardList
-				that.cardList.forEach((e, index) => {
-					if (rand != index) {
-						data.push(e);
+				that.cardList2.forEach((e, ind) => {
+					if(that.cardList2[ind].statenumber === index || index == 0){
+						data.push(e)
+						console.log(e)
+					console.log('bianshu'+that.cardList2[ind].statenumber)
 					}
-				});
+				})
+				
 				that.cardList = data;
 			},
 			init() {
@@ -353,6 +391,94 @@
 					font-size: 32upx;
 				}
 
+			}
+		}
+	}
+	.card {
+		display: flex;
+		flex-direction: column;
+		margin: 0 20upx;
+		padding-bottom: 25upx;
+		font-size: 28upx;
+		border-bottom: 3upx solid #5d4949;
+	
+		.order-info {
+			display: flex;
+			// height: 70upx;
+			padding: 10upx 0;
+			align-items: center;
+			justify-content: space-between;
+			font-size: 25upx;
+			font-weight: 600;
+		}
+	
+		.goods-info {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			margin: 10upx 10upx 0 10upx;
+			.img-box {
+				width: 120upx;
+				margin-left: 14upx;
+				padding-top: 20upx;
+	
+				.img {
+					width: 90upx;
+					height: 90upx;
+					margin-right: 8upx;
+					border-radius: 50%;
+				}
+			}
+	
+			.goods-detail {
+				flex: 1;
+				display: flex;
+				// 					padding-right: 20upx;
+				// 					padding-top: 10upx;
+				padding: 10upx 20upx 0 0;
+				flex-direction: column;
+				justify-content: space-between;
+	
+				.words {
+					display: flex;
+					height: 30upx;
+					align-items: center;
+					justify-content: space-between;
+					padding: 2upx -5upx;
+					margin: 4upx 0;
+					.pinlun {
+						color: rgba(255, 255, 255, 0.3);
+					}
+					.word {
+						font-size: 12upx;
+					}
+					.word1 {
+						font-weight: bold;
+					}
+				}
+			}
+		}
+	
+		.order-handle {
+			margin-top: 30upx;
+			display: flex;
+			flex-direction: row;
+			justify-content: flex-end;
+	
+			.btn-link {
+				display: flex;
+				width: 150upx;
+				height: 55upx;
+				justify-content: center;
+				align-items: center;
+				border-radius: 30upx;
+				margin-left: 15upx;
+				border: 1upx solid rgba(255, 255, 255, 0.8);
+			}
+	
+			.details {
+				background: #6356e2;
+				border: 0upx solid rgba(255, 255, 255, 0.8);
 			}
 		}
 	}

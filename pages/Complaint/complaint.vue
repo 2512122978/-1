@@ -37,6 +37,79 @@
 				],
 				// 选项卡切换状态
 				tabActive: 1,
+				cardList2:[
+					{
+						date: '2019.02.24 23:25:17',
+						state: '待审核',
+						headding:
+							'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2060761043,284284863&fm=27&gp=0.jpg',
+						realname: '拓客小助手',
+						takeWay: '上门自提',
+						tel: '13855009676',
+						pinlun: '未评论',
+						level: '第1关声名不显',
+						weChat: '13855009676',
+						alpay: '13399501107',
+						statenumber: 1
+					},
+					{
+						date: '2019.02.24 23:25:17',
+						state: '待审核',
+						headding:
+							'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2060761043,284284863&fm=27&gp=0.jpg',
+						realname: '拓客小助手',
+						takeWay: '上门自提',
+						tel: '13855009676',
+						pinlun: '未评论',
+						level: '第1关声名不显',
+						weChat: '13855009676',
+						alpay: '13399501107',
+						statenumber: 1
+					},
+					{
+						date: '2019.02.24 23:25:17',
+						state: '已确认',
+						headding:
+							'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2060761043,284284863&fm=27&gp=0.jpg',
+						realname: '拓客小助手',
+						takeWay: '上门自提',
+						tel: '13855009676',
+						pinlun: '未评论',
+						level: '第1关声名不显',
+						weChat: '13855009676',
+						alpay: '13399501107',
+						statenumber: 2
+					},
+					{
+						date: '2019.02.24 23:25:17',
+						state: '已确认',
+						headding:
+							'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2060761043,284284863&fm=27&gp=0.jpg',
+						realname: '拓客小助手',
+						takeWay: '上门自提',
+						tel: '13855009676',
+						pinlun: '未评论',
+						level: '第1关声名不显',
+						weChat: '13855009676',
+						alpay: '13399501107',
+						statenumber: 2
+					},
+					{
+						date: '2019.02.24 23:25:17',
+						state: '审核失败',
+						headding:
+							'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2060761043,284284863&fm=27&gp=0.jpg',
+						realname: '拓客小助手',
+						takeWay: '上门自提',
+						tel: '13855009676',
+						pinlun: '未评论',
+						level: '第1关声名不显',
+						weChat: '13855009676',
+						alpay: '13399501107',
+						statenumber: 3
+					}
+				],
+				cardList: []
 			};
 		},
 		/**
@@ -79,21 +152,19 @@
 				that.tabActive = 0
 			},
 			switchTab(index) {
-				let that = this
-				that.tabActive = index
-			
-				//模拟切换效果
-				let data = new Array()
-				console.log(data)
-				// return
-				let rand = parseInt(Math.random() * 10)
-				// that.cardList
-// 				that.cardList.forEach((e, index) => {
-// 					if(rand != index){
-// 						data.push(e)
-// 					}
-// 				})
-				that.cardList = data
+				let that = this;
+				that.tabActive = index;
+				that.index = index;
+				let data = new Array();
+				that.cardList2.forEach((e, ind) => {
+					if(that.cardList2[ind].statenumber === index || index == 0){
+						data.push(e)
+						console.log(e)
+					console.log('bianshu'+that.cardList2[ind].statenumber)
+					}
+				})
+				
+				that.cardList = data;
 			},
 			backhome() {
 				uni.navigateTo({

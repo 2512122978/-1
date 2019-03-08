@@ -12,7 +12,7 @@
 		<view class="body" >
 			<view class="text1">
 				<input
-				maxlength="11" type="number"  @blur="input_plur('phone')"
+				maxlength="11" type="number"  
 				v-model="phone"
 					name="referurl"
 					class="referurl"
@@ -20,8 +20,10 @@
 					placeholder="请输入要注册的手机号码"
 				/>
 			</view>
-			<view class="text">
+			<view class="text2" >
 				<input
+				v-model="code"
+					maxlength="4"
 					type="hidden"
 					name="referurl"
 					class="referurl"
@@ -32,8 +34,10 @@
 					<image class="code" src="../../static/images/verificationCode.png" mode=""></image>
 				</view>
 			</view>
-			<view class="text">
+			<view class="text3">
 				<input
+				v-model="psw"
+				minlength="6"
 					type="hidden"
 					name="referurl"
 					class="referurl"
@@ -41,8 +45,11 @@
 					placeholder="请输入登录密码"
 				/>
 			</view>
-			<view class="text">
+			<view class="text4">
 				<input
+				v-model="pswagain"
+				minlength="6"
+					password=""
 					type="hidden"
 					name="referurl"
 					class="referurl"
@@ -50,8 +57,9 @@
 					placeholder="请再次确认登录密码"
 				/>
 			</view>
-			<view class="text">
+			<view class="text5">
 				<input
+				v-model="Nickname"
 					type="hidden"
 					name="referurl"
 					class="referurl"
@@ -59,8 +67,9 @@
 					placeholder="请输入昵称"
 				/>
 			</view>
-			<view class="text">
+			<view class="text6">
 				<input
+				v-model="weixin"
 					type="hidden"
 					name="referurl"
 					class="referurl"
@@ -68,8 +77,9 @@
 					placeholder="请填写微信号"
 				/>
 			</view>
-			<view class="text">
+			<view class="text7">
 				<input
+				v-model="alipay"
 					type="hidden"
 					name="referurl"
 					class="referurl"
@@ -78,8 +88,8 @@
 				/>
 			</view>
 		</view>
-		<view class="footer">
-			<view class="btn" type="button" value="" @click="submit()">确认注册</view>
+		<view class="footer" @click="submit()">
+			<view class="btn" type="button" value="" >确认注册</view>
 		</view>
 	</view>
 </template>
@@ -90,7 +100,12 @@
 		data() {
 			return {
 				phone: '',
-				verificationcode: '',
+				code: '',
+				psw:'',
+				pswagain:'',
+				Nickname:'',
+				weixin:'',
+				alipay:''
 			}
 		},
 		/**
@@ -143,49 +158,15 @@
 			submit(){
 				let that = this
 				let phone = that.phone
-				console.log(that.phone)
-				
-// 				uni.request({
-// 					url: apiJs.login,
-// 					data: {
-// 						phone: phone,
-// 						verificationcode: 7690,
-// 					},
-// 					method: "post",
-// 					success: (res) => {
-// 						if(res.token) {
-// 							uni.setStorageSync('token',res.token)
-// 							return
-// 						}
-// 						uni.navigateTo({
-// 							url:'../home/home',
-// 						})
-// // 						uni.showToast({
-// // 							title:"登录失败",
-// // 							icon:"none"
-// // 						})
-// 					}
-// 				})
-				
+				let code = that.attrs
+				let psw = that.psw
+				let pswagain = that.pswagain
+				let Nickname = that.Nickname
+				let weixin = that.weixin
+				let alipay = that.alipay
+				console.log(phone + code + psw + pswagain + Nickname + weixin + alipay)
 			},
-// 			input(res) {
-// 				let that = this
-// 				if (res === "phone") {
-// 					that.accAcitve = true
-// 				}
-// 				if (res === "verificationcode") {
-// 					that.pwdAcitve = true
-// 				}
-// 			},
-		input_plur(res) {
-				let that = this
-				if (res === "phone") {
-					that.accAcitve = false
-				}
-				if (res == "verificationcode") {
-					that.pwdAcitve = false
-				}
-			}
+			
 		},
 	}
 </script>
@@ -217,7 +198,7 @@
 		}
 		.body{
 			padding: 20upx 36upx;
-			.text,.text1{
+			.text,.text1,.text2,.text3,.text4,.text5,.text6,.text7{
 				display: flex;
 				justify-content: space-between;
 				font-size: 28upx;
