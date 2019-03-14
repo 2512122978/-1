@@ -19,7 +19,9 @@
 			"path": "pages/home/home",
 			"style": {
 				"navigationStyle": "custom",
-				"navigationBarTitleText": "托客新零售"
+				"navigationBarTitleText": "托客新零售",
+				"navigationBarBackgroundColor": "#222222"
+				
 			}
 		},
 		{

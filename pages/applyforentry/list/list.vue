@@ -509,11 +509,12 @@
 						margin: 4upx 0;
 
 						.pinlun {
+							
 							color: rgba(255, 255, 255, 0.3);
 						}
 
 						.word {
-							font-size: 12upx;
+							font-size: 20upx;
 						}
 
 						.word1 {

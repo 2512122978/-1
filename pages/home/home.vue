@@ -2,7 +2,7 @@
 	<!-- 轮播图间距与阴影，id模块的间距（已修改） -->
 	<view class="content">
 		<view class="head">
-			<view class="title">拓客新零售</view>
+			<view class="title">联盟冲冲冲</view>
 			<view class="Complaint" @click="complaint()">我的投诉</view>
 		</view>
 		<view class="uni-padding-wrap">
@@ -44,9 +44,10 @@
 						user[0].id
 					}}
 				</view>
-				<view class="li">
-					等&nbsp;&nbsp;&nbsp;级：&nbsp;&nbsp;&nbsp;{{ user[0].grade }}
-					<span class="Grade" @click="showgrade()">等级介绍</span>
+				<view class="li active">
+					等&nbsp;&nbsp;&nbsp;级：&nbsp;&nbsp;&nbsp;超凡大师
+					<!-- {{ user[0].grade }} -->
+					<span class="Grade" @click="showgrade()">段位介绍</span>
 				</view>
 				<view class="li">姓&nbsp;&nbsp;&nbsp;名：&nbsp;&nbsp;&nbsp;{{ user[0].name }}</view>
 				<view class="li">推荐人：&nbsp;&nbsp;{{ user[0].recommender }}</view>
@@ -168,7 +169,7 @@
 			</view>
 		</view>
 
-		<view class="footer">在线客服： QQ 2708232258</view>
+		<view class="footer">在线客服： QQ 2512122978</view>
 	</view>
 </template>
 
@@ -315,7 +316,11 @@ export default {
 <style lang="less">
 @import '//at.alicdn.com/t/font_1070232_urk1rzsge9.css';
 page{
-	background-image: url(../../static/images/background.png);
+	
+}
+.content{
+	background-color: rgba(25, 25, 25, 0.8);
+	color: rgba(250, 250, 250, 0.8);
 }
 .modal {
 	.mask {
@@ -373,7 +378,7 @@ page{
 }
 
 page {
-	background-color: #2107a5;
+	// background-image: ''
 }
 
 .content .uni-padding-wrap {
@@ -404,7 +409,7 @@ page {
 		padding-left: 120upx;
 		font-weight: bold;
 		width: 40%;
-		color: #867afb;
+		// color: rgba(255,255,255,1);
 		margin: 0 auto;
 		display: inline-block;
 	}
@@ -415,7 +420,7 @@ page {
 		font-weight: 100;
 		width: 20%;
 		font-size: 28upx;
-		color: white;
+		color: red;
 	}
 }
 
@@ -427,8 +432,7 @@ page {
 .content .information {
 	display: flex;
 	justify-content: space-between;
-
-	background: #422e88;
+	background-color: rgba(250,250,250, 0.8);
 	margin: 16upx 20upx;
 	border-radius: 16upx;
 	padding: 0 20upx;
@@ -436,21 +440,28 @@ page {
 	font-size: 22upx;
 
 	.ul {
-		color: rgba(255, 255, 255, 0.8);
+		color: black;
 		list-style: none;
 		font-size: 28upx;
 		padding: 0;
 
 		.li {
+			// border: 1upx solid red;
 			line-height: 1;
+			border-radius: 20upx;
+			color: #ff1f1f;
 			width: 100%;
-			flex: 1;
-			align-items: center;
+			// flex: 1;
+			// align-items: center;
 			padding: 12upx;
 			font-size: 24upx;
-			color: rgb(225, 225, 225, 0.8);
+			color: black;
 			text-align: left;
 			list-style: none;
+		}
+		.active{
+			color: #ff1f1f;
+			font-size: 28upx;
 		}
 	}
 
@@ -465,9 +476,9 @@ page {
 		}
 		.credit,
 		.account {
-			color: #877bf9;
+			color: black;
 			width: 180upx;
-			border: 1px solid #877bf9;
+			border: 1px solid rgba(0, 0, 0, 0.6);
 			font-size: 24upx;
 			text-align: center;
 			border-radius: 12upx;
@@ -477,11 +488,11 @@ page {
 }
 
 .content .Notice {
-	background: #422e88;
+	background-color: rgba(250,250,250, 0.8);
+	color: black;
 	margin: 20upx 20upx;
 	padding: 20upx 20upx;
 	border-radius: 16upx;
-	color: rgb(225, 225, 225, 0.8);
 	display: flex;
 	flex-direction: row;
 
@@ -520,8 +531,8 @@ page {
 				border-radius: 20upx;
 				font-size: 24upx;
 				vertical-align: middle;
-				border-color: #f4cd4a;
-				color: #f4cd4a;
+				border-color: #c8000;
+				color: #c80000;
 				position: relative;
 			}
 
@@ -532,11 +543,11 @@ page {
 				text-align: left;
 				margin-right: 10upx;
 				margin-top: 0;
-				border-radius: 20upx;
+				// border-radius: 20upx;
 				font-size: 24upx;
 				vertical-align: middle;
-				border-color: #f4cd4a;
-				color: #f4cd4a;
+				border-color: #c80000;
+				color: #c80000;
 				overflow: hidden;
 				text-overflow: ellipsis;
 				white-space: nowrap;
@@ -556,9 +567,9 @@ page {
 .index_middle_nav {
 	display: flex;
 	margin: 0 20upx;
-	background-color: rgba(255, 255, 255, 0.1);
+	background-color: rgba(250,250,250, 0.8);
+	color: black;
 	border-radius: 20upx;
-	color: rgba(255, 255, 255, 0.8);
 	flex-direction: row;
 	flex-wrap: wrap;
 	justify-content: space-between;
@@ -591,9 +602,9 @@ page {
 	height: 104upx;
 	bottom: 0;
 	left: 0;
-	background: rgba(255, 255, 255, 0.1);
-	color: #6356e2;
-	font-size: 12upx;
+	background: rgba(0, 0, 0, 0.1);
+	color: white;
+	font-size: 24upx;
 	line-height: 2.56rem;
 	text-align: center;
 }
@@ -603,10 +614,14 @@ page {
 	width: 140upx;
 	height: 32upx;
 	text-align: center;
-	line-height: 24upx;
-	color: #adc5fd;
+	// line-height: 24upx;
+	color: #FFFAE8;
 	background: url(../../static/images/small_btn.png);
+	// background-color: #CD9E38;
+	border-radius: 20upx;
 	background-size: 100% 100%;
 	margin-left: 20upx;
 }
 </style>
+
+

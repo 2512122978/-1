@@ -191,7 +191,7 @@
 				}
 			}
 			.right{
-				font-size: 10upx;
+				font-size: 20upx;
 			}
 		}
 		.footer{
