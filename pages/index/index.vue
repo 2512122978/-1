@@ -189,8 +189,14 @@
 	@import '//at.alicdn.com/t/font_1070232_urk1rzsge9.css';
 
 	page {
-		background-image: url(../../static/images/background.png);
+		// background-image: url(../../static/images/background.png);
+		// background-color: rgba(25, 25, 25, 0.1)none repeat scroll !important;
+		background-color: rgba(25, 25, 25, 0.6);
+		border-radius: 60upx;
 		padding: 0 50upx;
+	}
+	.content{
+		// background-color: 
 	}
 
 	.content .logo-wrap-bg {
@@ -254,7 +260,8 @@
 
 	.content .loginsingup-input {
 		// background: rgba(255, 255, 255, .3);
-		background: #423087;
+		// background-color: rgba(25, 25, 25, 1);
+		// background: #423087;	
 		margin-top: 120upx;
 		padding: 20upx 30upx;
 		padding-bottom: 120upx;

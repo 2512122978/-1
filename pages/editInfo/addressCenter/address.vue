@@ -165,13 +165,16 @@
 <style lang="less">
 	// 此处引入css、less等样式
 	page {
-		background-image: url(../../../static/images/background.png);
+		// background-image: url(../../../static/images/background.png);
 		color: rgba(255, 255, 255, 0.8);
 		font-size: 28upx;
-		padding: 0 30upx;
 	}
-
+.content{
+	background-color: rgba(25, 25, 25, 0.8);
+		padding: 0 30upx;
+}
 	.item-list {
+		
 		.row {
 			display: flex;
 			flex-direction: column;

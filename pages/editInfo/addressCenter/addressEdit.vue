@@ -51,7 +51,8 @@
 
 <style lang="less">
 	page {
-		background-image: url(../../../static/images/background.png);
+		// background-image: url(../../../static/images/background.png);
+		background-color: rgba(25, 25, 25, 0.8);
 		color: rgba(255, 255, 255, 0.8);
 		font-size: 28upx;
 		padding: 0 30upx;

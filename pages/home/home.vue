@@ -2,7 +2,7 @@
 	<!-- 轮播图间距与阴影，id模块的间距（已修改） -->
 	<view class="content">
 		<view class="head">
-			<view class="title">联盟冲冲冲</view>
+			<view class="title">王者联盟</view>
 			<view class="Complaint" @click="complaint()">我的投诉</view>
 		</view>
 		<view class="uni-padding-wrap">
@@ -138,37 +138,64 @@
 				</view>
 				<view class="body">
 					<view class="line1">
-						<image class="imageleft" src="../../static/images/13.png" mode=""></image>
-						<image class="imageright" src="../../static/images/12.png" mode=""></image>
+						<view class="imageleft">
+							黑铁
+						</view>
+						<view class="imageleft">
+							白银
+						</view>
 					</view>
 					<view class="line1">
-						<image class="imageleft" src="../../static/images/11.png" mode=""></image>
-						<image class="imageright" src="../../static/images/10.png" mode=""></image>
+						<view class="imageleft">
+							黑铁
+						</view>
+						<view class="imageleft">
+							青铜
+						</view>
 					</view>
 					<view class="line1">
-						<image class="imageleft" src="../../static/images/9.png" mode=""></image>
-						<image class="imageright" src="../../static/images/8.png" mode=""></image>
+						<view class="imageleft">
+							白银
+						</view>
+						<view class="imageleft">
+							黄金
+						</view>
 					</view>
 					<view class="line1">
-						<image class="imageleft" src="../../static/images/7.png" mode=""></image>
-						<image class="imageright" src="../../static/images/6.png" mode=""></image>
+						<view class="imageleft">
+							白金
+						</view>
+						<view class="imageleft">
+							钻石
+						</view>
 					</view>
 					<view class="line1">
-						<image class="imageleft" src="../../static/images/5.png" mode=""></image>
-						<image class="imageright" src="../../static/images/4.png" mode=""></image>
+						<view class="imageleft">
+							超凡大师1
+						</view>
+						<view class="imageleft">
+							超凡大师2
+						</view>
 					</view>
 					<view class="line1">
-						<image class="imageleft" src="../../static/images/3.png" mode=""></image>
-						<image class="imageright" src="../../static/images/2.png" mode=""></image>
+						<view class="imageleft">
+							傲世宗师1
+						</view>
+						<view class="imageleft">
+							傲世宗师2
+						</view>
 					</view>
 					<view class="line1">
-						<image class="imageleft" src="../../static/images/1.png" mode=""></image>
-						<image class="imageright" src="../../static/images/0.png" mode=""></image>
+						<view class="imageleft">
+							最强王者1
+						</view>
+						<view class="imageleft">
+							最强王者2
+						</view>
 					</view>
 				</view>
 			</view>
 		</view>
-
 		<view class="footer">在线客服： QQ 2512122978</view>
 	</view>
 </template>
@@ -179,6 +206,7 @@ export default {
 	data() {
 		return {
 			modal: false,
+			modal2:true,
 			user: [
 				{
 					id: 153510558,
@@ -213,6 +241,7 @@ export default {
 	 */
 	onLoad(options) {
 		this.regLogin()
+		this.toastTap()
 	},
 	/**
 	 * uni-app
@@ -239,6 +268,12 @@ export default {
 	 * Vue的自定义方法
 	 */
 	methods: {
+		toastTap() {
+			uni.showToast({
+				title: "钻石大神登录",
+				image: "../../static/logo.png"
+			})
+		},
 		complaint() {
 			uni.navigateTo({
 				url: '../complaint/complaint'
@@ -287,6 +322,11 @@ export default {
 			let that = this;
 			that.modal = false;
 		},
+		showModal(){
+			let that = this;
+			that.modal2 = true;
+		},
+			
 		account() {
 			uni.navigateTo({
 				url: '../account/account'
@@ -313,8 +353,11 @@ export default {
 };
 </script>
 
+
+
 <style lang="less">
 @import '//at.alicdn.com/t/font_1070232_urk1rzsge9.css';
+@pdlr: 0 30upx;
 page{
 	
 }

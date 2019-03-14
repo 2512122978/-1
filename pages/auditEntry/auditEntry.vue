@@ -207,8 +207,9 @@
 	@import '//at.alicdn.com/t/font_1069694_b0katkm1hdo.css';
 
 	page {
-		background: #2b1581;
-		background-image: url(../../static/images/background.png);
+		// background: #2b1581;
+		// background-image: url(../../static/images/background.png);
+		background-color: rgba(25, 25, 25, 0.8);
 	}
 
 	.content {
@@ -238,7 +239,8 @@
 
 		.headup {
 			display: flex;
-			margin: 20upx;
+			// margin: 20upx;
+			padding-top: 20upx;
 
 			.head {
 				height: 36upx;

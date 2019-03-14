@@ -107,7 +107,8 @@
 <style lang="less">
 	// 此处引入css、less等样式
 	page {
-		background-image: url(../../../static/images/background.png);
+		// background-image: url(../../../static/images/background.png);
+		background-color: rgba(25, 25, 25, 0.8);
 	}
 
 	.content {
@@ -132,7 +133,7 @@
 			// justify-content: space-between;
 			font-size: 28upx;
 			color: rgba(255, 255, 255, .8);
-			background: #3B25A2;
+			// background: #3B25A2;
 
 			.title {
 				margin-right: 30upx;

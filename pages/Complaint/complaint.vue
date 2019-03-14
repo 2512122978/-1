@@ -14,7 +14,6 @@
 				</view>
 			</block>
 			<view :class="'line line' + (tabActive + 1 )">
-		
 			</view>
 		</view>
 	</view>
@@ -197,18 +196,20 @@
 
 <style lang="less">
 	@import '//at.alicdn.com/t/font_1069694_b0katkm1hdo.css';
-
+	
 	page {
-		background-image: url(../../static/images/background.png);
+// 		background-color: rgba(25, 25, 25, 0.8);
+// 		color: rgba(250, 250, 250, 0.8);	
+background-color: rgba(25, 25, 25, 0.6);
 	}
 
 	.content {
+		color: rgba(250, 250, 250, 0.8);	
 		.backimg {
 			background-color: #381FB0;
 			color: white;
 			display: flex;
 			flex-direction: row;
-			// justify-content: center;
 			align-items: center;
 			padding: 20upx 22upx;
 			border-bottom: 1px solid rgba(255, 255, 255, 0.1);

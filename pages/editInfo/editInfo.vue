@@ -78,12 +78,12 @@
 				</view>
 			</view>
 		</view>
-		<view class="btn-box">
+		<view class="btn-box" @click="submit()">
 			<view class="title">
-				退出
+				确定
 			</view>
 			<view class="btn">
-				<image src="../../static/btn.png" mode="widthFix" class="checkLogin" ></image>
+				<!-- <image src="../../static/btn.png" mode="widthFix" class="checkLogin" ></image> -->
 			</view>
 		</view>
 	</view>
@@ -207,6 +207,9 @@
 						})
 					}, 700)
 				}
+			},
+			submit(){
+				console.log("确认设置")
 			}
 		}
 	}
@@ -215,7 +218,9 @@
 <style lang="less">
 	// 此处引入css、less等样式
 	page {
-		background-image: url(../../static/images/background.png);
+		// background-image: url(../../static/images/background.png);
+		background-color: rgba(25, 25, 25, 0.8);
+		height: 100%;
 	}
 	
 	.save {
@@ -274,10 +279,22 @@
 		align-items: center;
 		
 		.title {
+			display: flex;
+			justify-content: center;
+			align-items: center;
 			position: absolute;
 			top: 18%;
-			color: white;
-			z-index: 2;
+			color: black;
+			z-index: 10;
+			background-color: white;
+			width: 670upx;
+			height: 88upx;
+			border-radius: 40upx;
+			text-align: center;
+			
+		}
+		.btn{
+			
 		}
 	}
 </style>

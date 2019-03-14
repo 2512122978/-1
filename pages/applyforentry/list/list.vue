@@ -343,7 +343,8 @@
 <style lang="less">
 	// 此处引入css、less等样式
 	page {
-		background-image: url(../../../static/images/background.png);
+		// background-image: url(../../../static/images/background.png);
+		background-color: rgba(25, 25, 25, 0.8);
 		color: rgba(255, 255, 255, 0.8);
 	}
 
@@ -372,7 +373,7 @@
 
 	.headup {
 		display: flex;
-		margin: 18upx;
+		margin: 0 18upx 18upx 18upx;
 
 		.head {
 			height: 44upx;

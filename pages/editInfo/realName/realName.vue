@@ -12,23 +12,25 @@
 			<view class="title">
 				请上传清晰的身份证正面和背面图片
 			</view>
+			<view class="down">
+				<block v-if="imageSrc">
+					<image class="img" :src="imageSrc" mode="widthFix"></image>
+				</block>
+				<block v-else>
+					<view class="box" @click="chooseImage()">
+						<image class="img" src="../../../static/images/zhengm.png" mode=""></image>
+					</view>
+				</block>
+				<block v-if="imageSrc1">
+					<image class="img1" :src="imageSrc1" mode="widthFix"></image>
+				</block>
+				<block v-else>
+					<view class="box1" @click="chooseImage1()">
+						<image class="img1" src="../../../static/images/zhengm.png" mode=""></image>
+					</view>
+				</block>
+			</view>
 			
-			<block v-if="imageSrc">
-				<image class="img" :src="imageSrc" mode="widthFix"></image>
-			</block>
-			<block v-else>
-				<view class="box" @click="chooseImage()">
-					<image class="img" src="../../../static/images/zhengm.png" mode=""></image>
-				</view>
-			</block>
-			<block v-if="imageSrc1">
-				<image class="img1" :src="imageSrc1" mode="widthFix"></image>
-			</block>
-			<block v-else>
-				<view class="box1" @click="chooseImage1()">
-					<image class="img1" src="../../../static/images/zhengm.png" mode=""></image>
-				</view>
-			</block>
 			
 		</view>
 		<view class="btn-box">
@@ -211,7 +213,8 @@
 <style lang="less">
 	// 此处引入css、less等样式
 	page {
-		background-image: url(../../../static/images/background.png);
+		// background-image: url(../../../static/images/background.png);
+		background-color: rgba(25, 25, 25, 0.8);
 		padding: 0 30upx;
 	}
 
@@ -228,6 +231,7 @@
 		}
 
 		.idCard-box {
+			// display: flex;
 			.title {
 				display: flex;
 				height: 100upx;
@@ -235,12 +239,19 @@
 				color: rgba(255, 255, 255, 0.8);
 				font-size: 28upx;
 			}
-
-			.box {
+			.down{
 				display: flex;
+				flex-direction: column;
 				justify-content: center;
-				margin-bottom: 30upx;
+				align-items: center;
+				.box {
+					display: flex;
+					justify-content: center;
+					margin-bottom: 30upx;
+				}
 			}
+
+			
 		}
 	}
 

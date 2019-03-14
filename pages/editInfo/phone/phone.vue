@@ -21,7 +21,7 @@
 				退出
 			</view>
 			<view class="btn">
-				<image src="../../../static/btn.png" mode="widthFix" class="checkLogin" ></image>
+				<!-- <image src="../../../static/btn.png" mode="widthFix" class="checkLogin" ></image> -->
 			</view>
 		</view>
 	</view>
@@ -113,7 +113,8 @@
 <style lang="less">
 	// 此处引入css、less等样式
 	page {
-		background-image: url(../../../static/images/background.png);
+		// background-image: url(../../../static/images/background.png);
+		background-color: rgba(25, 25, 25, 0.8);
 		color: rgba(255, 255, 255, 0.8);
 	}
 
@@ -125,7 +126,7 @@
 		display: flex;
 		height: 90upx;
 		align-items: center;
-		color: #867AFB;
+		// color: #867AFB;
 		font-size: 28upx;
 	}
 	.item-list{
@@ -149,15 +150,25 @@
 		position: relative;
 		display: flex;
 		// height: 150upx;
-		margin-top: 120upx;
+		// padding-top: 220upx;
 		justify-content: center;
 		align-items: center;
 		
 		.title {
+			display: flex;
+			justify-content: center;
+			align-items: center;
 			position: absolute;
-			top: 18%;
+			top: 28%;
 			color: white;
-			z-index: 2;
+			z-index: 10;
+			background-color: rgba(25, 25, 25, 0.2);
+			// border-color: rgba(:;, 25, 25, 0.8);
+			border: 1upx solid rgba(25, 25, 25, 0.8);
+			width: 670upx;
+			height: 88upx;
+			border-radius: 40upx;
+			text-align: center;
 		}
 	}
 </style>

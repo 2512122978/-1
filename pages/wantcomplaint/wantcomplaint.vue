@@ -246,16 +246,16 @@
 <style lang="less">
 	// 此处引入css、less等样式
 	page {
-		background-image: url(/static/img/background.b024e32d.png);
+		background-color: rgba(25, 25, 25, 0.8);
 	}
 
 	.content {
 		.head {
-			background-image: url(/static/img/background.b024e32d.png);
-			margin: 20upx 24upx;
+			margin: 0 24upx 20upx 24upx;
+			padding-top: 24upx;
 
 			.text {
-				color: #867afb;
+				color:rgba(255, 255, 255, 0.8);
 				font-size: 0.512rem;
 				line-height: 36upx;
 			}

@@ -231,7 +231,8 @@
 <style lang="less">
 	// 此处引入css、less等样式
 	page {
-		background-image: url(../../static/images/background.png);
+		// background-image: url(../../static/images/background.png);
+		background-color: rgba(25, 25, 25, 0.8);
 		color: white;
 		// font-size: 12upx;
 	}
@@ -298,10 +299,10 @@
 					padding: 26upx 0;
 					padding-left: 34upx;
 					width: 160upx;
-					font-size: 12upx;
+					font-size: 24upx;
 				}
 				.right{
-					font-size: 10upx;
+					font-size: 20upx;
 					font-weight: 600;
 				}
 			}
@@ -317,10 +318,10 @@
 				padding: 26upx 0;
 				padding-left: 34upx;
 				width: 160upx;
-				font-size: 12upx;
+				font-size: 24upx;
 			}
 			.right{
-				font-size: 10upx;
+				font-size: 20upx;
 				font-weight: 100;
 			}
 		}
@@ -352,10 +353,10 @@
 					padding: 26upx 0;
 					padding-left: 34upx;
 					width: 160upx;
-					font-size: 12upx;
+					font-size: 24upx;
 				}
 				.right{
-					font-size: 10upx;
+					font-size: 20upx;
 					font-weight: bold;
 				}
 			}

@@ -123,7 +123,8 @@ export default {
 
 page {
 	background: #2b1581;
-	background-image: url(../../static/images/background.png);
+	// background-image: url(../../static/images/background.png);
+	background-color: rgba(25, 25, 25, 0.6);
 }
 
 .content {
@@ -152,15 +153,16 @@ page {
 	}
 
 	.body {
-		margin: 20upx 26upx;
-		padding: 30upx;
-		background: #381fb0;
+		// margin: 20upx 26upx;
+		// padding: 0 30upx 30upx 30upx ;
+		padding: 40upx 40upx;
+		// background: #381fb0;
 		border-radius: 20upx;
 
 		.up {
 			display: flex;
 			flex-direction: row;
-			margin-top: 32upx;
+			// margin-top: 32upx;
 
 			.left {
 				display: flex;

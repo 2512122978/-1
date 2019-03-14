@@ -119,12 +119,13 @@ export default {
 
 <style lang="less">
 page {
-	background-image: url(../../static/images/background.png);
+	background-color: rgba(25, 25, 25, 0.6);
 	font-weight: 560;
 	font-size: 20upx;
 }
 
 .content {
+	height: 1246upx;
 	.backimg {
 		background-color: #381fb0;
 		color: white;

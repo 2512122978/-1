@@ -234,10 +234,11 @@ export default {
 <style lang="less">
 // 此处引入css、less等样式
 page {
-	background-image: url(../../static/images/background.png);
+	// background-image: url(../../static/images/background.png);
 	// font-weight: 560;
 	color: rgba(255, 255, 255, 0.8);
 	// font-size: 20upx;
+	background-color: rgba(25, 25, 25, 0.8);
 }
 .content {
 	.backimg {
@@ -267,7 +268,8 @@ page {
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
-		margin: 20upx 20upx 10upx 20upx;
+		padding: 10upx;
+		margin: 0upx 20upx 10upx 20upx;
 		padding-top: 24upx;
 		padding-left: 22upx;
 		padding-bottom: 56upx;
