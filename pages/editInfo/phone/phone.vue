@@ -18,7 +18,7 @@
 		</view>
 		<view class="btn-box">
 			<view class="title">
-				退出
+				确认
 			</view>
 			<view class="btn">
 				<!-- <image src="../../../static/btn.png" mode="widthFix" class="checkLogin" ></image> -->
@@ -159,10 +159,11 @@
 			justify-content: center;
 			align-items: center;
 			position: absolute;
+			margin-top: 40upx;
 			top: 28%;
-			color: white;
+			color: black;
+			background-color: white;
 			z-index: 10;
-			background-color: rgba(25, 25, 25, 0.2);
 			// border-color: rgba(:;, 25, 25, 0.8);
 			border: 1upx solid rgba(25, 25, 25, 0.8);
 			width: 670upx;

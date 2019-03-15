@@ -1,14 +1,5 @@
 <template>
 	<view class="content">
-	<!-- <view class="backimg">
-		<image
-			@click="backhome()"
-			class="backimage"
-			src="../../static/images/back.png"
-			mode=""
-		></image>
-		<view class="title">公告详情</view>
-	</view> -->
 	<view class="head">
 		{{noticedetails[0].title}}
 	</view>
@@ -137,7 +128,6 @@
 <style lang="less">
 	// 此处引入css、less等样式
 	page {
-		// background-image: url(../../static/images/background.png);
 		background-color: rgba(25, 25, 25, 0.6);
 		font-weight: 560;
 		color: rgba(255, 255, 255, 0.8);
@@ -148,7 +138,6 @@
 			color: white;
 			display: flex;
 			flex-direction: row;
-			// justify-content: center;
 			align-items: center;
 			padding: 20upx 22upx;
 			border-bottom: 1px solid rgba(255, 255, 255, 0.1);

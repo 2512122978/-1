@@ -234,10 +234,7 @@ export default {
 <style lang="less">
 // 此处引入css、less等样式
 page {
-	// background-image: url(../../static/images/background.png);
-	// font-weight: 560;
 	color: rgba(255, 255, 255, 0.8);
-	// font-size: 20upx;
 	background-color: rgba(25, 25, 25, 0.8);
 }
 .content {
@@ -246,7 +243,6 @@ page {
 		color: white;
 		display: flex;
 		flex-direction: row;
-		// justify-content: center;
 		align-items: center;
 		padding: 20upx 22upx;
 		border-bottom: 1px solid rgba(255, 255, 255, 0.1);

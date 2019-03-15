@@ -2,7 +2,7 @@
 	<!-- 轮播图间距与阴影，id模块的间距（已修改） -->
 	<view class="content">
 		<view class="head">
-			<view class="title">王者联盟</view>
+			<view class="title">共享联盟新零售</view>
 			<view class="Complaint" @click="complaint()">我的投诉</view>
 		</view>
 		<view class="uni-padding-wrap">
@@ -40,17 +40,16 @@
 		<view class="information">
 			<view class="ul">
 				<view class="li">
-					I&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;D:&nbsp;&nbsp;&nbsp;&nbsp;{{
-						user[0].id
-					}}
+					I&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;D:&nbsp;&nbsp;&nbsp;&nbsp;
+					{{info.number}}
 				</view>
 				<view class="li active">
 					等&nbsp;&nbsp;&nbsp;级：&nbsp;&nbsp;&nbsp;超凡大师
 					<!-- {{ user[0].grade }} -->
 					<span class="Grade" @click="showgrade()">段位介绍</span>
 				</view>
-				<view class="li">姓&nbsp;&nbsp;&nbsp;名：&nbsp;&nbsp;&nbsp;{{ user[0].name }}</view>
-				<view class="li">推荐人：&nbsp;&nbsp;{{ user[0].recommender }}</view>
+				<view class="li">姓&nbsp;&nbsp;&nbsp;名：&nbsp;&nbsp;&nbsp;{{info.realname}}</view>
+				<view class="li">推荐人：&nbsp;&nbsp;{{info.recommend}}</view>
 			</view>
 			<view class="right">
 				<view class="credit" @click="credit()">信用分：100分</view>
@@ -196,17 +195,39 @@
 				</view>
 			</view>
 		</view>
+		
+		
+		<!-- 模态框 -->
+		<view class="modal2" v-show="modal2">
+			<view class="mask" @tap="showModal()"></view>
+			<view class="box">
+				<view class="body">
+					<view class="line1">
+						<view class="imageleft">
+							欢迎
+						</view>
+						<view class="imageleft">
+							超凡大师
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
 		<view class="footer">在线客服： QQ 2512122978</view>
 	</view>
 </template>
 
 <script>
+	const util = require('../../util/util.js')
+	const api = require('../../util/api.js')
+	// const user = require('@/utils/user.js')
 // 此处引入你要的组件
 export default {
 	data() {
 		return {
 			modal: false,
 			modal2:true,
+			info:{},
 			user: [
 				{
 					id: 153510558,
@@ -240,8 +261,9 @@ export default {
 	 * 指的是页面加载完毕执行的函数
 	 */
 	onLoad(options) {
-		this.regLogin()
-		this.toastTap()
+		// this.regLogin()
+		this.showmodel2()
+		
 	},
 	/**
 	 * uni-app
@@ -268,12 +290,6 @@ export default {
 	 * Vue的自定义方法
 	 */
 	methods: {
-		toastTap() {
-			uni.showToast({
-				title: "钻石大神登录",
-				image: "../../static/logo.png"
-			})
-		},
 		complaint() {
 			uni.navigateTo({
 				url: '../complaint/complaint'
@@ -324,6 +340,10 @@ export default {
 		},
 		showModal(){
 			let that = this;
+			that.modal2 = false;
+		},
+		showmodel2(){
+			let that = this
 			that.modal2 = true;
 		},
 			
@@ -332,23 +352,9 @@ export default {
 				url: '../account/account'
 			});
 		},
-		regLogin() {
-			let that = this
-			let token = uni.getStorageSync('token')
 		
-			if (!token) {
-				uni.showToast({
-					title: "登录过期",
-					icon: "none"
-				})
-				// new Promise()
-				setTimeout(() => {
-					uni.navigateTo({
-						url: "/pages/index/index"
-					})
-				}, 700)
-			}
-		}
+		
+	
 	}
 };
 </script>
@@ -365,7 +371,7 @@ page{
 	background-color: rgba(25, 25, 25, 0.8);
 	color: rgba(250, 250, 250, 0.8);
 }
-.modal {
+.modal,.modal2{
 	.mask {
 		position: fixed;
 		z-index: 998;
@@ -408,10 +414,13 @@ page{
 				padding: 21upx 40upx;
 				border-bottom: 1px solid rgba(225, 225, 225, 0.1);
 				.imageleft {
+					text-align: center;
+					color: #FFFAE8;
 					height: 52upx;
 					width: 240upx;
 				}
 				.imageright {
+					// text-align: justify;
 					height: 52upx;
 					width: 240upx;
 				}
@@ -420,6 +429,60 @@ page{
 	}
 }
 
+.modal2{
+		.mask {
+			position: fixed;
+			z-index: 998;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			background-color: rgba(0, 0, 0, 0.7);
+			z-index: 2;
+		}
+	
+		.box {
+			position: fixed;
+			width: 480upx;
+			height: 100upx;
+			background-image: url(../../static/images/imodelbackground.png);
+			background-size: 100% 100%;
+			top: calc(50% - 200upx / 2);
+			left: calc(50% - 400upx / 2);
+			z-index: 2 + 1;
+			.title1 {
+				padding-top: 66upx;
+				padding-left: 90upx;
+				.image {
+					height: 42upx;
+					width: 426upx;
+				}
+			}
+			.titleLine {
+				.image {
+					height: 1upx;
+					width: 100%;
+				}
+			}
+			.body {
+				.line1 {
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					padding: 21upx 40upx;
+					border-bottom: 1px solid rgba(225, 225, 225, 0.1);
+					.imageleft {
+						height: 52upx;
+						width: 240upx;
+					}
+					.imageright {
+						height: 52upx;
+						width: 240upx;
+					}
+				}
+			}
+		}
+}
 page {
 	// background-image: ''
 }

@@ -273,7 +273,6 @@
 	.btn-box {
 		position: relative;
 		display: flex;
-		// height: 150upx;
 		margin-top: 120upx;
 		justify-content: center;
 		align-items: center;

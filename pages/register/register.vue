@@ -106,9 +106,15 @@
 </template>
 
 <script>
+	const util = require('@/util/util.js');
+	const api = require('@/util/api.js');
+	
 export default {
 	data() {
 		return {
+			info: {},
+			isformSubmit: 1,
+			
 			phone:'',
 			code:'',
 			psw:'',
@@ -130,6 +136,10 @@ export default {
 	 */
 	onLoad(options) {
 		this.regLogin()
+		let info = uni.getStorageSync("userInfo")
+		this.info = info
+		this.recommend = info.tel
+		
 	},
 	/**
 	 * uni-app
@@ -175,14 +185,55 @@ export default {
 		register(){
 			let that = this
 			let phone = that.phone
-			let code = that.code
+			//图文验证码（暂时没有）
+			// let code = that.code
 			let psw = that.psw
 			let pswagain = that.pswagain
 			let nickname = that.nickname
+			//邀请人手机号（recommend）
 			let inviterphone = that.inviterphone
 			let weixin = that.weixin
-			let alipay = that.alipay
-			console.log(phone+code+psw+pswagain+nickname+inviterphone+weixin+alipay)
+			//支付宝接口(暂时没有)
+			// let alipay = that.alipay
+			// console.log(phone+code+psw+pswagain+nickname+inviterphone+weixin+alipay)
+			util.request(api.getRegister,{
+						tel: phone,
+						realname: nickname,
+						wechat: weixin,
+						password: psw,
+						recommend: inviterphone
+			},"POST").then((res)=>{
+				let code = JSON.stringify(res.code)
+				if(code == 200){
+					uni.showToast({
+								title: "注册成功",
+								icon: "none"
+							});
+							setTimeout(function() {
+								uni.reLaunch({
+									url: "/pages/main/main"
+								})
+							}, 1000);
+				} else if (code == 101) {
+							uni.showToast({
+								title: "推荐人不存在",
+								icon: "none"
+							});
+							return;
+						} else if (code == 102) {
+							uni.showToast({
+								title: "该手机号已被注册",
+								icon: "none"
+							});
+							return;
+						} else if (code == 103) {
+							uni.showToast({
+								title: "系统错误",
+								icon: "none"
+							});
+							return;
+						}
+			})
 		},
 		regLogin() {
 			let that = this
@@ -208,7 +259,7 @@ export default {
 <style>
 @import //at.alicdn.com/t/font_1069694_b0katkm1hdo.css;
 	page {
-	background-image: url(../../static/images/background.png);
+	background-color: rgba(25, 25, 25, 0.6);
 	color: rgba(255, 255, 255, .8);
 	font-size: 32upx;
 	padding: 10upx 20upx;

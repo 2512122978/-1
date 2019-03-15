@@ -38,6 +38,8 @@
 </template>
 
 <script>
+	const util = require('@/util/util.js');
+	const api = require('@/util/api.js');
 	// 此处引入你要的组件
 	export default {
 		data() {
@@ -130,32 +132,43 @@
 					uni.showToast({
 						title: "密码少于6位！",
 						icon: "none"
-					})
+					});if (code == 200) {
+						uni.setStorageSync("userToken", token)
+						uni.setStorageSync("userInfo", res.data.info)
+						uni.showToast({
+							icon: 'none',
+							title: '登录成功'
+						});
+				
+						setTimeout(function() {
+							uni.reLaunch({
+								url: "/pages/home/home"
+							})
+						}, 1000);
+					} else {
+						uni.showToast({
+							icon: 'none',
+							title: '登录失败'
+						});
+					}
 					return
 				}
-
-				let apiJs
-				//这是登录接口
-				//必填：acc。pwd
-				apijs.login = "www.xxx/m=getLogin"
-				
-				uni.request({
-					url: apiJs.login,
-					data: {
-						account: acc,
-						password: pwd,
-					},
-					method: "post",
-					success: (res) => {
-						if(res.token) {
-							uni.setStorageSync('token',res.token)
-							return
-						}
-						uni.navigateTo({
-							url:'../home/home',
-						})
+				util.request(api.login,{
+					data:{
+						tel:that.account,
+						password:that.password
 					}
+				},"POST").then((res)=>{
+					// let token  = res.data.token
+					uni.setStorageSync('token',res.data.token)
+					let code = res.code
+					console.log(res)
+					uni,uni.navigateTo({
+						url: '../../pages/index/index',
+					});
 				})
+
+
 			},
 			onClick() {
 				uni.navigateTo({
@@ -189,22 +202,17 @@
 	@import '//at.alicdn.com/t/font_1070232_urk1rzsge9.css';
 
 	page {
-		// background-image: url(../../static/images/background.png);
-		// background-color: rgba(25, 25, 25, 0.1)none repeat scroll !important;
 		background-color: rgba(25, 25, 25, 0.6);
 		border-radius: 60upx;
 		padding: 0 50upx;
 	}
 	.content{
-		// background-color: 
 	}
 
 	.content .logo-wrap-bg {
-		// background: transparent;
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		// padding-top: 16upx;
 		margin: 120upx 50upx 0 50upx;
 		padding: 0;
 		font-size: 24upx;
@@ -229,8 +237,6 @@
 		justify-content: center;
 		align-items: center;
 
-		// 	height: 300upx;
-		// 	margin: 50upx;
 		.logo {
 			width: 100upx;
 			height: 100upx;
@@ -238,11 +244,6 @@
 	}
 
 	.content .logoimg {
-		// 	display: flex;
-		// 	justify-content: center;
-		// 	align-items: center;
-		// 	height: 300upx;
-		// 	width: 100%;
 	}
 
 	.content .text {
@@ -259,9 +260,6 @@
 	}
 
 	.content .loginsingup-input {
-		// background: rgba(255, 255, 255, .3);
-		// background-color: rgba(25, 25, 25, 1);
-		// background: #423087;	
 		margin-top: 120upx;
 		padding: 20upx 30upx;
 		padding-bottom: 120upx;
@@ -303,7 +301,6 @@
 		width: 100%;
 		align-items: center;
 		border-bottom-style: solid;
-		// border-bottom: #333;
 		border-bottom: 1upx solid rgba(255, 255, 255, 0.8);
 		padding: 20upx 0;
 	}
@@ -348,11 +345,5 @@
 		width: 36upx;
 		height: 36upx;
 		padding: 0 20upx;
-	}
-
-	.login_id {
-		// 	width: 100%;
-		// 	display: flex;
-		// 	justify-content: center;
 	}
 </style>

@@ -1,9 +1,5 @@
 <template>
 	<view class="content">
-	<!-- 	<view class="backimg">
-			<image @click="backhome()" class="backimage" src="../../static/images/back.png" mode=""></image>
-			<view class="title">闯关记录详情</view>
-		</view> -->
 		<view class="head">
 			<view class="text">
 				已确认

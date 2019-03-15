@@ -1,14 +1,5 @@
 <template>
 	<view class="content">
-		<!-- <view class="backimg">
-			<image
-				@click="backhome()"
-				class="backimage"
-				src="../../static/images/back.png"
-				mode=""
-			></image>
-			<view class="title">审核闯关记录</view>
-		</view> -->
 		<view class="headup">
 			<view class="head">
 				<image class="image" src="../../static/images/search.png" mode=""></image>

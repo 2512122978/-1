@@ -268,7 +268,6 @@
 			margin: 28upx 20upx;
 
 			.title {
-				// padding: 4upx;
 				display: flex;
 				align-items: center;
 

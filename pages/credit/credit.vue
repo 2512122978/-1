@@ -1,14 +1,5 @@
 <template>
 	<view class="content">
-		<!-- <view class="backimg">
-			<image
-				@click="backhome()"
-				class="backimage"
-				src="../../static/images/back.png"
-				mode=""
-			></image>
-			<view class="title">综合信用评分</view>
-		</view> -->
 		<view class="head">
 			<view class="good">
 				<view class="left">

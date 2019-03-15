@@ -1,14 +1,6 @@
 <template>
 		<!-- 帮助他人注册 -->
 	<view class="content">
-		<!-- <view class="head">
-			<view class="back">
-				<image @click="backhome()" src="../../static/images/back.png"></image>
-			<view class="title">
-				为他人注册
-			</view>
-			</view>
-		</view> -->
 		<view class="body" >
 			<view class="text1">
 				<input
@@ -89,12 +81,15 @@
 			</view>
 		</view>
 		<view class="footer" @click="submit()">
-			<view class="btn" type="button" value="" >确认注册</view>
+			<view class="btn" type="button" >确认注册</view>
 		</view>
 	</view>
 </template>
 
 <script>
+	const util = require('../../util/util.js')
+	const api = require('../../util/api.js')
+	
 	// 此处引入你要的组件
 	export default {
 		data() {
@@ -120,7 +115,7 @@
 		 * 指的是页面加载完毕执行的函数
 		 */
 		onLoad(options) {
-			this.regLogin()
+			// this.regLogin()
 		},
 		/**
 		 * uni-app
@@ -155,33 +150,58 @@
 		 * Vue的自定义方法
 		 */
 		methods: {
-			submit(){
-				let that = this
-				let phone = that.phone
-				let code = that.attrs
-				let psw = that.psw
-				let pswagain = that.pswagain
-				let Nickname = that.Nickname
-				let weixin = that.weixin
-				let alipay = that.alipay
-				console.log(phone + code + psw + pswagain + Nickname + weixin + alipay)
-			},
-			regLogin() {
-				let that = this
-				let token = uni.getStorageSync('token')
-			
-				if (!token) {
+			submit() {
+			let that = this
+			let phone = that.phone
+			//图文验证码（暂时没有）
+			// let code = that.code
+			let psw = that.psw
+			let pswagain = that.pswagain
+			let nickname = that.Nickname
+			//邀请人手机号（recommend）
+			let inviterphone = that.inviterphone
+			let weixin = that.weixin
+			//支付宝接口(暂时没有)
+			// let alipay = that.alipay
+			// console.log(phone+code+psw+pswagain+nickname+inviterphone+weixin+alipay)
+			util.request(api.getRegister,{
+						tel: phone,
+						realname: Nickname,
+						wechat: weixin,
+						password: psw,
+						recommend: inviterphone
+			},"POST").then((res)=>{
+				let code = JSON.stringify(res.code)
+				if(code == 200){
 					uni.showToast({
-						title: "登录过期",
-						icon: "none"
-					})
-					// new Promise()
-					setTimeout(() => {
-						uni.navigateTo({
-							url: "/pages/index/index"
-						})
-					}, 700)
-				}
+								title: "注册成功",
+								icon: "none"
+							});
+							setTimeout(function() {
+								uni.reLaunch({
+									url: "/pages/main/main"
+								})
+							}, 1000);
+				} else if (code == 101) {
+							uni.showToast({
+								title: "推荐人不存在",
+								icon: "none"
+							});
+							return;
+						} else if (code == 102) {
+							uni.showToast({
+								title: "该手机号已被注册",
+								icon: "none"
+							});
+							return;
+						} else if (code == 103) {
+							uni.showToast({
+								title: "系统错误",
+								icon: "none"
+							});
+							return;
+						}
+			})
 			}
 		},
 	}

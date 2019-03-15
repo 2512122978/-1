@@ -1,14 +1,5 @@
 <template>
 	<view class="content">
-		<!-- <view class="backimg">
-			<image
-				@click="backhome()"
-				class="backimage"
-				src="../../static/images/back.png"
-				mode=""
-			></image>
-			<view class="title">公告</view>
-		</view> -->
 		<view class="head" v-for="(item, index) in noticed" :key="index" @click="noticedetails()">
 			<view class="left"><image class="imagenotic" src="../../static/images/notice.png" mode=""></image></view>
 			<view class="right">
