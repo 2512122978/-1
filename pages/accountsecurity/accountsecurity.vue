@@ -65,7 +65,7 @@
 		methods: {
 			regLogin() {
 				let that = this
-				let token = uni.getStorageSync('token')
+				let token = uni.getStorageSync('userToken')
 
 				if (!token) {
 					uni.showToast({

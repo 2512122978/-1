@@ -44,8 +44,8 @@
 </template>
 
 <script>
-	const util = require('@/utils/util.js')
-	const api = require('@/config/api.js')
+	const util = require('@/util/util.js')
+	const api = require('@/util/api.js')
 
 	//全局变量
 	let stack_1 = 1
@@ -143,7 +143,7 @@
 			},
 			regLogin() {
 				let that = this
-				let token = uni.getStorageSync('token')
+				let token = uni.getStorageSync('userToken')
 			
 				if (!token) {
 					uni.showToast({

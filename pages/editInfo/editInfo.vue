@@ -1,6 +1,6 @@
 <template>
 	<view class="content">
-		<view class="save">
+		<view class="save" v-if="false">
 			确认修改
 		</view>
 		<view class="item-list">
@@ -8,73 +8,37 @@
 				<view class="left">
 					头像
 				</view>
-				
-				
 				<view class="right">
 					<block v-if="imageSrc">
 						<image class="img-header" :src="imageSrc" mode="widthFix"></image>
 					</block>
 					<block v-else>
-							<image @click="chooseImage1()" class="img-header" src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3377302992,3361149372&fm=27&gp=0.jpg" mode="widthFix"></image>
+							<image v-model="headimg" class="img-header" src="user.headimg" mode="widthFix"></image>
 					</block>
 				</view>
 			</view>
 			<view class="row">
 				<view class="left">
-					昵称
+					真是姓名
 				</view>
 				<view class="right">
-					<input type="text" v-model="nickName" maxlength="5" placeholder="请输入昵称" class="nickneme">
+					<input type="text" v-model="user.realname" maxlength="5"  class="nickneme">
 				</view>
 			</view>
-			<view class="row" @tap="goPage('/pages/editInfo/phone/phone')">
+			<view class="row">
 				<view class="left">
 					手机号
 				</view>
 				<view class="right">
-					18650365505
-					<image src="../../static/images/qianjin.png" mode="widthFix" class="icon"></image>
+					<input type="text" v-model="user.tel" maxlength="11" class="nickneme">
 				</view>
 			</view>
-			<view class="row" @tap="goPage('/pages/editInfo/realName/realName')">
+			<view class="row">
 				<view class="left">
-					实名验证
+					微信
 				</view>
 				<view class="right">
-					未验证
-					<image src="../../static/images/qianjin.png" mode="widthFix" class="icon"></image>
-				</view>
-			</view>
-			<view class="row" @tap="goPage('/pages/editInfo/phone2/phone2')">
-				<view class="left">
-					备用手机号
-				</view>
-				<view class="right">
-					<image src="../../static/images/qianjin.png" mode="widthFix" class="icon"></image>
-				</view>
-			</view>
-			<view class="row" @tap="goPage('/pages/editInfo/alPay/alPay')">
-				<view class="left">
-					绑定支付宝
-				</view>
-				<view class="right">
-					<image src="../../static/images/qianjin.png" mode="widthFix" class="icon"></image>
-				</view>
-			</view>
-			<view class="row" @tap="goPage('/pages/editInfo/weChat/weChat')">
-				<view class="left">
-					绑定微信
-				</view>
-				<view class="right">
-					<image src="../../static/images/qianjin.png" mode="widthFix" class="icon"></image>
-				</view>
-			</view>
-			<view class="row" @tap="goPage('/pages/editInfo/addressCenter/address')">
-				<view class="left">
-					地址管理
-				</view>
-				<view class="right">
-					<image src="../../static/images/qianjin.png" mode="widthFix" class="icon"></image>
+					<input type="text" v-model="user.wechat" maxlength="20" class="nickneme">
 				</view>
 			</view>
 		</view>
@@ -90,16 +54,23 @@
 </template>
 
 <script>
-	const util = require('@/utils/util.js')
-	const api = require('@/config/api.js')
+	const util = require('@/util/util.js')
+	const api = require('@/util/api.js')
 	//全局变量
 	let stack_1 = 1
 	export default {
 		data() {
+			
 			return {
+			phone:'',
+			address:'',
+			headimg:'',
+			realname:'',
 				nickName:"晴儿",
 				title: 'uploadFile',
 				imageSrc: '',
+			
+			user:[]
 				
 			}
 		},
@@ -114,6 +85,7 @@
 		onLoad(options) {
 			this.imageSrc = ''
 			this.regLogin()
+			this.init()
 		},
 		/**
 		 * uni-app
@@ -151,6 +123,16 @@
 			goPage(url) {
 				uni.navigateTo({
 					url: url,
+				})
+			},
+			init() {
+				let that = this
+				that.tabActive = 0
+				util.request(api.getUserInfo, {
+					token: uni.getStorageSync("userToken")
+				}, "POST").then((res) => {
+					that.user = res.data
+					console.log(that.user)
 				})
 			},
 			chooseImage1: function() {
@@ -193,7 +175,7 @@
 			},
 			regLogin() {
 				let that = this
-				let token = uni.getStorageSync('token')
+				let token = uni.getStorageSync('userToken')
 			
 				if (!token) {
 					uni.showToast({
@@ -209,7 +191,36 @@
 				}
 			},
 			submit(){
-				console.log("确认设置")
+				let that = this
+				
+				
+				
+				
+				
+				
+				
+				let token = uni.getStorageSync('userToken')
+				if(!token){
+					uni.navigateTo({
+						url:"/pages/login/login"
+					})
+				}
+				util.request(api.editUser,{
+					token: token,
+					wechat: that.user.wechat,
+					tel: that.user.tel,
+					realname: that.user.realname,
+				},"POST").then(res=>{
+					if(res.code === 200) {
+						uni.showModal({
+							title: "修改成功"
+						})
+						return
+					}
+					uni.showModal({
+						title: "修改失败"
+					})
+				})
 			}
 		}
 	}

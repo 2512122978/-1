@@ -4,6 +4,14 @@
 			"path": "pages/index/index",
 			"style": {
 				"navigationStyle": "custom",
+				"navigationBarTitleText": "王者联盟",
+				"navigationBarBackgroundColor": "#222222"
+			}
+		},
+		{
+			"path": "pages/login/login",
+			"style": {
+				"navigationStyle": "custom",
 				"navigationBarTitleText": "登录"
 			}
 		},
@@ -13,15 +21,6 @@
 				"navigationBarTitleText": "注册",
 				"navigationBarBackgroundColor": "#222222",
 				"navigationBarTextStyle": "white"
-			}
-		},
-		{
-			"path": "pages/home/home",
-			"style": {
-				"navigationStyle": "custom",
-				"navigationBarTitleText": "王者联盟",
-				"navigationBarBackgroundColor": "#222222"
-				
 			}
 		},
 		{
@@ -91,7 +90,7 @@
 		{
 			"path": "pages/guild/guild",
 			"style": {
-				"navigationBarTitleText": "行会大厅",
+				"navigationBarTitleText": "创业大厅",
 				"navigationBarBackgroundColor":"#222222",
 				"navigationBarTextStyle": "white"
 			}

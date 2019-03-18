@@ -17,7 +17,7 @@
 				<view class="strip">
 					{{ number[0]}}
 				</view>
-				<view class="stripdown"><view class="span" v-bind:style="'width:'+((number[0]/3)*100)+'%;'">.</view></view>
+				<view class="stripdown"><view class="span" v-bind:style="'width:'+((number[0]/13)*100)+'%;'">.</view></view>
 				<view class="stripnumber">
 					<view class="left">0</view>
 					<view class="right">3</view>
@@ -36,6 +36,8 @@
 </template>
 
 <script>
+	const util = require('@/util/util.js')
+	const api = require('@/util/api.js')
 export default {
 	data() {
 		return {
@@ -44,7 +46,8 @@ export default {
 			grade:[{
 				grade1:'第1关声名不显',
 				grade2:'第2关小有名气'
-			}]
+			}],
+			info: {},
 		};
 	},
 	/**
@@ -57,7 +60,7 @@ export default {
 	 * 指的是页面加载完毕执行的函数
 	 */
 	onLoad(options) {
-		this.regLogin()
+		this.initInfo()
 	},
 	/**
 	 * uni-app
@@ -84,6 +87,20 @@ export default {
 	 * Vue的自定义方法
 	 */
 	methods: {
+		initInfo(){
+			let that = this
+			let token = uni.getStorageSync('userToken')
+			if(!token) {
+				uni.navigateTo({
+					url:'/pages/login/login'
+				})
+			}
+			util.request(api.getUserInfo,{
+				token:token
+			},"POST").then(res=>{
+				that.info = res.data
+			})
+		},
 		goPage(url) {
 			uni.navigateTo({
 				url: url
@@ -94,7 +111,7 @@ export default {
 		},
 		regLogin() {
 			let that = this
-			let token = uni.getStorageSync('token')
+			let token = uni.getStorageSync('userToken')
 		
 			if (!token) {
 				uni.showToast({
@@ -108,6 +125,34 @@ export default {
 					})
 				}, 700)
 			}
+		},
+		submitverify(){
+			let that = this
+			util.request(api.uploadApply, {
+				token: uni.getStorageSync("userToken"),
+				level: (+that.info.level + 1)
+			}, "POST").then((res) => {
+				if (res.code == 200) {
+					uni.showToast({
+						title: '提交成功',
+						mask: false,
+						duration: 1500
+					});
+					that.is_shenpi = 1;
+				} else if (res.code == 102) {
+					uni.showToast({
+						title: '没有适合的人为您审核',
+						mask: false,
+						duration: 1500
+					});
+				} else {
+					uni.showToast({
+						title: '升级失败',
+						mask: false,
+						duration: 1500
+					});
+				}
+			});
 		}
 	}
 };

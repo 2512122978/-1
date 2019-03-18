@@ -15,7 +15,7 @@
 			</view>
 		</view>
 		<view class="middle">
-			<view class="headup">
+			<view class="headup" v-if="false">
 				<view class="head">
 					<image class="image" src="../../static/images/search.png" mode=""></image>
 					<input class="input" type="text" value="" placeholder="请输入昵称或手机号" />
@@ -25,7 +25,7 @@
 		</view>
 		<view class="footer">
 			<view class="card-list">
-				<view class="tab-bar">
+				<view class="tab-bar" v-if="false">
 					<block v-for="(item, index) in tabList" :key="index">
 						<!-- tap相对于点击事件 -->
 						<view
@@ -39,13 +39,63 @@
 					<view :class="'line line' + (tabActive + 1)"></view>
 				</view>
 			</view>
+			<view class="card-list">
+				<block v-for="(item, index) in cardList2" :key="index">
+					<view class="card">
+						<view class="order-info">
+							<!-- <view class="left">闯关时间： {{ item.date }}</view> -->
+							<view class="right">{{ item.state }}</view>
+						</view>
+						<view class="goods-info">
+							<view class="img-box">
+								<image :src="item.headdimg" class="img"></image>
+							</view>
+							<view class="goods-detail">
+								<view class="words">
+									<view class="word1">{{ item.realname }}</view>
+									<!-- <view class="word">{{ item.takeWay }}</view> -->
+								</view>
+								<view class="words">
+									<view class="word">{{ item.tel }}</view>
+									<view class="word pinlun">
+										<view v-if="item.pinlun === 0">未评论</view>
+										<view v-if="item.pinlun === 1">好评</view>
+										<view v-if="item.pinlun === 2">中评</view>
+										<view v-if="item.pinlun === 3">差评</view>
+									</view>
+								</view>
+								<view class="words">
+									<view class="word">闯关等级：{{ item.level }}</view>
+								</view>
+								<view class="words">
+									<view class="word">微信号：{{ item.wechat }}</view>
+								</view>
+								<view class="words">
+									<!-- <view class="word">支付宝号：{{ item.alpay }}</view> -->
+								</view>
+							</view>
+						</view>
+						<view class="order-handle" v-if="false">
+							<view class="btn-link complaint" @click="wantcomplaint()">投诉</view>
+							<view
+								class="btn-link comment"
+								@click="comment(index)"
+								v-if="!item.pinlun"
+							>
+								评论
+							</view>
+							<view @click="details()" class="btn-link details">查看详情</view>
+						</view>
+					</view>
+				</block>
+			</view>
 		</view>
 	</view>
 </template>
 
 <script>
-const util = require('@/utils/util.js');
-const api = require('@/config/api.js');
+const util = require('@/util/util.js');
+const api = require('@/util/api.js');
 //全局变量
 let stack_1 = 1;
 
@@ -76,76 +126,76 @@ export default {
 				}
 			],
 			cardList2: [
-				{
-					date: '2019.02.24 23:25:17',
-					state: '待审核',
-					headding:
-						'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2060761043,284284863&fm=27&gp=0.jpg',
-					realname: '拓客小助手',
-					takeWay: '上门自提',
-					tel: '13855009676',
-					pinlun: '未评论',
-					level: '第1关声名不显',
-					weChat: '13855009676',
-					alpay: '13399501107',
-					statenumber: 1
-				},
-				{
-					date: '2019.02.24 23:25:17',
-					state: '待审核',
-					headding:
-						'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2060761043,284284863&fm=27&gp=0.jpg',
-					realname: '拓客小助手',
-					takeWay: '上门自提',
-					tel: '13855009676',
-					pinlun: '未评论',
-					level: '第1关声名不显',
-					weChat: '13855009676',
-					alpay: '13399501107',
-					statenumber: 1
-				},
-				{
-					date: '2019.02.24 23:25:17',
-					state: '已确认',
-					headding:
-						'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2060761043,284284863&fm=27&gp=0.jpg',
-					realname: '拓客小助手',
-					takeWay: '上门自提',
-					tel: '13855009676',
-					pinlun: '未评论',
-					level: '第1关声名不显',
-					weChat: '13855009676',
-					alpay: '13399501107',
-					statenumber: 2
-				},
-				{
-					date: '2019.02.24 23:25:17',
-					state: '已确认',
-					headding:
-						'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2060761043,284284863&fm=27&gp=0.jpg',
-					realname: '拓客小助手',
-					takeWay: '上门自提',
-					tel: '13855009676',
-					pinlun: '未评论',
-					level: '第1关声名不显',
-					weChat: '13855009676',
-					alpay: '13399501107',
-					statenumber: 2
-				},
-				{
-					date: '2019.02.24 23:25:17',
-					state: '审核失败',
-					headding:
-						'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2060761043,284284863&fm=27&gp=0.jpg',
-					realname: '拓客小助手',
-					takeWay: '上门自提',
-					tel: '13855009676',
-					pinlun: '未评论',
-					level: '第1关声名不显',
-					weChat: '13855009676',
-					alpay: '13399501107',
-					statenumber: 3
-				}
+// 				{
+// 					date: '2019.02.24 23:25:17',
+// 					state: '待审核',
+// 					headding:
+// 						'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2060761043,284284863&fm=27&gp=0.jpg',
+// 					realname: '拓客小助手',
+// 					takeWay: '上门自提',
+// 					tel: '13855009676',
+// 					pinlun: '未评论',
+// 					level: '第1关声名不显',
+// 					weChat: '13855009676',
+// 					alpay: '13399501107',
+// 					statenumber: 1
+// 				},
+// 				{
+// 					date: '2019.02.24 23:25:17',
+// 					state: '待审核',
+// 					headding:
+// 						'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2060761043,284284863&fm=27&gp=0.jpg',
+// 					realname: '拓客小助手',
+// 					takeWay: '上门自提',
+// 					tel: '13855009676',
+// 					pinlun: '未评论',
+// 					level: '第1关声名不显',
+// 					weChat: '13855009676',
+// 					alpay: '13399501107',
+// 					statenumber: 1
+// 				},
+// 				{
+// 					date: '2019.02.24 23:25:17',
+// 					state: '已确认',
+// 					headding:
+// 						'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2060761043,284284863&fm=27&gp=0.jpg',
+// 					realname: '拓客小助手',
+// 					takeWay: '上门自提',
+// 					tel: '13855009676',
+// 					pinlun: '未评论',
+// 					level: '第1关声名不显',
+// 					weChat: '13855009676',
+// 					alpay: '13399501107',
+// 					statenumber: 2
+// 				},
+// 				{
+// 					date: '2019.02.24 23:25:17',
+// 					state: '已确认',
+// 					headding:
+// 						'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2060761043,284284863&fm=27&gp=0.jpg',
+// 					realname: '拓客小助手',
+// 					takeWay: '上门自提',
+// 					tel: '13855009676',
+// 					pinlun: '未评论',
+// 					level: '第1关声名不显',
+// 					weChat: '13855009676',
+// 					alpay: '13399501107',
+// 					statenumber: 2
+// 				},
+// 				{
+// 					date: '2019.02.24 23:25:17',
+// 					state: '审核失败',
+// 					headding:
+// 						'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2060761043,284284863&fm=27&gp=0.jpg',
+// 					realname: '拓客小助手',
+// 					takeWay: '上门自提',
+// 					tel: '13855009676',
+// 					pinlun: '未评论',
+// 					level: '第1关声名不显',
+// 					weChat: '13855009676',
+// 					alpay: '13399501107',
+// 					statenumber: 3
+// 				}
 			],
 			cardList: []
 		};
@@ -206,13 +256,25 @@ export default {
 		init() {
 			let that = this;
 			that.tabActive = 0;
+			let token = uni.getStorageSync('userToken');
+			if (!token) {
+				uni.navigateTo({
+					url: '/pages/login/login'
+				});
+			}
+
+			util.request(api.getTeamList,{
+					token: token
+				},'POST').then(res=>{
+					that.cardList2 = res.data.list 	
+				})
 		},
 		backhome() {
 			uni.navigateBack(getCurrentPages() - 1);
 		},
 		regLogin() {
 			let that = this;
-			let token = uni.getStorageSync('token');
+			let token = uni.getStorageSync('userToken');
 
 			if (!token) {
 				uni.showToast({
@@ -378,6 +440,146 @@ page {
 				.line2 {
 					left: 525upx;
 				}
+			}
+		}
+	}
+}
+.card-list {
+	padding-bottom: 60upx;
+
+	.tab-bar {
+		position: relative;
+		flex-direction: row;
+		justify-content: space-between;
+		padding: 0 20upx;
+		display: flex;
+
+		.btn-link {
+			display: flex;
+			width: 130upx;
+			// height: 70upx;
+			padding: 30upx 0;
+			justify-content: center;
+			align-items: center;
+			color: rgba(255, 255, 255, 0.4);
+			font-size: 26upx;
+		}
+
+		.line {
+			position: absolute;
+			width: 60upx;
+			height: 6upx;
+			background: #fff;
+			bottom: 0;
+			transition: 0.5s;
+		}
+
+		.line1 {
+			left: 55upx;
+		}
+
+		.line2 {
+			left: 250upx;
+		}
+
+		.line3 {
+			left: 445upx;
+		}
+
+		.line4 {
+			left: 645upx;
+		}
+	}
+
+	.card {
+		display: flex;
+		flex-direction: column;
+		margin: 0 20upx;
+		padding-bottom: 25upx;
+		font-size: 28upx;
+		border-bottom: 3upx solid #5d4949;
+
+		.order-info {
+			display: flex;
+			// height: 70upx;
+			padding: 10upx 0;
+			align-items: center;
+			justify-content: space-between;
+			font-size: 25upx;
+			font-weight: 600;
+		}
+
+		.goods-info {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			margin: 10upx 10upx 0 10upx;
+
+			.img-box {
+				width: 120upx;
+				margin-left: 14upx;
+				padding-top: 20upx;
+
+				.img {
+					width: 90upx;
+					height: 90upx;
+					margin-right: 8upx;
+					border-radius: 50%;
+				}
+			}
+
+			.goods-detail {
+				flex: 1;
+				display: flex;
+				// 					padding-right: 20upx;
+				// 					padding-top: 10upx;
+				padding: 10upx 20upx 0 0;
+				flex-direction: column;
+				justify-content: space-between;
+
+				.words {
+					display: flex;
+					height: 30upx;
+					align-items: center;
+					justify-content: space-between;
+					padding: 2upx -5upx;
+					margin: 4upx 0;
+
+					.pinlun {
+						color: rgba(255, 255, 255, 0.3);
+					}
+
+					.word {
+						font-size: 20upx;
+					}
+
+					.word1 {
+						font-weight: bold;
+					}
+				}
+			}
+		}
+
+		.order-handle {
+			margin-top: 30upx;
+			display: flex;
+			flex-direction: row;
+			justify-content: flex-end;
+
+			.btn-link {
+				display: flex;
+				width: 150upx;
+				height: 55upx;
+				justify-content: center;
+				align-items: center;
+				border-radius: 30upx;
+				margin-left: 15upx;
+				border: 1upx solid rgba(255, 255, 255, 0.8);
+			}
+
+			.details {
+				background: #6356e2;
+				border: 0upx solid rgba(255, 255, 255, 0.8);
 			}
 		}
 	}

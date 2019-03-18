@@ -1,12 +1,10 @@
 <template>
 	<view class="content">
-	
-
 		<view class="loginform">
 			<view class="icon-zhanghao iconfont" style="font-size: 40upx;color: white;"></view>
 			<input
-			maxlength="11"
-				 v-model="phone"
+				maxlength="11"
+				v-model="phone"
 				type="number"
 				name="referurl"
 				class="referurl"
@@ -15,7 +13,7 @@
 			/>
 		</view>
 		<view class="loginform">
-			<view  class="icon-zhanghao iconfont" style="font-size: 40upx;color: white;"></view>
+			<view class="icon-zhanghao iconfont" style="font-size: 40upx;color: white;"></view>
 			<input
 				maxlength="4"
 				v-model="code"
@@ -40,7 +38,7 @@
 		<view class="loginform">
 			<view class="icon-zhanghao iconfont" style="font-size: 40upx;color: white;"></view>
 			<input
-			password=""
+				password=""
 				v-model="pswagain"
 				type="hidden"
 				name="referurl"
@@ -63,7 +61,7 @@
 		<view class="loginform">
 			<view class="icon-zhanghao iconfont" style="font-size: 40upx;color: white;"></view>
 			<input
-			maxlength="11"
+				maxlength="11"
 				v-model="inviterphone"
 				type="number"
 				name="referurl"
@@ -98,31 +96,29 @@
 			<view type="button" class="btn" value="注 册">注册</view>
 		</view>
 		<view class="login">
-			<view class="goback" @click="backlogin()">
-				已有账户，前往登录
-			</view>
+			<view class="goback" @click="backlogin()">已有账户，前往登录</view>
 		</view>
 	</view>
 </template>
 
 <script>
-	const util = require('@/util/util.js');
-	const api = require('@/util/api.js');
-	
+const util = require('@/util/util.js')
+const api = require('@/util/api.js')
+
 export default {
 	data() {
 		return {
 			info: {},
 			isformSubmit: 1,
-			
-			phone:'',
-			code:'',
-			psw:'',
-			pswagain:'',
-			nickname:'',
-			inviterphone:'',
-			weixin:'',
-			alipay:'',
+
+			phone: '',
+			code: '',
+			psw: '',
+			pswagain: '',
+			nickname: '',
+			inviterphone: '',
+			weixin: '',
+			alipay: ''
 		};
 	},
 	/**
@@ -135,11 +131,10 @@ export default {
 	 * 指的是页面加载完毕执行的函数
 	 */
 	onLoad(options) {
-		this.regLogin()
-		let info = uni.getStorageSync("userInfo")
-		this.info = info
-		this.recommend = info.tel
-		
+		this.regLogin();
+		let info = uni.getStorageSync('userInfo');
+		this.info = info;
+		this.recommend = info.tel;
 	},
 	/**
 	 * uni-app
@@ -166,10 +161,10 @@ export default {
 	 * Vue的自定义方法
 	 */
 	methods: {
-		backlogin(){
+		backlogin() {
 			uni.navigateTo({
-				url:'../index/index'
-			})
+				url: '../index/index'
+			});
 		},
 		submitverify() {
 			uni.navigateTo({
@@ -181,75 +176,79 @@ export default {
 				url: '../register/register'
 			});
 		},
-		
-		register(){
-			let that = this
-			let phone = that.phone
+
+		register() {
+			let that = this;
+			let phone = that.phone;
 			//图文验证码（暂时没有）
 			// let code = that.code
-			let psw = that.psw
-			let pswagain = that.pswagain
-			let nickname = that.nickname
+			let psw = that.psw;
+			let pswagain = that.pswagain;
+			let nickname = that.nickname;
 			//邀请人手机号（recommend）
-			let inviterphone = that.inviterphone
-			let weixin = that.weixin
+			let inviterphone = that.inviterphone;
+			let weixin = that.weixin;
 			//支付宝接口(暂时没有)
 			// let alipay = that.alipay
 			// console.log(phone+code+psw+pswagain+nickname+inviterphone+weixin+alipay)
-			util.request(api.getRegister,{
-						tel: phone,
-						realname: nickname,
-						wechat: weixin,
-						password: psw,
-						recommend: inviterphone
-			},"POST").then((res)=>{
-				let code = JSON.stringify(res.code)
-				if(code == 200){
+			util.request(
+				api.getRegister,
+				{
+					tel: phone,
+					realname: nickname,
+					wechat: weixin,
+					password: psw,
+					recommend: inviterphone
+				},
+				'POST'
+			).then(res => {
+				let code = JSON.stringify(res.code);
+				if (code == 200) {
 					uni.showToast({
-								title: "注册成功",
-								icon: "none"
-							});
-							setTimeout(function() {
-								uni.reLaunch({
-									url: "/pages/main/main"
-								})
-							}, 1000);
+						title: '注册成功',
+						icon: 'none'
+					});
+					setTimeout(function() {
+						uni.reLaunch({
+							url: '/pages/main/main'
+						});
+					}, 1000);
 				} else if (code == 101) {
-							uni.showToast({
-								title: "推荐人不存在",
-								icon: "none"
-							});
-							return;
-						} else if (code == 102) {
-							uni.showToast({
-								title: "该手机号已被注册",
-								icon: "none"
-							});
-							return;
-						} else if (code == 103) {
-							uni.showToast({
-								title: "系统错误",
-								icon: "none"
-							});
-							return;
-						}
-			})
+					uni.showToast({
+						title: '推荐人不存在',
+						icon: 'none'
+					});
+					return;
+				} else if (code == 102) {
+					uni.showToast({
+						title: '该手机号已被注册',
+						icon: 'none'
+					});
+					return;
+				} else if (code == 103) {
+					uni.showToast({
+						title: '系统错误',
+						icon: 'none'
+					});
+					return;
+				}
+			});
 		},
 		regLogin() {
-			let that = this
-			let token = uni.getStorageSync('token')
-		
+			let that = this;
+			let token = uni.getStorageSync('userToken');
+
 			if (!token) {
 				uni.showToast({
-					title: "登录过期",
-					icon: "none"
-				})
+					title: '登录过期',
+					icon: 'none'
+				});
 				// new Promise()
 				setTimeout(() => {
 					uni.navigateTo({
-						url: "/pages/index/index"
-					})
-				}, 700)
+						url: '/pages/index/index'
+					});
+				}, 700);
 			}
 		}
 	}
@@ -260,7 +259,7 @@ export default {
 @import //at.alicdn.com/t/font_1069694_b0katkm1hdo.css;
 	page {
 	background-color: rgba(25, 25, 25, 0.6);
-	color: rgba(255, 255, 255, .8);
+	color: rgba(255, 255, 255, 0.8);
 	font-size: 32upx;
 	padding: 10upx 20upx;
 }
@@ -273,18 +272,16 @@ export default {
 	display: flex;
 	height: 100upx;
 	align-items: center;
-	border-bottom: 1px solid rgba(255, 255, 255, .1);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 	font-size: 26upx;
-	color: rgba(255, 255, 255, .8);
+	color: rgba(255, 255, 255, 0.8);
 }
 .btn {
-	
 	color: #ffffff;
 	font-size: 32upx;
 	padding: 24upx 0upx;
-	
 }
-.lsu-submit .btn{
+.lsu-submit .btn {
 	background: url(../../static/btn.png);
 	background-size: 100% 100%;
 	display: flex;
@@ -292,9 +289,9 @@ export default {
 	text-align: center;
 	margin: 80upx 40upx 0 80upx;
 }
-.goback{
+.goback {
 	font-size: 26upx;
-	color: rgba(255, 255, 255, .8);
+	color: rgba(255, 255, 255, 0.8);
 	display: flex;
 	justify-content: flex-end;
 }
