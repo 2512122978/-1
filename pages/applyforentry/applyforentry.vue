@@ -3,22 +3,22 @@
 		<view class="body">
 			<view class="up">
 				<view class="left">
-					<view v-bind:class="'leftup ' + (number[0]<3?'lab':'')">{{grade[0].grade1}}</view>
+					<view v-bind:class="'leftup ' + (number[0]<3?'lab':'')">联盟{{info.level}}级别</view>
 					<view class="leftunder">当前等级</view>
 				</view>
 				<view class="middle"></view>
 				<view class="right">
-					<view v-bind:class="'rightup ' + (number[0]>=3?'lab':'')" >{{grade[0].grade2}}</view>
+					<view v-bind:class="'rightup ' + (number[0]>=3?'lab':'')" >联盟{{(+info.level) + 1}}级别</view>
 					<view class="rightunder">下一关</view>
 				</view>
 			</view>
 			<view class="middle">
 				<view class="stripup">直接邀请3个第1关声名不显</view>
-				<view class="strip">
+				<view class="strip" v-if="false">
 					{{ number[0]}}
 				</view>
-				<view class="stripdown"><view class="span" v-bind:style="'width:'+((number[0]/13)*100)+'%;'">.</view></view>
-				<view class="stripnumber">
+				<view class="stripdown" v-if="false"><view class="span" v-bind:style="'width:'+((number[0]/13)*100)+'%;'">.</view></view>
+				<view class="stripnumber" v-if="false">
 					<view class="left">0</view>
 					<view class="right">3</view>
 				</view>
@@ -43,10 +43,10 @@ export default {
 		return {
 			//当前邀请人数
 			number: [1],
-			grade:[{
-				grade1:'第1关声名不显',
-				grade2:'第2关小有名气'
-			}],
+// 			grade:[{
+// 				grade1:'第1关声名不显',
+// 				grade2:'第2关小有名气'
+// 			}],
 			info: {},
 		};
 	},

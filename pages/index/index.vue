@@ -460,8 +460,8 @@ page{
 			height: 100upx;
 			background-image: url(../../static/images/imodelbackground.png);
 			background-size: 100% 100%;
-			top: calc(50% - 200upx / 2);
-			left: calc(50% - 400upx / 2);
+			top: calc(50% - 100upx / 2);
+			left: calc(50% - 450upx / 2);
 			z-index: 2 + 1;
 			.title1 {
 				padding-top: 66upx;

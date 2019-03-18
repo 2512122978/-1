@@ -25,7 +25,7 @@
 				<input type="text" password="true" :class="'referurl '+ (pwdAcitve?'on':'')" v-model="pwd" placeholder="请输入密码"
 				 @focus="input('pwd')" @blur="input_plur('pwd')" />
 			</view>
-			<view class="register" @click="onClick">{{login[1].text1}}</view>
+			<view v-if="false" class="register" @click="onClick">{{login[1].text1}}</view>
 		</view>
 		<view class="submit_login">
 			<view class="lsu-submit">
@@ -54,7 +54,7 @@
 					{
 						text1: '注册账号'
 					}, {
-						text3: '拓客新零售'
+						text3: '共享联盟新销售'
 					}
 				],
 

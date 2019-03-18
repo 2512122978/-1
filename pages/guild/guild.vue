@@ -2,16 +2,16 @@
 	<view class="content">
 		<view class="head">
 			<view class="left">
-				<view class="image"><image class="img" :src="user[0].img" mode=""></image></view>
+				<view class="image"><image class="img" :src="info.headimg" mode=""></image></view>
 				<view class="text">
-					<view class="up">{{ user[0].tel }}</view>
-					<view class="down">{{ user[0].grade }}</view>
+					<view class="up">{{ info.tel }}</view>
+					<view class="down">联盟等级:{{ info.level }}</view>
 				</view>
 			</view>
-			<view class="right">
-				<view class="head1">我的贡献：{{ user[0].contribution }}人</view>
-				<view class="middle">行会信息：{{ user[0].guild }}人</view>
-				<view class="footer">第1关声名不显及以上人数：{{ user[0].overclassone }}人</view>
+			<view class="right" v-if="false">
+				<view class="head1">我的贡献：{{ info.tel }}人</view>
+				<view class="middle">行会信息：{{ info.tel }}人</view>
+				<view class="footer">第1关声名不显及以上人数：{{ info.tel }}人</view>
 			</view>
 		</view>
 		<view class="middle">
@@ -103,7 +103,8 @@ let stack_1 = 1;
 export default {
 	data() {
 		return {
-			//选项卡
+			info:'',
+			//选项卡1
 			tabList: [
 				{
 					text: '全部'
@@ -114,88 +115,88 @@ export default {
 			],
 			// 选项卡切换状态
 			tabActive: 1,
-			user: [
-				{
-					img:
-						'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2060761043,284284863&fm=27&gp=0.jpg',
-					tel: '18650365505',
-					grade: '第1关声名不显',
-					contribution: '0',
-					guild: '0',
-					overclassone: '0'
-				}
-			],
-			cardList2: [
+// 			user: [
 // 				{
-// 					date: '2019.02.24 23:25:17',
-// 					state: '待审核',
-// 					headding:
+// 					img:
 // 						'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2060761043,284284863&fm=27&gp=0.jpg',
-// 					realname: '拓客小助手',
-// 					takeWay: '上门自提',
-// 					tel: '13855009676',
-// 					pinlun: '未评论',
-// 					level: '第1关声名不显',
-// 					weChat: '13855009676',
-// 					alpay: '13399501107',
-// 					statenumber: 1
-// 				},
-// 				{
-// 					date: '2019.02.24 23:25:17',
-// 					state: '待审核',
-// 					headding:
-// 						'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2060761043,284284863&fm=27&gp=0.jpg',
-// 					realname: '拓客小助手',
-// 					takeWay: '上门自提',
-// 					tel: '13855009676',
-// 					pinlun: '未评论',
-// 					level: '第1关声名不显',
-// 					weChat: '13855009676',
-// 					alpay: '13399501107',
-// 					statenumber: 1
-// 				},
-// 				{
-// 					date: '2019.02.24 23:25:17',
-// 					state: '已确认',
-// 					headding:
-// 						'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2060761043,284284863&fm=27&gp=0.jpg',
-// 					realname: '拓客小助手',
-// 					takeWay: '上门自提',
-// 					tel: '13855009676',
-// 					pinlun: '未评论',
-// 					level: '第1关声名不显',
-// 					weChat: '13855009676',
-// 					alpay: '13399501107',
-// 					statenumber: 2
-// 				},
-// 				{
-// 					date: '2019.02.24 23:25:17',
-// 					state: '已确认',
-// 					headding:
-// 						'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2060761043,284284863&fm=27&gp=0.jpg',
-// 					realname: '拓客小助手',
-// 					takeWay: '上门自提',
-// 					tel: '13855009676',
-// 					pinlun: '未评论',
-// 					level: '第1关声名不显',
-// 					weChat: '13855009676',
-// 					alpay: '13399501107',
-// 					statenumber: 2
-// 				},
-// 				{
-// 					date: '2019.02.24 23:25:17',
-// 					state: '审核失败',
-// 					headding:
-// 						'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2060761043,284284863&fm=27&gp=0.jpg',
-// 					realname: '拓客小助手',
-// 					takeWay: '上门自提',
-// 					tel: '13855009676',
-// 					pinlun: '未评论',
-// 					level: '第1关声名不显',
-// 					weChat: '13855009676',
-// 					alpay: '13399501107',
-// 					statenumber: 3
+// 					tel: '18650365505',
+// 					grade: '第1关声名不显',
+// 					contribution: '0',
+// 					guild: '0',
+// 					overclassone: '0'
 // 				}
+// 			],
+			cardList2: [
+				// 				{
+				// 					date: '2019.02.24 23:25:17',
+				// 					state: '待审核',
+				// 					headding:
+				// 						'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2060761043,284284863&fm=27&gp=0.jpg',
+				// 					realname: '拓客小助手',
+				// 					takeWay: '上门自提',
+				// 					tel: '13855009676',
+				// 					pinlun: '未评论',
+				// 					level: '第1关声名不显',
+				// 					weChat: '13855009676',
+				// 					alpay: '13399501107',
+				// 					statenumber: 1
+				// 				},
+				// 				{
+				// 					date: '2019.02.24 23:25:17',
+				// 					state: '待审核',
+				// 					headding:
+				// 						'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2060761043,284284863&fm=27&gp=0.jpg',
+				// 					realname: '拓客小助手',
+				// 					takeWay: '上门自提',
+				// 					tel: '13855009676',
+				// 					pinlun: '未评论',
+				// 					level: '第1关声名不显',
+				// 					weChat: '13855009676',
+				// 					alpay: '13399501107',
+				// 					statenumber: 1
+				// 				},
+				// 				{
+				// 					date: '2019.02.24 23:25:17',
+				// 					state: '已确认',
+				// 					headding:
+				// 						'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2060761043,284284863&fm=27&gp=0.jpg',
+				// 					realname: '拓客小助手',
+				// 					takeWay: '上门自提',
+				// 					tel: '13855009676',
+				// 					pinlun: '未评论',
+				// 					level: '第1关声名不显',
+				// 					weChat: '13855009676',
+				// 					alpay: '13399501107',
+				// 					statenumber: 2
+				// 				},
+				// 				{
+				// 					date: '2019.02.24 23:25:17',
+				// 					state: '已确认',
+				// 					headding:
+				// 						'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2060761043,284284863&fm=27&gp=0.jpg',
+				// 					realname: '拓客小助手',
+				// 					takeWay: '上门自提',
+				// 					tel: '13855009676',
+				// 					pinlun: '未评论',
+				// 					level: '第1关声名不显',
+				// 					weChat: '13855009676',
+				// 					alpay: '13399501107',
+				// 					statenumber: 2
+				// 				},
+				// 				{
+				// 					date: '2019.02.24 23:25:17',
+				// 					state: '审核失败',
+				// 					headding:
+				// 						'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2060761043,284284863&fm=27&gp=0.jpg',
+				// 					realname: '拓客小助手',
+				// 					takeWay: '上门自提',
+				// 					tel: '13855009676',
+				// 					pinlun: '未评论',
+				// 					level: '第1关声名不显',
+				// 					weChat: '13855009676',
+				// 					alpay: '13399501107',
+				// 					statenumber: 3
+				// 				}
 			],
 			cardList: []
 		};
@@ -212,6 +213,7 @@ export default {
 	onLoad(options) {
 		this.init();
 		this.regLogin();
+		this.initInfo()
 	},
 	/**
 	 * uni-app
@@ -238,6 +240,24 @@ export default {
 	 * Vue的自定义方法
 	 */
 	methods: {
+		initInfo() {
+			let that = this;
+			let token = uni.getStorageSync('userToken');
+			if (!token) {
+				uni.navigateTo({
+					url: '/pages/login/login'
+				});
+			}
+			util.request(
+				api.getUserInfo,
+				{
+					token: token
+				},
+				'POST'
+			).then(res => {
+				that.info = res.data;
+			});
+		},
 		switchTab(index) {
 			let that = this;
 			that.tabActive = index;
@@ -263,11 +283,15 @@ export default {
 				});
 			}
 
-			util.request(api.getTeamList,{
+			util.request(
+				api.getTeamList,
+				{
 					token: token
-				},'POST').then(res=>{
-					that.cardList2 = res.data.list 	
-				})
+				},
+				'POST'
+			).then(res => {
+				that.cardList2 = res.data.list;
+			});
 		},
 		backhome() {
 			uni.navigateBack(getCurrentPages() - 1);
